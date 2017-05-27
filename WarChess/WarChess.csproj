@@ -36,12 +36,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Classes\Field.cs" />
+    <Compile Include="Domain\Classes\Game.cs" />
+    <Compile Include="Domain\Classes\GameState.cs" />
+    <Compile Include="Domain\Interfaces\IGameState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Domain\Color.cs" />
     <Compile Include="Domain\Figures\IFigure.cs" />
     <Compile Include="Domain\Figures\King.cs" />
-    <Compile Include="Domain\IGame.cs" />
-    <Compile Include="Domain\IField.cs" />
+    <Compile Include="Domain\Interfaces\IGame.cs" />
+    <Compile Include="Domain\Interfaces\IField.cs" />
     <Compile Include="Domain\Figures\IFigureVisitor.cs" />
     <Compile Include="Domain\Position.cs" />
   </ItemGroup>
@@ -49,6 +53,9 @@
     <Folder Include="Application\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="UserInterface\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
