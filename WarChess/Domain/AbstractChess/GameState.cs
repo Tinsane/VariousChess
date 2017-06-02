@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WarChess.Domain.Classes
+namespace WarChess.Domain.AbstractChess
 {
     internal class GameState : IGameState
     {
@@ -12,7 +12,7 @@ namespace WarChess.Domain.Classes
 
         public IField Field { get; }
         public int CurrentPlayerId { get; }
-        public IGameState MakeMove(Position @from, Position to)
+        public IGameState MakeMove(Position from, Position to)
         {
             throw new NotImplementedException();
         }

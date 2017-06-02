@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WarChess.Domain
+namespace WarChess.Domain.AbstractChess
 {
     public class Position
     {

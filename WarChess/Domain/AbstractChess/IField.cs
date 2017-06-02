@@ -1,10 +1,10 @@
-﻿using WarChess.Domain.Figures;
+﻿
 
-namespace WarChess.Domain
+namespace WarChess.Domain.AbstractChess
 {
     public interface IField
     {
-        IFigure this[Position position] { get; }
+        IPiece this[Position position] { get; }
 
         /// <summary>
         /// Column is a line along which pawns move.

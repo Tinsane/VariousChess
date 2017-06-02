@@ -9,7 +9,7 @@ namespace WarChess.Domain.Classes
 {
     class Field : IField
     {
-        public IFigure this[Position position]
+        public IPiece this[Position position]
         {
             get { throw new NotImplementedException(); }
         }
