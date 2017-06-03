@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarChess.Domain.AbstractChess;
 
 namespace WarChess.Domain.WarChess
 {
-    class WarChessGame : IWarChessGame
+    public class WarChessGame : IWarChessGame
     {
         public Color WhoseMove => throw new NotImplementedException();
 

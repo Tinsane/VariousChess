@@ -36,18 +36,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Classes\Field.cs" />
-    <Compile Include="Domain\Classes\Game.cs" />
-    <Compile Include="Domain\Classes\GameState.cs" />
-    <Compile Include="Domain\Interfaces\IGameState.cs" />
+    <Compile Include="Domain\AbstractChess\Field.cs" />
+    <Compile Include="Domain\AbstractChess\Game.cs" />
+    <Compile Include="Domain\AbstractChess\GameState.cs" />
+    <Compile Include="Domain\AbstractChess\IGameState.cs" />
+    <Compile Include="Domain\WarChess\WarChessAlert.cs" />
+    <Compile Include="Domain\WarChess\WarChessGame.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Domain\Color.cs" />
-    <Compile Include="Domain\Figures\IFigure.cs" />
-    <Compile Include="Domain\Figures\King.cs" />
-    <Compile Include="Domain\Interfaces\IGame.cs" />
-    <Compile Include="Domain\Interfaces\IField.cs" />
-    <Compile Include="Domain\Figures\IFigureVisitor.cs" />
-    <Compile Include="Domain\Position.cs" />
+    <Compile Include="Domain\AbstractChess\Color.cs" />
+    <Compile Include="Domain\AbstractChess\IPiece.cs" />
+    <Compile Include="Domain\WarChess\IWarChessGame.cs" />
+    <Compile Include="Domain\AbstractChess\IField.cs" />
+    <Compile Include="Domain\AbstractChess\Position.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />

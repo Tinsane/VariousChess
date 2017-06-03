@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WarChess.Domain
+namespace WarChess.Domain.AbstractChess
 {
     // Если он тебе зачем-то нужен, то ок. Мне он не нужен.
     public interface IGameState

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WarChess.Domain
+namespace WarChess.Domain.AbstractChess
 {
     public class Game
     {

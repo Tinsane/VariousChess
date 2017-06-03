@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WarChess.Domain.Figures;
 
-namespace WarChess.Domain.Classes
+namespace WarChess.Domain.AbstractChess
 {
     class Field : IField
     {
