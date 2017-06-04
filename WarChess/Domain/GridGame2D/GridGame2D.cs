@@ -2,9 +2,11 @@
 
 namespace WarChess.Domain.GridGame2D
 {
-    public abstract class GridGame2D : Game<IGridGameState2D, BoundedGridField2D, GridPosition2D, SquareCell2D>
+    public abstract class GridGame2D<TGameState>
+        : Game<TGameState, BoundedGridField2D, GridPosition2D, SquareCell>
+        where TGameState : IGridGameState2D
     {
-        protected GridGame2D(IGridGameState2D initialState) : base(initialState)
+        protected GridGame2D(TGameState initialState) : base(initialState)
         {
         }
     }

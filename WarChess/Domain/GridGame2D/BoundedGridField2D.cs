@@ -3,16 +3,16 @@ using WarChess.Domain.AbstractGame;
 
 namespace WarChess.Domain.GridGame2D
 {
-    public class BoundedGridField2D : IField<GridPosition2D, SquareCell2D>
+    public class BoundedGridField2D : IField<GridPosition2D, SquareCell>
     {
         public BoundedGridField2D(int rowsCnt, int columnsCnt)
         {
-            Grid = new SquareCell2D[rowsCnt, columnsCnt];
+            Grid = new SquareCell[rowsCnt, columnsCnt];
         }
 
-        private SquareCell2D[,] Grid { get; }
+        private SquareCell[,] Grid { get; }
 
-        public SquareCell2D this[GridPosition2D position]
+        public SquareCell this[GridPosition2D position]
         {
             get
             {
