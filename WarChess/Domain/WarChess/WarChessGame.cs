@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WarChess.Domain.AbstractChess;
 
 namespace WarChess.Domain.WarChess
 {

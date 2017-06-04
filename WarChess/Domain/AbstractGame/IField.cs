@@ -1,8 +1,9 @@
 ﻿namespace WarChess.Domain.AbstractGame
 {
-    public interface IField<in TPosition>
+    public interface IField<in TPosition, out TCell>
         where TPosition : IPosition
+        where TCell : ICell
     {
-        IPiece this[TPosition position] { get; }
+        TCell this[TPosition position] { get; }
     }
 }
