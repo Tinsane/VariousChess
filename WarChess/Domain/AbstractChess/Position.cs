@@ -19,7 +19,7 @@ namespace WarChess.Domain.AbstractChess
         {
             throw new NotImplementedException();
         }
-        
+
         public string ToChessNotation()
         {
             throw new NotImplementedException();

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarChess.Domain.AbstractChess
+﻿namespace WarChess.Domain.AbstractChess
 {
     // Если он тебе зачем-то нужен, то ок. Мне он не нужен.
     public interface IGameState
@@ -13,7 +7,7 @@ namespace WarChess.Domain.AbstractChess
         int CurrentPlayerId { get; }
 
         /// <summary>
-        /// Returns null if move is invalid.
+        ///     Returns null if move is invalid.
         /// </summary>
         IGameState MakeMove(Position from, Position to);
     }

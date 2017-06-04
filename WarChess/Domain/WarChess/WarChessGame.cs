@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WarChess.Domain.AbstractChess;
 
 namespace WarChess.Domain.WarChess
@@ -13,7 +10,7 @@ namespace WarChess.Domain.WarChess
 
         public IField Field => throw new NotImplementedException();
 
-        public WarChessAlert Alert => throw new NotImplementedException(); // возможно работает только в c#7
+        public WarChessAlert Alert => throw new NotImplementedException();
 
         public List<Position> GetPossibleMoves(Position from)
         {

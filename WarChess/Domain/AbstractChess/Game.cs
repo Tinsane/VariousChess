@@ -13,10 +13,7 @@ namespace WarChess.Domain.AbstractChess
             throw new NotImplementedException(); // TODO : add initial state
         }
 
-        public Color WhoseMove
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public Color WhoseMove => throw new NotImplementedException();
 
         private IGameState State => states.Peek();
 

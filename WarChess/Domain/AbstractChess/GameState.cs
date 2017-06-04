@@ -12,6 +12,7 @@ namespace WarChess.Domain.AbstractChess
 
         public IField Field { get; }
         public int CurrentPlayerId { get; }
+
         public IGameState MakeMove(Position from, Position to)
         {
             throw new NotImplementedException();
