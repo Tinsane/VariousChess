@@ -36,18 +36,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AbstractChess\Field.cs" />
-    <Compile Include="Domain\AbstractChess\Game.cs" />
-    <Compile Include="Domain\AbstractChess\GameState.cs" />
-    <Compile Include="Domain\AbstractChess\IGameState.cs" />
+    <Compile Include="Domain\AbstractGame\Game.cs" />
+    <Compile Include="Domain\AbstractGame\ICell.cs" />
+    <Compile Include="Domain\AbstractGame\IGameState.cs" />
+    <Compile Include="Domain\AbstractGame\IMove.cs" />
+    <Compile Include="Domain\ChessNotationConverter2D.cs" />
+    <Compile Include="Domain\AbstractGame\INotationConverter.cs" />
+    <Compile Include="Domain\AbstractGame\IPosition.cs" />
+    <Compile Include="Domain\GridGame2D\GridGame2D.cs" />
+    <Compile Include="Domain\GridGame2D\BoundedGridField2D.cs" />
+    <Compile Include="Domain\GridGame2D\GridGame2DMove.cs" />
+    <Compile Include="Domain\GridGame2D\GridPosition2D.cs" />
+    <Compile Include="Domain\GridGame2D\IGridGameState2D.cs" />
+    <Compile Include="Domain\GridGame2D\Size2D.cs" />
+    <Compile Include="Domain\GridGame2D\SquareCell.cs" />
+    <Compile Include="Domain\Utilities.cs" />
     <Compile Include="Domain\WarChess\WarChessAlert.cs" />
     <Compile Include="Domain\WarChess\WarChessGame.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Domain\AbstractChess\Color.cs" />
-    <Compile Include="Domain\AbstractChess\IPiece.cs" />
+    <Compile Include="Domain\Color.cs" />
     <Compile Include="Domain\WarChess\IWarChessGame.cs" />
-    <Compile Include="Domain\AbstractChess\IField.cs" />
-    <Compile Include="Domain\AbstractChess\Position.cs" />
+    <Compile Include="Domain\AbstractGame\IField.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
