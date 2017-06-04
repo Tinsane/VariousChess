@@ -36,6 +36,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserInterface\IFieldStyle.cs" />
+    <Compile Include="UserInterface\IPieceBitmapSelector.cs" />
+    <Compile Include="UserInterface\IStandardChessStyle.cs" />
     <Compile Include="Domain\AbstractChess\Field.cs" />
     <Compile Include="Domain\AbstractChess\Game.cs" />
     <Compile Include="Domain\AbstractChess\GameState.cs" />
@@ -48,11 +51,20 @@
     <Compile Include="Domain\WarChess\IWarChessGame.cs" />
     <Compile Include="Domain\AbstractChess\IField.cs" />
     <Compile Include="Domain\AbstractChess\Position.cs" />
+    <Compile Include="UserInterface\ChessField.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\WarChess\WarChessPieceBitmapSelector.cs" />
+    <Compile Include="UserInterface\WarChess\WarChessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
     <Folder Include="Infrastructure\" />
-    <Folder Include="UserInterface\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,6 +73,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

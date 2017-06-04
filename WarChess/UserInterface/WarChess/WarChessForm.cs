@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using WarChess.Application;
+﻿using System.Windows.Forms;
 using WarChess.Domain.WarChess;
 
-namespace WarChess.UserInterface
+namespace WarChess.UserInterface.WarChess
 {
     public class WarChessForm : Form
     {
