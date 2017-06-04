@@ -6,6 +6,5 @@
         where TCell : ICell
     {
         TField Field { get; }
-        int CurrentPlayerId { get; }
     }
 }

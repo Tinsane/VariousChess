@@ -3,23 +3,28 @@ using WarChess.Domain.AbstractGame;
 
 namespace WarChess.Domain.GridGame2D
 {
-    public class BoundedGridField2D : IField<GridPosition2D, SquareCell>
+    public class BoundedGridField2D<TCell>
+        : IField<GridPosition2D, TCell>
+        where TCell : ICell
     {
         public BoundedGridField2D(int rowsCnt, int columnsCnt)
         {
-            Grid = new SquareCell[rowsCnt, columnsCnt];
+            Grid = new TCell[rowsCnt, columnsCnt];
         }
 
-        private SquareCell[,] Grid { get; }
+        private TCell[,] Grid { get; }
 
-        public SquareCell this[GridPosition2D position]
+        public TCell this[GridPosition2D position] => Grid[position.X, position.Y];
+
+        public TCell this[int x, int y]
         {
             get
             {
-                if (!Utilities.IsInInterval(position.X, 0, Grid.GetLength(0)) ||
-                    !Utilities.IsInInterval(position.Y, 0, Grid.GetLength(1)))
-                    throw new ArgumentOutOfRangeException(nameof(position));
-                return Grid[position.X, position.Y];
+                if (!Utilities.IsInInterval(x, 0, Grid.GetLength(0)))
+                    throw new ArgumentOutOfRangeException(nameof(x));
+                if (!Utilities.IsInInterval(y, 0, Grid.GetLength(1)))
+                    throw new ArgumentOutOfRangeException(nameof(y));
+                return Grid[x, y];
             }
         }
 
