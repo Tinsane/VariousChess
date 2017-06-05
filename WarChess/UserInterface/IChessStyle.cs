@@ -2,7 +2,7 @@
 
 namespace WarChess.UserInterface
 {
-    public interface IStandardChessStyle
+    public interface IChessStyle
     {
         // All the bitmaps should have size (width, height)
         int BitmapWidth { get; }

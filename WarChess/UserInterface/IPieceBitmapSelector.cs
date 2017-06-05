@@ -4,7 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WarChess.Domain.AbstractChess;
+using WarChess.Domain;
+using WarChess.Domain.Chess;
+using WarChess.Domain.WarChess;
 
 namespace WarChess.UserInterface
 {
@@ -13,6 +15,6 @@ namespace WarChess.UserInterface
         // All the bitmaps should have size (width, height)
         int BitmapWidth { get; }
         int BitmapHeight { get; }
-        Bitmap SelectBitmap(IPiece piece);
+        Bitmap SelectBitmap(IChessPiece piece);
     }
 }

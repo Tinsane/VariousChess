@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WarChess.Domain.AbstractChess;
+using WarChess.Domain.WarChess;
 
-namespace WarChess.Domain.WarChess
+namespace WarChess.Domain.Chess.WarChess
 {
     // Этот интерфейс - для "финального" класса.
     // Для уже собранной игры в военные шахматы. Ведь именно их мы будем визуализировать. Вот для них мне интерфейс и нужен.
@@ -12,7 +12,7 @@ namespace WarChess.Domain.WarChess
 
         // Потенциально ещё тут могут быть методы, для отмены хода и для возврата полной истории ходов.
         // Можно, кстати, совместить эти штуки, реализовав undo/redo, но это всё пока не принцпиально.
-        IField Field { get; }
+        IChessBoard Board { get; }
 
         // Нельзя здесь возвращать GameState. Он умеет слишком много. Это что-то внутреннее.
         WarChessAlert Alert { get; }
@@ -20,11 +20,11 @@ namespace WarChess.Domain.WarChess
         /// <summary>
         ///     If there is no figure in the position or the figure is opposite player's - return empty list.
         /// </summary>
-        List<Position> GetPossibleMoves(Position from);
+        List<ChessPosition> GetPossibleMoves(ChessPosition from);
 
         /// <summary>
         ///     Returns true if move was successful, otherwise returns false.
         /// </summary>
-        bool TryMakeMove(Position from, Position to);
+        bool TryMakeMove(ChessPosition from, ChessPosition to);
     }
 }

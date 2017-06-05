@@ -3,6 +3,7 @@
     public enum WarChessAlert
     {
         PawnCanAttack,
-        Check
+        Check,
+        Mate
     }
 }

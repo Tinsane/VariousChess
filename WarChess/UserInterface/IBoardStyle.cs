@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarChess.UserInterface
 {
-    public interface IFieldStyle
+    public interface IBoardStyle
     {
         Color BlackCellColor { get; }
         Color WhiteCellColor { get; }
