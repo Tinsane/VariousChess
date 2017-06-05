@@ -16,7 +16,8 @@ namespace WarChess.UserInterface.WarChess
          */
         public WarChessForm(WarChessApp game, IChessStyle chessStyle, IBoardStyle boardStyle)
         {// здесь нужен не IWarChessGame, а класс с уровня application
-            var field = new ChessBoard(boardStyle, chessStyle.BitmapWidth, chessStyle.BitmapHeight);
+            var board = new ChessBoard(boardStyle, chessStyle.BitmapWidth, chessStyle.BitmapHeight);
+            
             // need some layout
         }
     }

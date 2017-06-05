@@ -17,6 +17,8 @@ namespace WarChess.UserInterface
         public const int RowCount = 8;
         public const int ColumnCount = 8;
 
+        public event Func<ChessPosition> CellClick;
+
         private readonly IBoardStyle boardStyle;
         private readonly int bitmapWidth;
         private readonly int bitmapHeight;

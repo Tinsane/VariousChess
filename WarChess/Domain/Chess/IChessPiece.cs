@@ -1,4 +1,6 @@
-﻿namespace WarChess.Domain.Chess
+﻿using WarChess.Domain.WarChess;
+
+namespace WarChess.Domain.Chess
 {
     public interface IChessPiece
     {
