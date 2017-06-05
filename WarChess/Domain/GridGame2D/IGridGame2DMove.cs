@@ -2,7 +2,7 @@
 
 namespace WarChess.Domain.GridGame2D
 {
-    internal interface IGridGame2DMove<TGameState, TCell>
+    public interface IGridGame2DMove<TGameState, TCell>
         : IMove<TGameState, BoundedGridField2D<TCell>, GridPosition2D, TCell>
         where TGameState : IGridGameState2D<TCell>
         where TCell : ICell

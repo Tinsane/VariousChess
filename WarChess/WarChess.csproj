@@ -42,11 +42,14 @@
     <Compile Include="Domain\AbstractGame\IMove.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeGameState.cs" />
+    <Compile Include="Domain\ChessAlike\Moves\DirectedMove.cs" />
+    <Compile Include="Domain\ChessAlike\Moves\IChessAlikeMove.cs" />
     <Compile Include="Domain\ChessAlike\Moves\Jump.cs" />
     <Compile Include="Domain\ChessAlike\Moves\SlidingMove.cs" />
-    <Compile Include="Domain\ChessAlike\PieceArchitecture\IPieceInfo.cs" />
-    <Compile Include="Domain\ChessAlike\PieceArchitecture\PieceSet.cs" />
-    <Compile Include="Domain\ChessAlike\PieceArchitecture\Piece.cs" />
+    <Compile Include="Domain\ChessAlike\Piece\PieceInfo.cs" />
+    <Compile Include="Domain\ChessAlike\Piece\PieceSet.cs" />
+    <Compile Include="Domain\ChessAlike\Piece\IPiece.cs" />
+    <Compile Include="Domain\ChessAlike\Piece\PieceSetGenerator.cs" />
     <Compile Include="Domain\GridGame2D\Point2D.cs" />
     <Compile Include="Domain\WarChess\NotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\INotationConverter.cs" />
