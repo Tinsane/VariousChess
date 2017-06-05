@@ -3,26 +3,40 @@ using WarChess.Domain.AbstractGame;
 
 namespace WarChess.Domain.GridGame2D
 {
-    public class BoundedGridField2D : IField<GridPosition2D, SquareCell>
+    public class BoundedGridField2D<TCell>
+        : IField<GridPosition2D, TCell>
+        where TCell : ICell
     {
-        public BoundedGridField2D(int rowsCnt, int columnsCnt)
+        public BoundedGridField2D(int rowsCnt, int columnsCnt) : this(rowsCnt, columnsCnt, new Point2D(0, 0))
         {
-            Grid = new SquareCell[rowsCnt, columnsCnt];
         }
 
-        private SquareCell[,] Grid { get; }
+        public BoundedGridField2D(int rowsCnt, int columnsCnt, Point2D center)
+        {
+            Grid = new TCell[rowsCnt, columnsCnt];
+            Center = center;
+        }
 
-        public SquareCell this[GridPosition2D position]
+        private Point2D Center { get; }
+
+        private TCell[,] Grid { get; }
+
+        public TCell this[int x, int y]
         {
             get
             {
-                if (!Utilities.IsInInterval(position.X, 0, Grid.GetLength(0)) ||
-                    !Utilities.IsInInterval(position.Y, 0, Grid.GetLength(1)))
-                    throw new ArgumentOutOfRangeException(nameof(position));
-                return Grid[position.X, position.Y];
+                x -= Center.X;
+                y -= Center.Y;
+                if (!Utilities.IsInInterval(x, 0, Grid.GetLength(0)))
+                    throw new ArgumentOutOfRangeException(nameof(x));
+                if (!Utilities.IsInInterval(y, 0, Grid.GetLength(1)))
+                    throw new ArgumentOutOfRangeException(nameof(y));
+                return Grid[x, y];
             }
         }
 
         public Size2D Size => new Size2D(Grid.GetLength(0), Grid.GetLength(1));
+
+        public TCell this[GridPosition2D position] => Grid[position.X, position.Y];
     }
 }

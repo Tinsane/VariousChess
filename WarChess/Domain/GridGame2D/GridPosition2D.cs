@@ -12,5 +12,10 @@ namespace WarChess.Domain.GridGame2D
 
         public int X { get; }
         public int Y { get; }
+
+        public static explicit operator Point2D(GridPosition2D gridPosition)
+        {
+            return new Point2D(gridPosition.X, gridPosition.Y);
+        }
     }
 }

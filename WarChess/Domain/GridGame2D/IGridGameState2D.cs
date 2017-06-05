@@ -2,7 +2,9 @@
 
 namespace WarChess.Domain.GridGame2D
 {
-    public interface IGridGameState2D : IGameState<BoundedGridField2D, GridPosition2D, SquareCell>
+    public interface IGridGameState2D<TCell>
+        : IGameState<BoundedGridField2D<TCell>, GridPosition2D, TCell>
+        where TCell : ICell
     {
     }
 }
