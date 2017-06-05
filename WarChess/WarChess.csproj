@@ -50,6 +50,8 @@
     <Compile Include="Domain\AbstractGame\IMove.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeGameState.cs" />
+    <Compile Include="Domain\ChessAlike\Cells\EmptyCell.cs" />
+    <Compile Include="Domain\ChessAlike\Cells\IChessAlikeCell.cs" />
     <Compile Include="Domain\ChessAlike\Moves\DirectedMove.cs" />
     <Compile Include="Domain\ChessAlike\Moves\IChessAlikeMove.cs" />
     <Compile Include="Domain\ChessAlike\Moves\Jump.cs" />
