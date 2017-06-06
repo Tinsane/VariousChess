@@ -9,7 +9,6 @@ using WarChess.Domain;
 using WarChess.Domain.AbstractGame;
 using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.WarChess;
-using WarChess.Domain.WarChess;
 
 namespace WarChess.UserInterface.WarChess
 {

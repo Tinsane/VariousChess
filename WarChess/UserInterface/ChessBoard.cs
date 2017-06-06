@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarChess.Domain;
 using WarChess.Domain.Chess;
-using WarChess.Domain.WarChess;
 using WarChess.Infrastructure;
-using Color = System.Drawing.Color;
 
 namespace WarChess.UserInterface
 {

@@ -1,4 +1,4 @@
-﻿using WarChess.Domain.WarChess;
+﻿
 
 namespace WarChess.Domain.Chess
 {
