@@ -39,6 +39,9 @@
     <Compile Include="Application\GridApp.cs" />
     <Compile Include="Application\WarChessApp.cs" />
     <Compile Include="Domain\AbstractGame\Cells\NonEmptyCell.cs" />
+    <Compile Include="Domain\ChessAlike\Cells\EmptyCell.cs" />
+    <Compile Include="Domain\ChessAlike\Cells\IChessAlikeCell.cs" />
+    <Compile Include="Domain\ChessAlike\Cells\NonPieceCell.cs" />
     <Compile Include="Domain\Chess\IChessBoard.cs" />
     <Compile Include="Domain\Chess\IChessPiece.cs" />
     <Compile Include="Domain\Chess\ChessPosition.cs" />
