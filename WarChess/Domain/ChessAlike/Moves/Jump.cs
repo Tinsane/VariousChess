@@ -6,7 +6,7 @@ namespace WarChess.Domain.ChessAlike.Moves
 {
     public class Jump<TGameState, TCell> : DirectedMove<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : Cell
+        where TCell : ICell
     {
         public Jump(Point2D step, Point2D from, Point2D to) : base(step, from, to)
         {

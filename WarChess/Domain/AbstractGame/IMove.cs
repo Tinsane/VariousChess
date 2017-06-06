@@ -6,7 +6,7 @@ namespace WarChess.Domain.AbstractGame
         where TGameState : IGameState<TField, TPosition, TCell>
         where TField : IField<TPosition, TCell>
         where TPosition : IPosition
-        where TCell : Cell
+        where TCell : ICell
     {
         TGameState Make(TGameState gameState);
     }

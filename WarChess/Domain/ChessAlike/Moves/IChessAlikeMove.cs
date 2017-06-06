@@ -5,7 +5,7 @@ namespace WarChess.Domain.ChessAlike.Moves
 {
     public interface IChessAlikeMove<TGameState, TCell> : IGridGame2DMove<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : Cell
+        where TCell : ICell
     {
     }
 }

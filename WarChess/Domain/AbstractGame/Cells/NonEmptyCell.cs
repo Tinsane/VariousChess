@@ -1,10 +1,7 @@
 ﻿namespace WarChess.Domain.AbstractGame.Cells
 {
-    public abstract class NonEmptyCell : Cell
+    public abstract class NonEmptyCell : ICell
     {
-        internal override bool AcceptVisitor(EmptyCellVisitor visitor)
-        {
-            return visitor.Visit(this);
-        }
+        public bool IsEmpty => false;
     }
 }

@@ -10,7 +10,7 @@ namespace WarChess.Domain.ChessAlike
     public abstract class ChessAlikeGame<TGameState, TCell>
         : GridGame2D<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : Cell
+        where TCell : ICell
     {
         protected ChessAlikeGame(TGameState initialState) : base(initialState)
         {

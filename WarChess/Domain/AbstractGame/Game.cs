@@ -7,7 +7,7 @@ namespace WarChess.Domain.AbstractGame
         where TGameState : IGameState<TField, TPosition, TCell>
         where TField : IField<TPosition, TCell>
         where TPosition : IPosition
-        where TCell : Cell
+        where TCell : ICell
     {
         private readonly Stack<TGameState> states;
 

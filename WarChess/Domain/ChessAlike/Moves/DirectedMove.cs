@@ -5,7 +5,7 @@ namespace WarChess.Domain.ChessAlike.Moves
 {
     public abstract class DirectedMove<TGameState, TCell> : IChessAlikeMove<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : Cell
+        where TCell : ICell
     {
         protected DirectedMove(Point2D step, Point2D from, Point2D to)
         {
