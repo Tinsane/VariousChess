@@ -1,11 +1,12 @@
 ﻿using System;
 using WarChess.Domain.AbstractGame;
+using WarChess.Domain.AbstractGame.Cells;
 
 namespace WarChess.Domain.GridGame2D
 {
     public class BoundedGridField2D<TCell>
         : IField<GridPosition2D, TCell>
-        where TCell : ICell
+        where TCell : Cell
     {
         public BoundedGridField2D(int rowsCnt, int columnsCnt) : this(rowsCnt, columnsCnt, new Point2D(0, 0))
         {

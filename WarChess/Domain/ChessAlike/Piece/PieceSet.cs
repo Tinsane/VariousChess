@@ -2,11 +2,11 @@
 {
     public class PieceSet
     {
-        public PieceSet(PieceInfo[] info)
+        public PieceSet(PieceGenerator[] generator)
         {
-            Info = info;
+            Generator = generator;
         }
 
-        public PieceInfo[] Info { get; }
+        public PieceGenerator[] Generator { get; }
     }
 }

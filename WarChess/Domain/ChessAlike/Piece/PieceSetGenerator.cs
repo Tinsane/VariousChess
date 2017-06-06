@@ -5,12 +5,13 @@ namespace WarChess.Domain.ChessAlike.Piece
 {
     public class PieceSetGenerator
     {
-        private List<PieceInfo> Info { get; } = new List<PieceInfo>();
+        private List<PieceGenerator> Info { get; } = new List<PieceGenerator>();
 
-        public void AddPiece(string name, Func<int, int, IPiece> pieceGenerator)
+        public int AddPiece(string name, Func<int, int, Piece> pieceGenerator)
         {
             var pieceId = Info.Count;
-            Info.Add(new PieceInfo(name, playerId => pieceGenerator(pieceId, playerId)));
+            Info.Add(new PieceGenerator(playerId => pieceGenerator(pieceId, playerId)));
+            return pieceId;
         }
 
         public PieceSet GetPieceSet()

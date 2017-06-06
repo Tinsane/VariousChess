@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using WarChess.Domain.AbstractGame.Cells;
 
 namespace WarChess.Domain.AbstractGame
 {
@@ -6,7 +7,7 @@ namespace WarChess.Domain.AbstractGame
         where TGameState : IGameState<TField, TPosition, TCell>
         where TField : IField<TPosition, TCell>
         where TPosition : IPosition
-        where TCell : ICell
+        where TCell : Cell
     {
         private readonly Stack<TGameState> states;
 
@@ -16,7 +17,7 @@ namespace WarChess.Domain.AbstractGame
             states.Push(initialState);
         }
 
-        public TGameState State => states.Peek();
+        protected TGameState State => states.Peek();
 
         protected bool TryMakeMove(IMove<TGameState, TField, TPosition, TCell> move)
         {
