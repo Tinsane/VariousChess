@@ -1,7 +1,7 @@
 ﻿namespace WarChess.Domain.Chess
 {
-    public interface IChessBoard
+    public interface IChessBoard<out TPiece>
     {
-        IChessPiece this[ChessPosition position] { get; }
+        TPiece this[ChessPosition position] { get; }
     }
 }

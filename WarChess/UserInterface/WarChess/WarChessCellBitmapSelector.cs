@@ -13,14 +13,15 @@ using WarChess.Domain.WarChess;
 
 namespace WarChess.UserInterface.WarChess
 {
-    public class WarChessPieceBitmapSelector : IPieceBitmapSelector
-    {
+    public class WarChessCellBitmapSelector : ICellBitmapSelector<IChessPiece>
+    {   // PROBABLY IT'S ENOUGH TO USE USUAL CHESS BITMAP SELECTOR
+        // INSTEAD OF WAR CHESS APP WE CAN USE IChessAlikeApp
         private readonly IChessStyle style;
 
         private readonly WarChessApp app;
 
         // здесь нужен не IWarChessGame, а класс с уровня application
-        public WarChessPieceBitmapSelector(IChessStyle style, WarChessApp app)
+        public WarChessCellBitmapSelector(IChessStyle style, WarChessApp app)
         {
             // if piece is visible - select bitmap, othervise - transparent bitmap
             this.style = style;
@@ -32,8 +33,8 @@ namespace WarChess.UserInterface.WarChess
 
         public Bitmap SelectBitmap(IChessPiece piece)
         {
+            // Тут switch по piece.Name и сопоставление текстурок из style
             throw new NotImplementedException();
         }
-
     }
 }
