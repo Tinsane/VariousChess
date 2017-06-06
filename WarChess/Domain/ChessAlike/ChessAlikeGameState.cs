@@ -1,4 +1,4 @@
-﻿using WarChess.Domain.ChessAlike.Cells;
+﻿using WarChess.Domain.AbstractGame.Cells;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.ChessAlike
@@ -6,7 +6,7 @@ namespace WarChess.Domain.ChessAlike
     // TODO
     public abstract class ChessAlikeGameState<TCell>
         : IGridGameState2D<TCell>
-        where TCell : IChessAlikeCell
+        where TCell : ICell
     {
         protected ChessAlikeGameState(BoundedGridField2D<TCell> field, int currentPlayerId)
         {

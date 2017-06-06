@@ -39,9 +39,6 @@
     <Compile Include="Application\GridApp.cs" />
     <Compile Include="Application\WarChessApp.cs" />
     <Compile Include="Domain\AbstractGame\Cells\NonEmptyCell.cs" />
-    <Compile Include="Domain\ChessAlike\Cells\EmptyCell.cs" />
-    <Compile Include="Domain\ChessAlike\Cells\IChessAlikeCell.cs" />
-    <Compile Include="Domain\ChessAlike\Cells\NonPieceCell.cs" />
     <Compile Include="Domain\Chess\IChessBoard.cs" />
     <Compile Include="Domain\Chess\IChessPiece.cs" />
     <Compile Include="Domain\Chess\ChessPosition.cs" />
@@ -64,7 +61,7 @@
     <Compile Include="Domain\ChessAlike\Piece\Piece.cs" />
     <Compile Include="Domain\ChessAlike\Piece\PieceSetGenerator.cs" />
     <Compile Include="Domain\GridGame2D\Point2D.cs" />
-    <Compile Include="Domain\WarChess\NotationConverter.cs" />
+    <Compile Include="Domain\Chess\NotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\INotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\IPosition.cs" />
     <Compile Include="Domain\GridGame2D\GridGame2D.cs" />
@@ -76,7 +73,7 @@
     <Compile Include="Domain\Utilities.cs" />
     <Compile Include="Domain\Chess\WarChess\WarChessAlert.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Domain\WarChess\Color.cs" />
+    <Compile Include="Domain\Chess\Color.cs" />
     <Compile Include="Domain\Chess\WarChess\IWarChessGame.cs" />
     <Compile Include="Domain\AbstractGame\IField.cs" />
     <Compile Include="UserInterface\ChessBoard.cs">

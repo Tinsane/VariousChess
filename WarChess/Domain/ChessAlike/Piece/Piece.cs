@@ -1,9 +1,8 @@
 ﻿using WarChess.Domain.AbstractGame.Cells;
-using WarChess.Domain.ChessAlike.Cells;
 
 namespace WarChess.Domain.ChessAlike.Piece
 {
-    public abstract class Piece : NonEmptyCell, IChessAlikeCell
+    public abstract class Piece : NonEmptyCell
     {
         protected Piece(int pieceId, int playerId)
         {
@@ -12,6 +11,6 @@ namespace WarChess.Domain.ChessAlike.Piece
         }
 
         public int PlayerId { get; }
-        public int? PieceId { get; }
+        public int PieceId { get; }
     }
 }
