@@ -11,7 +11,7 @@ namespace WarChess.Domain.ChessAlike.Piece
             PlayerId = playerId;
         }
 
-        private int PlayerId { get; }
+        public int PlayerId { get; }
         public int? PieceId { get; }
     }
 }
