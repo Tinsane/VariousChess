@@ -2,7 +2,7 @@
 using WarChess.Domain.AbstractGame;
 using WarChess.Domain.GridGame2D;
 
-namespace WarChess.Domain.WarChess
+namespace WarChess.Domain.Chess
 {
     public class ChessNotationConverter : INotationConverter<GridPosition2D>
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using WarChess.Domain.AbstractGame;
+using WarChess.Domain.AbstractGame.Cells;
 
 namespace WarChess.Domain.GridGame2D
 {

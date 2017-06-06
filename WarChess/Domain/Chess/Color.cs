@@ -1,4 +1,4 @@
-﻿namespace WarChess.Domain.WarChess
+﻿namespace WarChess.Domain.Chess
 {
     public enum Color
     {
