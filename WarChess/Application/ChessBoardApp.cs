@@ -7,19 +7,15 @@ using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.Application
 {
-    public abstract class ChessAlikeApp<TGame, TCell> : IChessAlikeApp<TGame, TCell>
-        where TGame : IChessAlike<TCell>
+    public abstract class ChessBoardApp<TGame, TCell> : IChessBoardApp<TGame, TCell>
+        where TGame : IChessBoardGame<TCell>
     {
-        private readonly int width;
-        private readonly int height;
         protected readonly TGame game;
 
         public TGame Game => game;
 
-        public ChessAlikeApp(int width, int height, TGame game)
+        protected ChessBoardApp(TGame game)
         {
-            this.width = width;
-            this.height = height;
             this.game = game;
         }
 

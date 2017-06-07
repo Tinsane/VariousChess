@@ -8,13 +8,13 @@ using WarChess.Domain.ChessAlikeApi.WarChess;
 
 namespace WarChess.Application
 {
-    public class WarChessApp : ChessAlikeApp<IWarChessGame, IChessPiece>
+    public class WarChessApp : ChessBoardApp<IWarChessGame, IChessAlikePiece>, 
+        IChessAlikeApp<IWarChessGame, IChessAlikePiece>
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
 
-        public WarChessApp(IWarChessGame game) : base(8, 8, game) // TODO: get constants somewhere
-            // TODO: maybe we should create some class with such kind of constants
+        public WarChessApp(IWarChessGame game) : base(game)
         {
         }
 
@@ -35,7 +35,7 @@ namespace WarChess.Application
             {
                 if (game.TryMakeMove(SelectedPiecePosition, position))
                 {
-                    // maybe increment move number, add something to history or something else
+                    // maybe increment move number or something else
                     SelectedPiecePosition = null;
                     StateChanged?.Invoke();
                 }

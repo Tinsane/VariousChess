@@ -36,13 +36,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\ChessAlikeApp.cs" />
+    <Compile Include="Application\ChessBoardApp.cs" />
     <Compile Include="Application\IChessAlikeApp.cs" />
+    <Compile Include="Application\IChessBoardApp.cs" />
     <Compile Include="Application\WarChessApp.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeCell.cs" />
-    <Compile Include="Domain\ChessAlikeApi\IChessAlike.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessBoardGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessBoard.cs" />
-    <Compile Include="Domain\ChessAlikeApi\IChessPiece.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessAlikePiece.cs" />
     <Compile Include="Domain\ChessAlikeApi\ChessPosition.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />

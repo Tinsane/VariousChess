@@ -7,12 +7,9 @@ using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.Application
 {
-    public interface IChessAlikeApp<out TGame, TCell>
-        where TGame : IChessAlike<TCell>
+    public interface IChessAlikeApp<out TGame, TCell> : IChessBoardApp<TGame, TCell>
+        where TGame : IChessAlikeGame<TCell>
+        where TCell : IChessAlikePiece
     {
-        TGame Game { get; }
-        void ClickAt(ChessPosition position);
-
-        event Action StateChanged; // На это событие мы подпишемся из UserInterface и будем делать перерисовку
     }
 }

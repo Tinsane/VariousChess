@@ -11,7 +11,7 @@ using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.UserInterface.WarChess
 {
-    public class WarChessCellBitmapSelector : ICellBitmapSelector<IChessPiece>
+    public class WarChessCellBitmapSelector : ICellBitmapSelector<IChessAlikePiece>
     {   // PROBABLY IT'S ENOUGH TO USE USUAL CHESS BITMAP SELECTOR
         // INSTEAD OF WAR CHESS APP WE CAN USE IChessAlikeApp
         private readonly IChessStyle style;
@@ -29,9 +29,9 @@ namespace WarChess.UserInterface.WarChess
         public int BitmapWidth => style.BitmapWidth;
         public int BitmapHeight => style.BitmapHeight;
 
-        public Bitmap SelectBitmap(IChessPiece piece)
+        public Bitmap SelectBitmap(IChessAlikePiece alikePiece)
         {
-            // Тут switch по piece.Name и сопоставление текстурок из style
+            // Тут, видимо, будет визитор.
             throw new NotImplementedException();
         }
     }

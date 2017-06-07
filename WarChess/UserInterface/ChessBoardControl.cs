@@ -13,9 +13,6 @@ namespace WarChess.UserInterface
 {
     public class ChessBoardControl : Control
     {
-        public const int RowCount = 8;
-        public const int ColumnCount = 8;
-
         public event Action<ChessPosition> CellClick;
 
         private readonly IBoardStyle boardStyle;
@@ -29,20 +26,19 @@ namespace WarChess.UserInterface
             this.bitmapWidth = bitmapWidth;
             this.bitmapHeight = bitmapHeight;
             chessBoard = new DataGridView();
-            UpdateField(BitmapUtils.GetEmptyArray(RowCount, ColumnCount, bitmapWidth, bitmapHeight));
             Controls.Add(chessBoard);
 
             chessBoard.CellClick += (sender, args) 
-                => CellClick?.Invoke(ChessUtils.GetPosition(args.RowIndex, args.ColumnIndex));
+                => CellClick?.Invoke(ChessUtils.GetPosition(args.RowIndex, args.ColumnIndex, chessBoard.Rows.Count));
         }
 
         public void UpdateField(Bitmap[,] board)
         {
             chessBoard.Rows.Clear();
-            for (int row = 0; row < RowCount; ++row)
+            for (int row = 0; row < board.GetLength(0); ++row)
             {
                 var gridRow = new DataGridViewRow();
-                for (int column = 0; column < ColumnCount; ++column)
+                for (int column = 0; column < board.GetLength(1); ++column)
                 {
                     var cell = new DataGridViewImageCell {ValueType = typeof(Image)};
                     var cellColor = ((row + column) % 2 == 0) ? boardStyle.WhiteCellColor : boardStyle.BlackCellColor;

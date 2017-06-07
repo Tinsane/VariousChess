@@ -6,12 +6,11 @@ using WarChess.Domain.ChessAlikeApi;
 namespace WarChess.UserInterface
 {
     public class ChessForm<TGame, TCell> : Form
-        where TGame : IChessAlike<TCell>
+        where TGame : IChessBoardGame<TCell>
     {
-        private readonly IChessAlikeApp<TGame, TCell> app;
+        private readonly IChessBoardApp<TGame, TCell> app;
         private readonly ICellBitmapSelector<TCell> bitmapSelector;
         private readonly IMessageSelector<TGame> messageSelector;
-        private readonly IBoardStyle boardStyle;
         private readonly ChessBoardControl boardControl;
 
         /*
@@ -20,7 +19,7 @@ namespace WarChess.UserInterface
          * 2. Историю.
          * 3. Сообщения игрокам.
          */
-        public ChessForm(IChessAlikeApp<TGame, TCell> app, IBoardStyle boardStyle, 
+        public ChessForm(IChessBoardApp<TGame, TCell> app, IBoardStyle boardStyle, 
             ICellBitmapSelector<TCell> bitmapSelector, IMessageSelector<TGame> messageSelector)
         {
             this.app = app;

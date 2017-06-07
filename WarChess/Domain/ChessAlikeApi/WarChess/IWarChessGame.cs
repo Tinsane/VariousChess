@@ -1,20 +1,11 @@
 ﻿namespace WarChess.Domain.ChessAlikeApi.WarChess
 {
-    // Этот интерфейс - для "финального" класса.
-    // Для уже собранной игры в военные шахматы. Ведь именно их мы будем визуализировать. Вот для них мне интерфейс и нужен.
-    // Та "абстрактная" игра, которую ты хочешь писать, в общем-то не должна его реализовывать.
-    public interface IWarChessGame : IChessAlike<IChessPiece>
+    public interface IWarChessGame : IChessAlikeGame<IChessAlikePiece> 
+        // здесь, видимо, вместо IChessAlikePiece будет что-то отнаследованное от ChessPiece, что умеет визитора
     {
         // Потенциально ещё тут могут быть методы, для отмены хода и для возврата полной истории ходов.
         // Можно, кстати, совместить эти штуки, реализовав undo/redo, но это всё пока не принцпиально.
-        Color WhoseMove { get; }
-
-        // Нельзя здесь возвращать GameState. Он умеет слишком много. Это что-то внутреннее.
+        
         WarChessAlert Alert { get; }
-
-        /// <summary>
-        ///     Returns true if move was successful, otherwise returns false.
-        /// </summary>
-        bool TryMakeMove(ChessPosition from, ChessPosition to);
     }
 }

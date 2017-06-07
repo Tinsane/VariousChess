@@ -1,6 +1,6 @@
 ﻿namespace WarChess.Domain.ChessAlikeApi
 {
-    public interface IChessAlike<out TCell>
+    public interface IChessBoardGame<out TCell>
     {
         IChessBoard<TCell> Board { get; }
     }
