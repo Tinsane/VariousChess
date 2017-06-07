@@ -38,7 +38,7 @@
   <ItemGroup>
     <Compile Include="Application\GridApp.cs" />
     <Compile Include="Application\WarChessApp.cs" />
-    <Compile Include="Domain\AbstractGame\Cells\NonEmptyCell.cs" />
+    <Compile Include="Domain\ChessAlike\ChessAlikeCell.cs" />
     <Compile Include="Domain\Chess\IChessBoard.cs" />
     <Compile Include="Domain\Chess\IChessPiece.cs" />
     <Compile Include="Domain\Chess\ChessPosition.cs" />
@@ -46,19 +46,18 @@
     <Compile Include="UserInterface\IPieceBitmapSelector.cs" />
     <Compile Include="UserInterface\IChessStyle.cs" />
     <Compile Include="Domain\AbstractGame\Game.cs" />
-    <Compile Include="Domain\AbstractGame\Cells\ICell.cs" />
+    <Compile Include="Domain\AbstractGame\ICell.cs" />
     <Compile Include="Domain\AbstractGame\IGameState.cs" />
     <Compile Include="Domain\AbstractGame\IMove.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeGameState.cs" />
-    <Compile Include="Domain\AbstractGame\Cells\EmptyCell.cs" />
     <Compile Include="Domain\ChessAlike\Moves\DirectedMove.cs" />
     <Compile Include="Domain\ChessAlike\Moves\IChessAlikeMove.cs" />
     <Compile Include="Domain\ChessAlike\Moves\Jump.cs" />
     <Compile Include="Domain\ChessAlike\Moves\SlidingMove.cs" />
     <Compile Include="Domain\ChessAlike\Piece\PieceGenerator.cs" />
     <Compile Include="Domain\ChessAlike\Piece\PieceSet.cs" />
-    <Compile Include="Domain\ChessAlike\Piece\Piece.cs" />
+    <Compile Include="Domain\ChessAlike\Piece\IPiece.cs" />
     <Compile Include="Domain\ChessAlike\Piece\PieceSetGenerator.cs" />
     <Compile Include="Domain\GridGame2D\Point2D.cs" />
     <Compile Include="Domain\Chess\NotationConverter.cs" />

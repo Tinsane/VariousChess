@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using WarChess.Domain.AbstractGame.Cells;
 
 namespace WarChess.Domain.AbstractGame
 {

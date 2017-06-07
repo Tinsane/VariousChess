@@ -1,4 +1,4 @@
-﻿using WarChess.Domain.AbstractGame.Cells;
+﻿using WarChess.Domain.AbstractGame;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.ChessAlike.Moves

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WarChess.Domain.AbstractGame.Cells;
+using WarChess.Domain.AbstractGame;
 using WarChess.Domain.ChessAlike.Moves;
 using WarChess.Domain.GridGame2D;
 
