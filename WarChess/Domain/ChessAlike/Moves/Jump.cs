@@ -1,20 +1,18 @@
-﻿using System;
-using WarChess.Domain.AbstractGame;
-using WarChess.Domain.GridGame2D;
+﻿using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.ChessAlike.Moves
 {
     public class Jump<TGameState, TCell> : DirectedMove<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : ICell
+        where TCell : ChessAlikeCell
     {
-        public Jump(Point2D step, Point2D from, Point2D to) : base(step, from, to)
+        public Jump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to)
         {
         }
 
-        public override TGameState Make(TGameState gameState)
+        protected override TGameState Apply(TGameState gameState)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }

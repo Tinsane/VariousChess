@@ -10,6 +10,6 @@ namespace WarChess.Domain.ChessAlike
         }
 
         public IPiece Piece { get; }
-        public bool IsEmpty => ReferenceEquals(Piece, null);
+        public bool ContainsPiece => !ReferenceEquals(Piece, null);
     }
 }

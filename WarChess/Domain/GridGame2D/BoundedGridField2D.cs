@@ -27,23 +27,27 @@ namespace WarChess.Domain.GridGame2D
 
         private TCell[,] Grid { get; }
 
-        public TCell this[int x, int y]
-        {
-            get
-            {
-                x -= Center.X;
-                y -= Center.Y;
-                if (!Utilities.IsInInterval(x, 0, Grid.GetLength(0)))
-                    throw new ArgumentOutOfRangeException(nameof(x));
-                if (!Utilities.IsInInterval(y, 0, Grid.GetLength(1)))
-                    throw new ArgumentOutOfRangeException(nameof(y));
-                return Grid[x, y];
-            }
-        }
+        public TCell this[int x, int y] => this[new GridPosition2D(x, y)];
 
         public Size2D Size => new Size2D(Grid.GetLength(0), Grid.GetLength(1));
 
-        public TCell this[GridPosition2D position] => Grid[position.X, position.Y];
+        public TCell this[GridPosition2D position]
+        {
+            get
+            {
+                if (!Contains(position))
+                    throw new ArgumentException(nameof(position));
+                var arrayPosition = (Point2D) position - Center;
+                return Grid[arrayPosition.X, arrayPosition.Y];
+            }
+        }
+
+        public bool Contains(GridPosition2D position)
+        {
+            var arrayPosition = (Point2D) position - Center;
+            return Utilities.IsInInterval(arrayPosition.X, 0, Grid.GetLength(0)) &&
+                   Utilities.IsInInterval(arrayPosition.Y, 0, Grid.GetLength(1));
+        }
 
         public BoundedGridField2D<TCell> GetWith(TCell cell, GridPosition2D position)
         {

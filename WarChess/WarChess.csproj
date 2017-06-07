@@ -55,10 +55,7 @@
     <Compile Include="Domain\ChessAlike\Moves\IChessAlikeMove.cs" />
     <Compile Include="Domain\ChessAlike\Moves\Jump.cs" />
     <Compile Include="Domain\ChessAlike\Moves\SlidingMove.cs" />
-    <Compile Include="Domain\ChessAlike\Piece\PieceGenerator.cs" />
-    <Compile Include="Domain\ChessAlike\Piece\PieceSet.cs" />
-    <Compile Include="Domain\ChessAlike\Piece\IPiece.cs" />
-    <Compile Include="Domain\ChessAlike\Piece\PieceSetGenerator.cs" />
+    <Compile Include="Domain\ChessAlike\IPiece.cs" />
     <Compile Include="Domain\GridGame2D\Point2D.cs" />
     <Compile Include="Domain\Chess\NotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\INotationConverter.cs" />

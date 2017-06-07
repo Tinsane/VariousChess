@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WarChess.Domain.AbstractGame;
 using WarChess.Domain.ChessAlike.Moves;
 using WarChess.Domain.GridGame2D;
 
@@ -10,7 +9,7 @@ namespace WarChess.Domain.ChessAlike
     public abstract class ChessAlikeGame<TGameState, TCell>
         : GridGame2D<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : ICell
+        where TCell : ChessAlikeCell
     {
         protected ChessAlikeGame(TGameState initialState) : base(initialState)
         {
