@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WarChess.Domain.Chess
+namespace WarChess.Domain.ChessAlikeApi
 {
     public class ChessPosition
     {

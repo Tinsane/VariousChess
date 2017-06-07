@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarChess.Domain;
-using WarChess.Domain.Chess;
 
 namespace WarChess.UserInterface
 {

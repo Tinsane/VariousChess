@@ -1,4 +1,4 @@
-﻿namespace WarChess.Domain.Chess
+﻿namespace WarChess.Domain.ChessAlikeApi
 {
     public enum Color
     {

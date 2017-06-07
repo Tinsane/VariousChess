@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarChess.Domain;
-using WarChess.Domain.Chess;
+using WarChess.Domain.ChessAlikeApi;
 using WarChess.Infrastructure;
 
 namespace WarChess.UserInterface
 {
-    public class ChessBoard : Control
+    public class ChessBoardControl : Control
     {
         public const int RowCount = 8;
         public const int ColumnCount = 8;
@@ -23,7 +23,7 @@ namespace WarChess.UserInterface
         private readonly int bitmapHeight;
 
         private readonly DataGridView chessBoard;
-        public ChessBoard(IBoardStyle boardStyle, int bitmapWidth, int bitmapHeight)
+        public ChessBoardControl(IBoardStyle boardStyle, int bitmapWidth, int bitmapHeight)
         {
             this.boardStyle = boardStyle;
             this.bitmapWidth = bitmapWidth;

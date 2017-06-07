@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WarChess.Domain.Chess;
+using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.Application
 {
-    public abstract class ChessAlikeApp<TGame> : IChessAlikeApp<TGame>
-        // todo: where TGame : IChessAlike<TCell>
+    public abstract class ChessAlikeApp<TGame, TCell> : IChessAlikeApp<TGame, TCell>
+        where TGame : IChessAlike<TCell>
     {
         private readonly int width;
         private readonly int height;

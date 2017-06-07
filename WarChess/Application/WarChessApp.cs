@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WarChess.Domain.Chess;
-using WarChess.Domain.Chess.WarChess;
+using WarChess.Domain.ChessAlikeApi;
+using WarChess.Domain.ChessAlikeApi.WarChess;
 
 namespace WarChess.Application
 {
-    public class WarChessApp : ChessAlikeApp<IWarChessGame>
+    public class WarChessApp : ChessAlikeApp<IWarChessGame, IChessPiece>
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;

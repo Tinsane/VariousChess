@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using WarChess.Application;
 using WarChess.Domain;
 using WarChess.Domain.AbstractGame;
-using WarChess.Domain.Chess;
-using WarChess.Domain.Chess.WarChess;
+using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.UserInterface.WarChess
 {

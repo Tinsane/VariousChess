@@ -40,9 +40,10 @@
     <Compile Include="Application\IChessAlikeApp.cs" />
     <Compile Include="Application\WarChessApp.cs" />
     <Compile Include="Domain\AbstractGame\Cells\NonEmptyCell.cs" />
-    <Compile Include="Domain\Chess\IChessBoard.cs" />
-    <Compile Include="Domain\Chess\IChessPiece.cs" />
-    <Compile Include="Domain\Chess\ChessPosition.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessAlike.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessBoard.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessPiece.cs" />
+    <Compile Include="Domain\ChessAlikeApi\ChessPosition.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\IBoardStyle.cs" />
@@ -64,7 +65,7 @@
     <Compile Include="Domain\ChessAlike\Piece\Piece.cs" />
     <Compile Include="Domain\ChessAlike\Piece\PieceSetGenerator.cs" />
     <Compile Include="Domain\GridGame2D\Point2D.cs" />
-    <Compile Include="Domain\Chess\NotationConverter.cs" />
+    <Compile Include="Domain\ChessAlikeApi\NotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\INotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\IPosition.cs" />
     <Compile Include="Domain\GridGame2D\GridGame2D.cs" />
@@ -74,12 +75,12 @@
     <Compile Include="Domain\GridGame2D\IGridGameState2D.cs" />
     <Compile Include="Domain\GridGame2D\Size2D.cs" />
     <Compile Include="Domain\Utilities.cs" />
-    <Compile Include="Domain\Chess\WarChess\WarChessAlert.cs" />
+    <Compile Include="Domain\ChessAlikeApi\WarChess\WarChessAlert.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Domain\Chess\Color.cs" />
-    <Compile Include="Domain\Chess\WarChess\IWarChessGame.cs" />
+    <Compile Include="Domain\ChessAlikeApi\Color.cs" />
+    <Compile Include="Domain\ChessAlikeApi\WarChess\IWarChessGame.cs" />
     <Compile Include="Domain\AbstractGame\IField.cs" />
-    <Compile Include="UserInterface\ChessBoard.cs">
+    <Compile Include="UserInterface\ChessBoardControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserInterface\IMessageSelector.cs" />
