@@ -1,13 +1,12 @@
-﻿using WarChess.Domain.AbstractGame.Cells;
-using WarChess.Domain.GridGame2D;
+﻿using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.ChessAlike.Moves
 {
     public abstract class DirectedMove<TGameState, TCell> : IChessAlikeMove<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
-        where TCell : ICell
+        where TCell : ChessAlikeCell
     {
-        protected DirectedMove(Point2D step, Point2D from, Point2D to)
+        protected DirectedMove(Point2D step, GridPosition2D from, GridPosition2D to)
         {
             Step = step;
             From = from;
@@ -15,10 +14,28 @@ namespace WarChess.Domain.ChessAlike.Moves
         }
 
         public Point2D Step { get; }
-        public Point2D From { get; }
+        public GridPosition2D From { get; }
 
-        public Point2D To { get; }
+        public GridPosition2D To { get; }
 
-        public abstract TGameState Make(TGameState gameState);
+        public TGameState Make(TGameState gameState)
+        {
+            if (!IsValid(gameState))
+                return null;
+            var resultGameState = Apply(gameState);
+            return resultGameState.IsValid ? resultGameState : null;
+        }
+
+        protected bool IsValid(TGameState gameState)
+        {
+            var field = gameState.Field;
+            return field.Contains(From) &&
+                   field.Contains(To) &&
+                   field[From].ContainsPiece &&
+                   field[From].Piece.PlayerId == gameState.CurrentPlayerId &&
+                   (!gameState.Field[To].ContainsPiece || gameState.Field[To].Piece.PlayerId != gameState.CurrentPlayerId);
+        }
+
+        protected abstract TGameState Apply(TGameState gameState);
     }
 }

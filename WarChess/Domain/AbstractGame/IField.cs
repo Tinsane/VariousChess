@@ -1,6 +1,4 @@
-﻿using WarChess.Domain.AbstractGame.Cells;
-
-namespace WarChess.Domain.AbstractGame
+﻿namespace WarChess.Domain.AbstractGame
 {
     public interface IField<in TPosition, out TCell>
         where TPosition : IPosition

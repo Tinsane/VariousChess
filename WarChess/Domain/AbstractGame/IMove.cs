@@ -1,6 +1,4 @@
-﻿using WarChess.Domain.AbstractGame.Cells;
-
-namespace WarChess.Domain.AbstractGame
+﻿namespace WarChess.Domain.AbstractGame
 {
     public interface IMove<TGameState, TField, TPosition, TCell>
         where TGameState : IGameState<TField, TPosition, TCell>
