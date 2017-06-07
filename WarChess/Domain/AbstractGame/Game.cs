@@ -16,11 +16,11 @@ namespace WarChess.Domain.AbstractGame
             states.Push(initialState);
         }
 
-        protected TGameState State => states.Peek();
+        protected TGameState CurrentState => states.Peek();
 
         protected bool TryMakeMove(IMove<TGameState, TField, TPosition, TCell> move)
         {
-            var newState = move.Make(State);
+            var newState = move.Make(CurrentState);
             if (ReferenceEquals(newState, null))
                 return false;
             states.Push(newState);
