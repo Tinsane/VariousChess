@@ -15,12 +15,12 @@ namespace WarChess.Domain.ChessAlike
         {
         }
 
-        protected abstract IEnumerable<DirectedMove<TGameState, TCell>> ChooseMoves(GridPosition2D from,
+        protected abstract IEnumerable<DirectedMove<TGameState, TCell>> GetPossibleMoves(GridPosition2D from,
             GridPosition2D to);
 
         public bool TryMakeMove(GridPosition2D from, GridPosition2D to)
         {
-            return ChooseMoves(from, to).Any(TryMakeMove);
+            return GetPossibleMoves(from, to).Any(TryMakeMove);
         }
     }
 }

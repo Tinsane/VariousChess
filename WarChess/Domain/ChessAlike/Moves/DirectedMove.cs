@@ -31,7 +31,9 @@ namespace WarChess.Domain.ChessAlike.Moves
             var field = gameState.Field;
             return field.Contains(From) &&
                    field.Contains(To) &&
-                   field[From].ContainsPiece;
+                   field[From].ContainsPiece &&
+                   field[From].Piece.PlayerId == gameState.CurrentPlayerId &&
+                   (!gameState.Field[To].ContainsPiece || gameState.Field[To].Piece.PlayerId != gameState.CurrentPlayerId);
         }
 
         protected abstract TGameState Apply(TGameState gameState);

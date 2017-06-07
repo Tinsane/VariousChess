@@ -2,17 +2,18 @@
 
 namespace WarChess.Domain.ChessAlike.Moves
 {
-    public class Jump<TGameState, TCell> : DirectedMove<TGameState, TCell>
+    public abstract class Jump<TGameState, TCell> : DirectedMove<TGameState, TCell>
         where TGameState : ChessAlikeGameState<TCell>
         where TCell : ChessAlikeCell
     {
-        public Jump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to)
+        protected Jump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to)
         {
         }
 
-        protected override TGameState Apply(TGameState gameState)
+        protected new bool IsValid(TGameState gameState)
         {
-            throw new System.NotImplementedException();
+            return base.IsValid(gameState) &&
+                   (Point2D) To - (Point2D) From == Step;
         }
     }
 }
