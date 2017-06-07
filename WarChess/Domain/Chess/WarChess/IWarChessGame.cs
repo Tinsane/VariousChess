@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using WarChess.Domain.WarChess;
 
 namespace WarChess.Domain.Chess.WarChess
 {
@@ -12,15 +11,10 @@ namespace WarChess.Domain.Chess.WarChess
 
         // Потенциально ещё тут могут быть методы, для отмены хода и для возврата полной истории ходов.
         // Можно, кстати, совместить эти штуки, реализовав undo/redo, но это всё пока не принцпиально.
-        IChessBoard Board { get; }
+        IChessBoard<IChessPiece> Board { get; }
 
         // Нельзя здесь возвращать GameState. Он умеет слишком много. Это что-то внутреннее.
         WarChessAlert Alert { get; }
-
-        /// <summary>
-        ///     If there is no figure in the position or the figure is opposite player's - return empty list.
-        /// </summary>
-        List<ChessPosition> GetPossibleMoves(ChessPosition from);
 
         /// <summary>
         ///     Returns true if move was successful, otherwise returns false.

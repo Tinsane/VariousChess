@@ -6,15 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using WarChess.Domain;
 using WarChess.Domain.Chess;
-using WarChess.Domain.WarChess;
 
 namespace WarChess.UserInterface
 {
-    public interface IPieceBitmapSelector
+    public interface ICellBitmapSelector<in TCell>
     {
         // All the bitmaps should have size (width, height)
         int BitmapWidth { get; }
         int BitmapHeight { get; }
-        Bitmap SelectBitmap(IChessPiece piece);
+        Bitmap SelectBitmap(TCell piece);
     }
 }

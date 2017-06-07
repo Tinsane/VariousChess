@@ -1,4 +1,4 @@
-﻿namespace WarChess.Domain.WarChess
+﻿namespace WarChess.Domain.Chess.WarChess
 {
     public enum WarChessAlert
     {

@@ -8,10 +8,11 @@ using WarChess.Domain.Chess.WarChess;
 
 namespace WarChess.Application
 {
-    public class WarChessApp : GridApp<IWarChessGame>
+    public class WarChessApp : ChessAlikeApp<IWarChessGame>
     {
         public ChessPosition SelectedPiecePosition { get; set; }
-        public event Action StateChanged; // На это событие мы подпишемся из UserInterface и будем делать перерисовку
+        public override event Action StateChanged;
+
         public WarChessApp(IWarChessGame game) : base(8, 8, game) // TODO: get constants somewhere
             // TODO: maybe we should create some class with such kind of constants
         {
@@ -23,7 +24,7 @@ namespace WarChess.Application
             StateChanged?.Invoke();
         }
 
-        public void ClickAt(ChessPosition position)
+        public override void ClickAt(ChessPosition position)
         {
             if (SelectedPiecePosition == position)
                 Select(null);
