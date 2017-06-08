@@ -9,7 +9,8 @@ namespace WarChess.Domain.ChessAlikeApi
     public interface IChessAlikeGame<out TCell> : IChessBoardGame<TCell>
         where TCell : IChessAlikePiece
     {
-        Color WhoseMove { get; }
+        bool IsFinished { get; }
+        Color WhoseTurn { get; }
 
         /// <summary>
         /// Returns true if move was successful, otherwise returns false.

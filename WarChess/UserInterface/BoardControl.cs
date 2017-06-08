@@ -11,7 +11,7 @@ using WarChess.Infrastructure;
 
 namespace WarChess.UserInterface
 {
-    public class ChessBoardControl : Control
+    public class BoardControl : Control
     {
         public event Action<ChessPosition> CellClick;
 
@@ -20,7 +20,7 @@ namespace WarChess.UserInterface
         private readonly int bitmapHeight;
 
         private readonly DataGridView chessBoard;
-        public ChessBoardControl(IBoardStyle boardStyle, int bitmapWidth, int bitmapHeight)
+        public BoardControl(IBoardStyle boardStyle, int bitmapWidth, int bitmapHeight)
         {
             this.boardStyle = boardStyle;
             this.bitmapWidth = bitmapWidth;

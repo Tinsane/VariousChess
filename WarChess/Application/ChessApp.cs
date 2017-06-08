@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarChess.Domain.ChessAlikeApi;
-using WarChess.Domain.ChessAlikeApi.WarChess;
+using WarChess.Domain.ChessAlikeApi.Chess;
 
 namespace WarChess.Application
 {
-    public class WarChessApp : ChessBoardApp<IWarChessGame, IChessAlikePiece>, 
-        IChessAlikeApp<IWarChessGame, IChessAlikePiece>
+    public class ChessApp : ChessBoardApp<ChessGame, IChessAlikePiece>, 
+        IChessAlikeApp<ChessGame, IChessAlikePiece>
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
 
-        public WarChessApp(IWarChessGame game) : base(game)
+        public ChessApp(ChessGame game) : base(game)
         {
         }
 
@@ -29,7 +29,7 @@ namespace WarChess.Application
             if (SelectedPiecePosition == position)
                 Select(null);
             var piece = game.Board[position];
-            if (piece?.Color == game.WhoseMove)
+            if (piece?.Color == game.WhoseTurn)
                 Select(position);
             if (SelectedPiecePosition != null && piece != null)
             {

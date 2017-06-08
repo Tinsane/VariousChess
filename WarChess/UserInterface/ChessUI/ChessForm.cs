@@ -2,16 +2,16 @@
 using System.Windows.Forms;
 using WarChess.Application;
 using WarChess.Domain.ChessAlikeApi;
+using WarChess.Domain.ChessAlikeApi.Chess;
 
-namespace WarChess.UserInterface
+namespace WarChess.UserInterface.ChessUI
 {
-    public class ChessForm<TGame, TCell> : Form
-        where TGame : IChessBoardGame<TCell>
+    public class ChessForm : Form
     {
-        private readonly IChessBoardApp<TGame, TCell> app;
-        private readonly ICellBitmapSelector<TCell> bitmapSelector;
-        private readonly IMessageSelector<TGame> messageSelector;
-        private readonly ChessBoardControl boardControl;
+        private readonly ChessApp app;
+        private readonly ICellBitmapSelector<ChessPiece> bitmapSelector;
+        private readonly IMessageSelector<ChessGame> messageSelector;
+        private readonly BoardControl board;
 
         /*
          * Этот класс должен расположить все элементы на экране: 
@@ -19,21 +19,21 @@ namespace WarChess.UserInterface
          * 2. Историю.
          * 3. Сообщения игрокам.
          */
-        public ChessForm(IChessBoardApp<TGame, TCell> app, IBoardStyle boardStyle, 
-            ICellBitmapSelector<TCell> bitmapSelector, IMessageSelector<TGame> messageSelector)
+        public ChessForm(ChessApp app, IBoardStyle boardStyle, 
+            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<ChessGame> messageSelector)
         {
             this.app = app;
             this.bitmapSelector = bitmapSelector;
             this.messageSelector = messageSelector;
-            boardControl = new ChessBoardControl(boardStyle, bitmapSelector.BitmapWidth, bitmapSelector.BitmapHeight);
-            boardControl.CellClick += app.ClickAt;
+            board = new BoardControl(boardStyle, bitmapSelector.BitmapWidth, bitmapSelector.BitmapHeight);
+            board.CellClick += app.ClickAt;
             app.StateChanged += Invalidate;
             // need some layout
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            boardControl.UpdateField(ChessUtils.SelectAllBoard(app.Game.Board, bitmapSelector));
+            board.UpdateField(ChessUtils.SelectAllBoard(app.Game.Board, bitmapSelector));
             // TODO: update message, history and all that stuff
             base.OnPaint(e);
             throw new NotImplementedException();

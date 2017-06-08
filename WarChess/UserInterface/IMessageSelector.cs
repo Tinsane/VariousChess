@@ -8,6 +8,6 @@ namespace WarChess.UserInterface
 {
     public interface IMessageSelector<in TGame>
     {
-        string GetMessage(TGame game);
+        IEnumerable<string> GetMessages(TGame game);
     }
 }

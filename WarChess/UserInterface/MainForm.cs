@@ -9,6 +9,7 @@ namespace WarChess.UserInterface
 {
     public class MainForm : Form
     {
+        // Здесь менюшки
         public MainForm()
         {
             
