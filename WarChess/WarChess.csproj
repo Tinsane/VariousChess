@@ -54,6 +54,7 @@
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessMessageSelector.cs" />
+    <Compile Include="UserInterface\FormUtils.cs" />
     <Compile Include="UserInterface\IBoardStyle.cs" />
     <Compile Include="UserInterface\ICellBitmapSelector.cs" />
     <Compile Include="UserInterface\IChessStyle.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="UserInterface\BoardControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserInterface\IGameForm.cs" />
     <Compile Include="UserInterface\IMessageSelector.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessMessageSelector.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessCellBitmapSelector.cs" />

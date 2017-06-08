@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using WarChess.UserInterface;
+using WarChess.UserInterface.ChessUI;
 
 namespace WarChess
 {
@@ -10,6 +12,7 @@ namespace WarChess
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+            System.Windows.Forms.Application.Run(new MainForm(new ChessForm[] {}));
         }
     }
 }

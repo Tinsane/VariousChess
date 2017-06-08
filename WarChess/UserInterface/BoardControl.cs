@@ -50,6 +50,7 @@ namespace WarChess.UserInterface
                 }
                 chessBoard.Rows.Add(gridRow);
             }
+            Invalidate();
         }
     }
 }

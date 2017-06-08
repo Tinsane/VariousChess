@@ -6,11 +6,11 @@ using WarChess.Domain.ChessAlikeApi.Chess;
 
 namespace WarChess.UserInterface.ChessUI
 {
-    public class ChessForm : Form
+    public class ChessForm : Form, IGameForm
     {
         private readonly ChessApp app;
         private readonly ICellBitmapSelector<ChessPiece> bitmapSelector;
-        private readonly IMessageSelector<ChessGame> messageSelector;
+        private readonly IMessageSelector<IChessGame> messageSelector;
         private readonly BoardControl board;
 
         /*
@@ -20,23 +20,25 @@ namespace WarChess.UserInterface.ChessUI
          * 3. Сообщения игрокам.
          */
         public ChessForm(ChessApp app, IBoardStyle boardStyle, 
-            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<ChessGame> messageSelector)
+            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IChessGame> messageSelector)
         {
             this.app = app;
             this.bitmapSelector = bitmapSelector;
             this.messageSelector = messageSelector;
             board = new BoardControl(boardStyle, bitmapSelector.BitmapWidth, bitmapSelector.BitmapHeight);
             board.CellClick += app.ClickAt;
-            app.StateChanged += Invalidate;
-            // need some layout
+            app.StateChanged += UpdateForm;
+            Controls.Add(board);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        public void UpdateForm()
         {
             board.UpdateField(ChessUtils.SelectAllBoard(app.Game.Board, bitmapSelector));
-            // TODO: update message, history and all that stuff
-            base.OnPaint(e);
-            throw new NotImplementedException();
+            // update history, messages or maybe something else
+            Invalidate();
         }
+
+        public string GameName => "Шахматы";
+        public void Run(Form previous) => previous.SwitchTo(this);
     }
 }
