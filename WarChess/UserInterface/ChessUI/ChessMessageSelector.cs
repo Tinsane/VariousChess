@@ -3,9 +3,9 @@ using WarChess.Domain.ChessAlikeApi.Chess;
 
 namespace WarChess.UserInterface.ChessUI
 {
-    public class ChessMessageSelector : IMessageSelector<Chess>
+    public class ChessMessageSelector : IMessageSelector<ChessGame>
     {
-        public IEnumerable<string> GetMessages(Chess game)
+        public IEnumerable<string> GetMessages(ChessGame game)
         {
             throw new System.NotImplementedException();
         }

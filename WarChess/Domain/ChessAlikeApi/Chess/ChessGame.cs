@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarChess.Domain.ChessAlikeApi.Chess
 {
-    public class Chess : IChessAlikeGame<ChessPiece>
+    public class ChessGame : IChessAlikeGame<ChessPiece>
     {
         public IChessBoard<ChessPiece> Board { get; }
         public bool IsFinished { get; }
