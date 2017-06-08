@@ -6,8 +6,15 @@ namespace WarChess.UserInterface.ChessUI
 {
     public class ChessCellBitmapSelector : ICellBitmapSelector<ChessPiece>
     {
-        public int BitmapWidth { get; }
-        public int BitmapHeight { get; }
+        private readonly IChessStyle style;
+
+        public ChessCellBitmapSelector(IChessStyle style)
+        {
+            this.style = style;
+        }
+
+        public int BitmapWidth => style.BitmapWidth;
+        public int BitmapHeight => style.BitmapHeight;
         public Bitmap SelectBitmap(ChessPiece piece)
         {
             throw new NotImplementedException();

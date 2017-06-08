@@ -11,7 +11,7 @@ namespace WarChess.UserInterface.ChessUI
         private readonly ChessApp app;
         private readonly ICellBitmapSelector<ChessPiece> bitmapSelector;
         private readonly IMessageSelector<IChessGame> messageSelector;
-        private readonly BoardControl board;
+        private readonly BoardControl board; // maybe better to create interface too
 
         /*
          * Этот класс должен расположить все элементы на экране: 

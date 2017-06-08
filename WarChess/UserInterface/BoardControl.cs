@@ -35,10 +35,12 @@ namespace WarChess.UserInterface
         public void UpdateField(Bitmap[,] board)
         {
             chessBoard.Rows.Clear();
-            for (int row = 0; row < board.GetLength(0); ++row)
+            var rowCount = board.GetLength(0);
+            var columnCount = board.GetLength(1);
+            for (int row = 0; row < rowCount; ++row)
             {
                 var gridRow = new DataGridViewRow();
-                for (int column = 0; column < board.GetLength(1); ++column)
+                for (int column = 0; column < columnCount; ++column)
                 {
                     var cell = new DataGridViewImageCell {ValueType = typeof(Image)};
                     var cellColor = ((row + column) % 2 == 0) ? boardStyle.WhiteCellColor : boardStyle.BlackCellColor;

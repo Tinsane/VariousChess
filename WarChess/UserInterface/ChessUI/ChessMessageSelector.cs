@@ -7,7 +7,10 @@ namespace WarChess.UserInterface.ChessUI
     {
         public IEnumerable<string> GetMessages(ChessGame game)
         {
-            throw new System.NotImplementedException();
+            if (game.IsCheck)
+                yield return "Шах";
+            if (game.IsFinished)
+                yield return "Мат";
         }
     }
 }

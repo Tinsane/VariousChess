@@ -6,18 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarChess.Domain;
-using WarChess.Domain.Chess;
 using WarChess.Infrastructure;
 
 namespace WarChess.UserInterface
 {
-    class ListMenu : Control
+    public class ListMenu : Control
     {
-        private ListBox listBox;
+        private readonly ListBox listBox;
         private int length = 0;
         public event Action<int> IndexSelection;
 
-        public int Length { get { return length; } }
+        public int Length => length;
 
         public ListMenu()
         {
