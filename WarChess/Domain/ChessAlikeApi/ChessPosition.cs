@@ -6,7 +6,7 @@ namespace WarChess.Domain.ChessAlikeApi
     {
         public ChessPosition(string chessNotation)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

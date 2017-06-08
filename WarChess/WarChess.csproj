@@ -53,6 +53,7 @@
     <Compile Include="Domain\ChessAlikeApi\ChessPosition.cs" />
     <Compile Include="Domain\WarGame\WarBoard.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
+    <Compile Include="UserInterface\ChessStyleFromDir.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessMessageSelector.cs" />
@@ -89,10 +90,14 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserInterface\IGameForm.cs" />
+    <Compile Include="UserInterface\ImageControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserInterface\IMessageSelector.cs" />
     <Compile Include="UserInterface\ListMenu.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserInterface\SimpleChessStyle.cs" />
     <Compile Include="UserInterface\StandardBoardStyle.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessMessageSelector.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessCellBitmapSelector.cs" />

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using WarChess.Application;
 using WarChess.Domain.ChessAlikeApi;
 using WarChess.Domain.ChessAlikeApi.Chess;
+using WarChess.Infrastructure;
 
 namespace WarChess.UserInterface.ChessUI
 {
@@ -29,6 +30,7 @@ namespace WarChess.UserInterface.ChessUI
             board.CellClick += app.ClickAt;
             app.StateChanged += UpdateForm;
             Controls.Add(board);
+            UpdateForm();
         }
 
         public void UpdateForm()

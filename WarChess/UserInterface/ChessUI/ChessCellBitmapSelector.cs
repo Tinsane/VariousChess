@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using WarChess.Domain.ChessAlikeApi.Chess;
+using WarChess.Infrastructure;
 
 namespace WarChess.UserInterface.ChessUI
 {
@@ -17,7 +18,9 @@ namespace WarChess.UserInterface.ChessUI
         public int BitmapHeight => style.BitmapHeight;
         public Bitmap SelectBitmap(ChessPiece piece)
         {
-            throw new NotImplementedException();
+            if (piece == null)
+                return BitmapUtils.GetMonochromeBitmap(BitmapWidth, BitmapHeight, Color.FromArgb(0));
+            throw new NotImplementedException("Зачем-то понадобилось отображение фигур");
         }
     }
 }

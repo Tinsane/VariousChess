@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using WarChess.Application;
+using WarChess.Domain.ChessAlikeApi.Chess;
 using WarChess.UserInterface;
 using WarChess.UserInterface.ChessUI;
 
@@ -12,7 +14,12 @@ namespace WarChess
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            System.Windows.Forms.Application.Run(new MainForm(new ChessForm[] {}));
+            var game = new MockChessGame();
+            var app = new ChessApp(game);
+            var form = new ChessForm(app, new StandardBoardStyle(), 
+                new ChessCellBitmapSelector(new SimpleChessStyle()),
+                new ChessMessageSelector());
+            System.Windows.Forms.Application.Run(new MainForm(new []{form}));
         }
     }
 }
