@@ -88,6 +88,10 @@
     </Compile>
     <Compile Include="UserInterface\IGameForm.cs" />
     <Compile Include="UserInterface\IMessageSelector.cs" />
+    <Compile Include="UserInterface\ListMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\StandardBoardStyle.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessMessageSelector.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessForm.cs">
