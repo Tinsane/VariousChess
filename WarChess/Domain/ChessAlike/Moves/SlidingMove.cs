@@ -2,9 +2,10 @@
 
 namespace WarChess.Domain.ChessAlike.Moves
 {
-    public abstract class SlidingMove<TGameState, TCell> : DirectedMove<TGameState, TCell>
-        where TGameState : ChessAlikeGameState<TCell>
-        where TCell : ChessAlikeCell
+    public abstract class SlidingMove<TGameState, TCell, TPiece> : DirectedMove<TGameState, TCell, TPiece>
+        where TGameState : ChessAlikeGameState<TCell, TPiece>
+        where TCell : ChessAlikeCell<TPiece>
+        where TPiece : IPiece
     {
         protected SlidingMove(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 

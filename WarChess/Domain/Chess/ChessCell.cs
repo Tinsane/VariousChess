@@ -1,9 +1,10 @@
-﻿using WarChess.Domain.ChessAlike;
+﻿using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.ChessAlike;
 
 namespace WarChess.Domain.Chess
 {
-    public class ChessCell : ChessAlikeCell
+    public class ChessCell : ChessAlikeCell<ChessPiece>
     {
-        public ChessCell(IPiece piece = null) : base(piece) { }
+        public ChessCell(ChessPiece piece = null) : base(piece) { }
     }
 }

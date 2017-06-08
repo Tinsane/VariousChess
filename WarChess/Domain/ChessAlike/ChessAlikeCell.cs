@@ -2,11 +2,12 @@
 
 namespace WarChess.Domain.ChessAlike
 {
-    public abstract class ChessAlikeCell : ICell
+    public abstract class ChessAlikeCell<TPiece> : ICell
+        where TPiece : IPiece
     {
-        protected ChessAlikeCell(IPiece piece) { Piece = piece; }
+        protected ChessAlikeCell(TPiece piece) { Piece = piece; }
 
-        public IPiece Piece { get; }
+        public TPiece Piece { get; }
         public bool ContainsPiece => !ReferenceEquals(Piece, null);
     }
 }

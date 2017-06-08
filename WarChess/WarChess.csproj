@@ -54,6 +54,15 @@
     <Compile Include="Domain\Chess\ChessGameState.cs" />
     <Compile Include="Domain\Chess\Moves\ChessJump.cs" />
     <Compile Include="Domain\Chess\Moves\ChessSlidingMove.cs" />
+    <Compile Include="Domain\Chess\Moves\LongCastling.cs" />
+    <Compile Include="Domain\Chess\Moves\ShortCastling.cs" />
+    <Compile Include="Domain\Chess\Moves\EnPassat.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnCapturing.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnDoubleJump.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnForwardMove.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMove.cs" />
+    <Compile Include="Domain\Chess\Moves\Visitors\GetMovedVisitor.cs" />
+    <Compile Include="Domain\Chess\Moves\Visitors\WasMovedVisitor.cs" />
     <Compile Include="Domain\Chess\Pieces\Bishop.cs" />
     <Compile Include="Domain\Chess\Pieces\ChessPiece.cs" />
     <Compile Include="Domain\Chess\Pieces\IChessPieceVisitor.cs" />
@@ -62,6 +71,7 @@
     <Compile Include="Domain\Chess\Pieces\Pawn.cs" />
     <Compile Include="Domain\Chess\Pieces\Queen.cs" />
     <Compile Include="Domain\Chess\Pieces\Rook.cs" />
+    <Compile Include="Domain\Chess\Utils.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />
@@ -91,10 +101,8 @@
     <Compile Include="Domain\GridGame2D\IGridGameState2D.cs" />
     <Compile Include="Domain\GridGame2D\Size2D.cs" />
     <Compile Include="Domain\Utilities.cs" />
-    <Compile Include="Domain\ChessAlikeApi\WarChess\WarChessAlert.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Domain\ChessAlikeApi\Color.cs" />
-    <Compile Include="Domain\ChessAlikeApi\WarChess\IWarChessGame.cs" />
     <Compile Include="Domain\AbstractGame\IField.cs" />
     <Compile Include="UserInterface\BoardControl.cs">
       <SubType>Component</SubType>

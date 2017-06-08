@@ -21,6 +21,8 @@
 
         public static Point2D operator -(Point2D a, Point2D b) => new Point2D(a.X - b.X, a.Y - b.Y);
 
+        public static Point2D operator -(Point2D p) => new Point2D(-p.X, -p.Y);
+
         public static Point2D operator +(Point2D a, Point2D b) => new Point2D(a.X + b.X, a.Y + b.Y);
 
         public static Point2D operator *(Point2D p, int k) => new Point2D(p.X * k, p.Y * k);

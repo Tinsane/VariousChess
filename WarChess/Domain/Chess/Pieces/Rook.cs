@@ -2,10 +2,10 @@
 {
     public class Rook : ChessPiece
     {
-        public Rook(int playerId, bool wasMove) : base(playerId) { WasMove = wasMove; }
+        public Rook(int playerId, bool wasMoved) : base(playerId) { WasMoved = wasMoved; }
 
-        public bool WasMove { get; }
+        public bool WasMoved { get; }
 
-        protected override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
+        public override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
     }
 }

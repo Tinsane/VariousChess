@@ -4,6 +4,6 @@
     {
         public Bishop(int playerId) : base(playerId) { }
 
-        protected override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
+        public override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
     }
 }

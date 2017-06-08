@@ -6,6 +6,6 @@
 
         public bool WasMoved { get; }
 
-        protected override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
+        public override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
     }
 }

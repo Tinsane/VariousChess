@@ -8,6 +8,6 @@ namespace WarChess.Domain.Chess.Pieces
 
         public int PlayerId { get; }
 
-        protected abstract void AcceptVisitor(IChessPieceVisitor visitor);
+        public abstract void AcceptVisitor(IChessPieceVisitor visitor);
     }
 }
