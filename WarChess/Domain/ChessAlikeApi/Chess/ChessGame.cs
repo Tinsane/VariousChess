@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WarChess.Domain.ChessAlikeApi.Chess
 {
-    public class ChessGame : IChessAlikeGame<ChessPiece>
+    public class ChessGame : IChessGame
     {
         public IChessBoard<ChessPiece> Board { get; }
         public bool IsFinished { get; }
         public bool IsCheck { get; }
         public Color WhoseTurn { get; }
-        public bool TryMakeMove(ChessPosition @from, ChessPosition to)
+        public bool TryMakeMove(ChessPosition from, ChessPosition to)
         {
             throw new NotImplementedException();
         }

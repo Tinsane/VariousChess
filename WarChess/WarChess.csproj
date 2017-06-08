@@ -42,6 +42,7 @@
     <Compile Include="Application\ChessApp.cs" />
     <Compile Include="Domain\ChessAlikeApi\Chess\ChessGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\Chess\ChessPiece.cs" />
+    <Compile Include="Domain\ChessAlikeApi\Chess\IChessGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeCell.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessBoardGame.cs" />
