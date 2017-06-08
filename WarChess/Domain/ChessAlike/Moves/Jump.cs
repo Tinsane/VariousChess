@@ -6,14 +6,9 @@ namespace WarChess.Domain.ChessAlike.Moves
         where TGameState : ChessAlikeGameState<TCell>
         where TCell : ChessAlikeCell
     {
-        protected Jump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to)
-        {
-        }
+        protected Jump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 
-        protected new bool IsValid(TGameState gameState)
-        {
-            return base.IsValid(gameState) &&
-                   (Point2D) To - (Point2D) From == Step;
-        }
+        protected new bool IsValid(TGameState gameState) => base.IsValid(gameState) &&
+                                                            (Point2D) To - (Point2D) From == Step;
     }
 }

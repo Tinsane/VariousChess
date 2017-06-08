@@ -10,16 +10,11 @@ namespace WarChess.Domain.ChessAlike
         where TGameState : ChessAlikeGameState<TCell>
         where TCell : ChessAlikeCell
     {
-        protected ChessAlikeGame(TGameState initialState) : base(initialState)
-        {
-        }
+        protected ChessAlikeGame(TGameState initialState) : base(initialState) { }
 
-        protected abstract IEnumerable<DirectedMove<TGameState, TCell>> GetPossibleMoves(GridPosition2D from,
+        protected abstract IEnumerable<IChessAlikeMove<TGameState, TCell>> GetPossibleMoves(GridPosition2D from,
             GridPosition2D to);
 
-        public bool TryMakeMove(GridPosition2D from, GridPosition2D to)
-        {
-            return GetPossibleMoves(from, to).Any(TryMakeMove);
-        }
+        public bool TryMakeMove(GridPosition2D from, GridPosition2D to) => GetPossibleMoves(from, to).Any(TryMakeMove);
     }
 }

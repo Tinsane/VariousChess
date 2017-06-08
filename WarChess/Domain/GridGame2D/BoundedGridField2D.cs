@@ -7,9 +7,7 @@ namespace WarChess.Domain.GridGame2D
         : IField<GridPosition2D, TCell>
         where TCell : ICell
     {
-        public BoundedGridField2D(int rowsCnt, int columnsCnt) : this(rowsCnt, columnsCnt, new Point2D(0, 0))
-        {
-        }
+        public BoundedGridField2D(int rowsCnt, int columnsCnt) : this(rowsCnt, columnsCnt, new Point2D(0, 0)) { }
 
         public BoundedGridField2D(int rowsCnt, int columnsCnt, Point2D center)
         {
@@ -17,11 +15,13 @@ namespace WarChess.Domain.GridGame2D
             Center = center;
         }
 
-        private BoundedGridField2D(TCell[,] grid, Point2D center)
+        protected BoundedGridField2D(TCell[,] grid, Point2D center)
         {
             Center = center;
             Grid = grid;
         }
+
+        protected BoundedGridField2D(BoundedGridField2D<TCell> field) : this(field.Grid, field.Center) { }
 
         private Point2D Center { get; }
 

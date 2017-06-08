@@ -19,35 +19,17 @@
             return this * coef == p;
         }
 
-        public static Point2D operator -(Point2D a, Point2D b)
-        {
-            return new Point2D(a.X - b.X, a.Y - b.Y);
-        }
+        public static Point2D operator -(Point2D a, Point2D b) => new Point2D(a.X - b.X, a.Y - b.Y);
 
-        public static Point2D operator +(Point2D a, Point2D b)
-        {
-            return new Point2D(a.X + b.X, a.Y + b.Y);
-        }
+        public static Point2D operator +(Point2D a, Point2D b) => new Point2D(a.X + b.X, a.Y + b.Y);
 
-        public static Point2D operator *(Point2D p, int k)
-        {
-            return new Point2D(p.X * k, p.Y * k);
-        }
+        public static Point2D operator *(Point2D p, int k) => new Point2D(p.X * k, p.Y * k);
 
-        public static explicit operator GridPosition2D(Point2D p)
-        {
-            return new GridPosition2D(p.X, p.Y);
-        }
+        public static explicit operator GridPosition2D(Point2D p) => new GridPosition2D(p.X, p.Y);
 
-        public static bool operator ==(Point2D a, Point2D b)
-        {
-            return !ReferenceEquals(a, null) && a.Equals(b);
-        }
+        public static bool operator ==(Point2D a, Point2D b) => !ReferenceEquals(a, null) && a.Equals(b);
 
-        public static bool operator !=(Point2D a, Point2D b)
-        {
-            return !(a == b);
-        }
+        public static bool operator !=(Point2D a, Point2D b) => !(a == b);
 
         public override bool Equals(object obj)
         {
@@ -57,10 +39,7 @@
             return Equals((Point2D) obj);
         }
 
-        public bool Equals(Point2D other)
-        {
-            return X == other.X && Y == other.Y;
-        }
+        public bool Equals(Point2D other) => X == other.X && Y == other.Y;
 
         public override int GetHashCode()
         {
