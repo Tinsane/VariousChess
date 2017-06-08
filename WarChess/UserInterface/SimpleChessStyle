@@ -8,7 +8,7 @@ namespace WarChess.UserInterface
 {
     class SimpleChessStyle : ChessStyleFromDir
     {
-        public SimpleChessStyle() : base("SimpleChessStyle")
+        public SimpleChessStyle() : base("SimpleChessStylePics")
         {
         }
     }
