@@ -9,6 +9,7 @@ namespace WarChess.Domain.Chess.Moves
         {
         }
 
+        // TODO : not implemented transform
         protected new bool IsValid(ChessGameState gameState) => base.IsValid(gameState) &&
                                                                 gameState.Field[To].ContainsPiece;
     }
