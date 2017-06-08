@@ -23,7 +23,7 @@ namespace WarChess.Domain.ChessAlike.Moves
             if (!IsValid(gameState))
                 return null;
             var resultGameState = Apply(gameState);
-            return resultGameState.IsValid ? resultGameState : null;
+            return resultGameState.IsValid() ? resultGameState : null;
         }
 
         protected bool IsValid(TGameState gameState)
@@ -33,7 +33,8 @@ namespace WarChess.Domain.ChessAlike.Moves
                    field.Contains(To) &&
                    field[From].ContainsPiece &&
                    field[From].Piece.PlayerId == gameState.CurrentPlayerId &&
-                   (!gameState.Field[To].ContainsPiece || gameState.Field[To].Piece.PlayerId != gameState.CurrentPlayerId);
+                   (!gameState.Field[To].ContainsPiece || gameState.Field[To].Piece.PlayerId !=
+                    gameState.CurrentPlayerId);
         }
 
         protected abstract TGameState Apply(TGameState gameState);

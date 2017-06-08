@@ -7,8 +7,6 @@ namespace WarChess.Domain.GridGame2D
         where TGameState : IGridGameState2D<TCell>
         where TCell : ICell
     {
-        protected GridGame2D(TGameState initialState) : base(initialState)
-        {
-        }
+        protected GridGame2D(TGameState initialState) : base(initialState) { }
     }
 }
