@@ -10,7 +10,7 @@ namespace WarChess.Domain.Chess
     public class ChessGameState : ChessAlikeGameState<ChessCell, ChessPiece>
     {
         public ChessGameState(BoundedGridField2D<ChessCell> field, int currentPlayerId,
-            PawnDoubleJump previousPawnDoubleJump) : base(field, currentPlayerId)
+            PawnDoubleJump previousPawnDoubleJump = null) : base(field, currentPlayerId)
         {
             PreviousPawnDoubleJump = previousPawnDoubleJump;
         }
@@ -80,6 +80,6 @@ namespace WarChess.Domain.Chess
             Func<ChessPiece, ChessPiece> updatePiece)
             => new ChessGameState(
                 Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
-                Utils.AnotherPlayerId(CurrentPlayerId), null);
+                Utils.AnotherPlayerId(CurrentPlayerId));
     }
 }

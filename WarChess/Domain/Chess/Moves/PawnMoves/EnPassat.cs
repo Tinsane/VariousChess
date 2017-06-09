@@ -17,7 +17,7 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         {
             gameState = base.Apply(gameState);
             return new ChessGameState(gameState.Field.GetWith(new ChessCell(), new GridPosition2D(From.X, To.Y)),
-                gameState.CurrentPlayerId, null);
+                gameState.CurrentPlayerId);
         }
     }
 }
