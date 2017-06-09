@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarChess.Domain.Chess;
 using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.UserInterface
@@ -14,10 +15,7 @@ namespace WarChess.UserInterface
         /// <param name="column">Indexing from 0</param>
         /// <param name="rowCount">Total count of rows</param>
         /// <returns></returns>
-        public static ChessPosition GetPosition(int row, int column, int rowCount)
-        {
-            return new ChessPosition(('a' + column).ToString() + ('0' + (rowCount - row))); 
-        }
+        public static ChessPosition GetPosition(int row, int column, int rowCount) => new ChessPosition(rowCount - row, column);
 
         public static Bitmap[,] SelectAllBoard<TCell>(IChessBoard<TCell> board, ICellBitmapSelector<TCell> selector) // not here
         {

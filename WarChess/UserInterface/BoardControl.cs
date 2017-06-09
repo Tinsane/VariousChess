@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarChess.Domain;
+using WarChess.Domain.Chess;
 using WarChess.Domain.ChessAlikeApi;
 using WarChess.Infrastructure;
 

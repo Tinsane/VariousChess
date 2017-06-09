@@ -48,7 +48,7 @@ namespace WarChess.Domain.Chess
             return false;
         }
 
-        private bool CanCurrentPlayerMove()
+        public bool CanCurrentPlayerMove()
         {
             foreach (var srcPosition in Field.Positions)
             {

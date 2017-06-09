@@ -4,13 +4,24 @@ using WarChess.Domain.Chess.Moves;
 using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.ChessAlike;
 using WarChess.Domain.ChessAlike.Moves;
+using WarChess.Domain.ChessAlikeApi;
+using WarChess.Domain.ChessAlikeApi.Chess;
 using WarChess.Domain.GridGame2D;
+using ChessPiece = WarChess.Domain.Chess.Pieces.ChessPiece;
 
 namespace WarChess.Domain.Chess
 {
-    public class ChessGame : ChessAlikeGame<ChessGameState, ChessCell, ChessPiece>
+    public class ChessGame : ChessAlikeGame<ChessGameState, ChessCell, ChessPiece>, IChessGame
     {
         public ChessGame(Func<ChessPiece> pawnTransformer) : base(GetInitialState(pawnTransformer)) { }
+
+        public IChessBoard<ChessAlikeApi.Chess.ChessPiece> Board =>
+            (IChessBoard<ChessAlikeApi.Chess.ChessPiece>) CurrentState.Field;
+
+        public bool IsFinished => !CurrentState.CanCurrentPlayerMove();
+        public Color WhoseTurn => (Color) CurrentState.CurrentPlayerId;
+
+        public bool IsCheck => CurrentState.IsCheck();
 
         private static ChessGameState GetInitialState(Func<ChessPiece> pawnTransformer)
         {

@@ -7,7 +7,7 @@ using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Pieces
 {
-    public abstract class ChessPiece : IPiece
+    public abstract class ChessPiece : ChessAlikeApi.Chess.ChessPiece, IPiece
     {
         protected ChessPiece(int playerId) { PlayerId = playerId; }
 

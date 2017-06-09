@@ -50,7 +50,7 @@
     <Compile Include="Domain\ChessAlikeApi\IChessBoardGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessBoard.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikePiece.cs" />
-    <Compile Include="Domain\ChessAlikeApi\ChessPosition.cs" />
+    <Compile Include="Domain\Chess\ChessPosition.cs" />
     <Compile Include="Domain\Chess\Moves\IChessMove.cs" />
     <Compile Include="Domain\Chess\ChessCell.cs" />
     <Compile Include="Domain\Chess\ChessGame.cs" />
@@ -102,7 +102,7 @@
     <Compile Include="Domain\ChessAlike\Moves\SlidingMove.cs" />
     <Compile Include="Domain\ChessAlike\IPiece.cs" />
     <Compile Include="Domain\GridGame2D\Point2D.cs" />
-    <Compile Include="Domain\ChessAlikeApi\NotationConverter.cs" />
+    <Compile Include="Domain\ChessAlikeApi\ChessNotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\INotationConverter.cs" />
     <Compile Include="Domain\AbstractGame\IPosition.cs" />
     <Compile Include="Domain\GridGame2D\GridGame2D.cs" />
