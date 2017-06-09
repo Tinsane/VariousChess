@@ -9,8 +9,6 @@ namespace WarChess.UserInterface
 {
     class ChessStyleFromDir : IChessStyle
     {
-        private string dirName;
-
         public int BitmapWidth => 30;
 
         public int BitmapHeight => 30;
@@ -19,21 +17,26 @@ namespace WarChess.UserInterface
 
         public Color WhitePieceColor => Color.White;
 
-        public Bitmap Pawn => new Bitmap(dirName + @"/pawn.png");
+        public Bitmap Pawn => bitmaps["pawn"];
 
-        public Bitmap Bishop => new Bitmap(dirName + @"/bishop.png");
+        public Bitmap Bishop => bitmaps["bishop"];
 
-        public Bitmap Knight => new Bitmap(dirName + @"/knight.png");
+        public Bitmap Knight => bitmaps["knight"];
 
-        public Bitmap Rook => new Bitmap(dirName + @"/rook.png");
+        public Bitmap Rook => bitmaps["rook"];
 
-        public Bitmap Queen => new Bitmap(dirName + @"/queen.png");
+        public Bitmap Queen => bitmaps["queen"];
 
-        public Bitmap King => new Bitmap(dirName + @"/king.png");
+        public Bitmap King => bitmaps["king"];
 
         public ChessStyleFromDir(string dirName)
         {
-            this.dirName = @"..\..\UserInterface\" + dirName;
+            var actualDirName = @"..\..\UserInterface\" + dirName;
+            bitmaps = new Dictionary<string, Bitmap>();
+            foreach (var figureName in new[] { "pawn", "bishop", "knight", "rook", "queen", "king" })
+                bitmaps[figureName] = new Bitmap(dirName + @"\" + figureName + ".png");
         }
+
+        private Dictionary<string, Bitmap> bitmaps;
     }
 }
