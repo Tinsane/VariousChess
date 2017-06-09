@@ -15,11 +15,15 @@ namespace WarChess.Domain.Chess
     {
         public ChessGame(Func<int, ChessPiece> pawnTransformer) : base(GetInitialState(pawnTransformer)) { }
 
-        public IChessBoard<ChessAlikeApi.Chess.ChessPiece> Board =>
-            (IChessBoard<ChessAlikeApi.Chess.ChessPiece>) CurrentState.Field;
+        public IChessBoard<ChessPiece> Board =>
+            (IChessBoard<ChessPiece>) CurrentState.Field;
 
         public bool IsFinished => !CurrentState.CanCurrentPlayerMove();
         public Color WhoseTurn => (Color) CurrentState.CurrentPlayerId;
+        public bool TryMakeMove(ChessPosition from, ChessPosition to)
+        {
+            return base.TryMakeMove(from, to);
+        }
 
         public bool IsCheck => CurrentState.IsCheck();
 

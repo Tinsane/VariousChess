@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using WarChess.Application;
 using WarChess.Domain.ChessAlikeApi.Chess;
 using WarChess.UserInterface;
 using WarChess.UserInterface.ChessUI;
+using Ninject;
+using Ninject.Extensions.Conventions;
+using WarChess.Domain.Chess;
+using WarChess.Domain.Chess.Pieces;
+using WarChess.UserInterface.FocusBitmapSupplier;
 
 namespace WarChess
 {
@@ -14,12 +21,22 @@ namespace WarChess
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            var game = new MockChessGame();
-            var app = new ChessApp(game);
-            var form = new ChessForm(app, new StandardBoardStyle(), 
-                new ChessCellBitmapSelector(new SimpleChessStyle()),
-                new ChessMessageSelector());
-            System.Windows.Forms.Application.Run(new MainForm(new []{form}));
+            var container = new StandardKernel();
+            // TODO: write IChessPiece supplier
+            container.Bind<IChessGame>().To<ChessGame>().InTransientScope();
+            container.Bind<ChessApp>().ToSelf();
+            container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
+            container.Bind<IBoardStyle>().To<StandardBoardStyle>().InSingletonScope();
+            container.Bind<IFocusBitmapSupplier>().To<GreenFocusBitmapSupplier>().InSingletonScope();
+            var chessStyle = container.Get<IChessStyle>();
+            container.Bind<Size>().ToConstant(new Size(chessStyle.BitmapWidth, chessStyle.BitmapHeight));
+            container.Bind<AbstractBoardControl>().To<BoardControl>();
+            container.Bind<IMessageSelector<IChessGame>>().To<ChessMessageSelector>();
+            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>();
+            container.Bind<IGameForm>().To<ChessForm>();
+
+            IGameForm[] FormsSupplier() => container.GetAll<IGameForm>().ToArray();
+            System.Windows.Forms.Application.Run(new MainForm(FormsSupplier));
         }
     }
 }

@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using WarChess.Domain.Chess.Moves;
 using WarChess.Domain.ChessAlike;
+using WarChess.Domain.ChessAlikeApi;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Pieces
 {
-    public abstract class ChessPiece : ChessAlikeApi.Chess.ChessPiece, IPiece
+    public abstract class ChessPiece : IPiece, IChessAlikePiece
     {
         protected ChessPiece(int playerId) { PlayerId = playerId; }
 
         public int PlayerId { get; }
+
+        public Color Color => (Color) PlayerId;
 
         public abstract void AcceptVisitor(IChessPieceVisitor visitor);
 

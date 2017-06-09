@@ -1,4 +1,5 @@
-﻿using WarChess.Domain.GridGame2D;
+﻿using WarChess.Domain.Chess;
+using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.ChessAlikeApi
 {
@@ -11,6 +12,6 @@ namespace WarChess.Domain.ChessAlikeApi
         /// <summary>
         ///     Returns true if move was successful, otherwise returns false.
         /// </summary>
-        bool TryMakeMove(GridPosition2D from, GridPosition2D to);
+        bool TryMakeMove(ChessPosition from, ChessPosition to);
     }
 }

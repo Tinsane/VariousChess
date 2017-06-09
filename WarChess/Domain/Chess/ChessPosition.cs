@@ -4,6 +4,6 @@ namespace WarChess.Domain.Chess
 {
     public class ChessPosition : GridPosition2D
     {
-        public ChessPosition(int x, int y) : base(x, y) { }
+        public ChessPosition(int x, int y) : base(x, y) { } // TODO: to chess notation
     }
 }

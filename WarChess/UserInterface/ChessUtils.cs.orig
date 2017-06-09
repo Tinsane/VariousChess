@@ -15,7 +15,14 @@ namespace WarChess.UserInterface
         /// <param name="column">Indexing from 0</param>
         /// <param name="rowCount">Total count of rows</param>
         /// <returns></returns>
-        public static ChessPosition ToChessPosition(int row, int column, int rowCount) => new ChessPosition(rowCount - row, column);
+<<<<<<< HEAD
+        public static ChessPosition ToChessPosition(int row, int column, int rowCount)
+        {
+            return new ChessPosition(('a' + column).ToString() + ('0' + (rowCount - row))); 
+        }
+=======
+        public static ChessPosition GetPosition(int row, int column, int rowCount) => new ChessPosition(rowCount - row, column);
+>>>>>>> b3cbe9dc8adc5f7acd6171994b53d76a3a943e80
 
         public static (int row, int column) FromChessPosition(ChessPosition position, int rowCount)
         {
