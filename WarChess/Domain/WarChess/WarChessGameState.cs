@@ -28,6 +28,7 @@ namespace WarChess.Domain.WarChess
                                                        (CurrentPlayerId == Utils.WhitePlayerId
                                                            ? direction
                                                            : -direction)))
+                    .Where(target => Field.Contains(target))
                     .SelectMany(target => piece.GetPossibleMoves(position, target))
                     .Any(move => !ReferenceEquals(move.Make(this), null)))
                     return true;
