@@ -27,7 +27,7 @@ namespace WarChess.Domain.Chess
 
         public bool IsCheck => CurrentState.IsCheck();
 
-        private static ChessGameState GetInitialState(Func<ChessPiece> pawnTransformer)
+        private static ChessGameState GetInitialState(IPawnTransformer pawnTransformer)
         {
             var field = new ChessCell[Utils.BoardSize, Utils.BoardSize];
             for (var i = 0; i < Utils.BoardSize; ++i)
@@ -36,8 +36,8 @@ namespace WarChess.Domain.Chess
             // Pawns
             for (var i = 0; i < Utils.BoardSize; ++i)
             {
-                field[1, i] = new ChessCell(new Pawn(Utils.WhitePlayerId, false, pawnTransformer));
-                field[Utils.BoardSize - 2, i] = new ChessCell(new Pawn(Utils.BlackPlayerId, false, pawnTransformer));
+                field[1, i] = new ChessCell(new Pawn(Utils.WhitePlayerId, false, pawnTransformer.GetTransformed));
+                field[Utils.BoardSize - 2, i] = new ChessCell(new Pawn(Utils.BlackPlayerId, false, pawnTransformer.GetTransformed));
             }
             // Rooks
             field[0, 0] = new ChessCell(new Rook(Utils.WhitePlayerId, false));
