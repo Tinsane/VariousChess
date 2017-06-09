@@ -21,7 +21,7 @@ namespace WarChess.Domain.Chess.GameStateProvider
 
         public ChessGameStateProvider(IPawnTransformer pawnTransformer)
         {
-            Func<int, ChessPiece> transformer = playerId => pawnTransformer.GetTransformed((Color)playerId);
+            ChessPiece Transformer(int playerId) => pawnTransformer.GetTransformed((Color) playerId);
             ReprMapping = new Dictionary<char, Func<ChessPiece>>
             {
                 {'K', () => new King(Utils.WhitePlayerId, false)},
@@ -34,15 +34,17 @@ namespace WarChess.Domain.Chess.GameStateProvider
                 {'b', () => new Bishop(Utils.BlackPlayerId)},
                 {'N', () => new Knight(Utils.WhitePlayerId)},
                 {'n', () => new Knight(Utils.BlackPlayerId)},
-                {'P', () => new Pawn(Utils.WhitePlayerId, false, transformer)},
-                {'p', () => new Pawn(Utils.BlackPlayerId, false, transformer)},
+                {'P', () => new Pawn(Utils.WhitePlayerId, false, Transformer)},
+                {'p', () => new Pawn(Utils.BlackPlayerId, false, Transformer)},
                 {'.', () => null}
             };
         }
 
         private Dictionary<char, Func<ChessPiece>> ReprMapping { get; }
 
-        public ChessGameState FromRepr(string[] repr)
+        public ChessGameState GetInitialGameState() => FromRepr(InitialBoardRepr);
+
+        public ChessGameState FromRepr(string[] repr, Color moverColor = Color.White)
         {
             var rowsCnt = repr.Length;
             var columnsCnt = repr[0].Length;
@@ -50,9 +52,7 @@ namespace WarChess.Domain.Chess.GameStateProvider
             for (var i = 0; i < rowsCnt; ++i)
             for (var j = 0; j < columnsCnt; ++j)
                 field[i, j] = new ChessCell(ReprMapping[repr[i][j]]());
-            return new ChessGameState(new ChessBoard(field), Utils.WhitePlayerId);
+            return new ChessGameState(new ChessBoard(field), (int)moverColor);
         }
-
-        public ChessGameState GetInitialGameState() => FromRepr(InitialBoardRepr);
     }
 }
