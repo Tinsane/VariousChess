@@ -4,7 +4,7 @@ using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Moves
 {
-    public class ChessJump : Jump<ChessGameState, ChessCell, ChessPiece>
+    public class ChessJump : Jump<ChessGameState, ChessCell, ChessPiece>, IChessMove
     {
         public ChessJump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 

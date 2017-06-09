@@ -16,7 +16,7 @@ namespace WarChess.Domain.Chess.Moves.Visitors
 
         public void Visit(Knight knight) { throw new ArgumentException(); }
 
-        public void Visit(Pawn pawn) { piece = new Pawn(pawn.PlayerId, true); }
+        public void Visit(Pawn pawn) { piece = new Pawn(pawn.PlayerId, true, pawn.Transformer); }
 
         public void Visit(Rook rook) { piece = new Rook(rook.PlayerId, true); }
 

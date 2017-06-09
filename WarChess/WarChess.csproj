@@ -48,7 +48,7 @@
     <Compile Include="Domain\ChessAlikeApi\IChessBoard.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikePiece.cs" />
     <Compile Include="Domain\ChessAlikeApi\ChessPosition.cs" />
-    <Compile Include="Domain\Chess\ChessBoard.cs" />
+    <Compile Include="Domain\Chess\Moves\IChessMove.cs" />
     <Compile Include="Domain\Chess\ChessCell.cs" />
     <Compile Include="Domain\Chess\ChessGame.cs" />
     <Compile Include="Domain\Chess\ChessGameState.cs" />
@@ -70,12 +70,14 @@
     <Compile Include="Domain\Chess\Pieces\Bishop.cs" />
     <Compile Include="Domain\Chess\Pieces\ChessPiece.cs" />
     <Compile Include="Domain\Chess\Pieces\IChessPieceVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\KingCheckVisitor.cs" />
     <Compile Include="Domain\Chess\Pieces\King.cs" />
     <Compile Include="Domain\Chess\Pieces\Knight.cs" />
     <Compile Include="Domain\Chess\Pieces\Pawn.cs" />
     <Compile Include="Domain\Chess\Pieces\Queen.cs" />
     <Compile Include="Domain\Chess\Pieces\Rook.cs" />
     <Compile Include="Domain\Chess\Utils.cs" />
+    <Compile Include="Domain\Chess\ChessBoard.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />

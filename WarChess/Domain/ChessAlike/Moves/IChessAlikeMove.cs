@@ -7,5 +7,6 @@ namespace WarChess.Domain.ChessAlike.Moves
         where TCell : ChessAlikeCell<TPiece>
         where TPiece : IPiece
     {
+        bool IsValid(TGameState gameState);
     }
 }

@@ -13,6 +13,6 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         }
 
         public override bool IsValid(ChessGameState gameState) => base.IsValid(gameState) &&
-                                                                !gameState.Field[To].ContainsPiece;
+                                                                  !gameState.Field[To].ContainsPiece;
     }
 }

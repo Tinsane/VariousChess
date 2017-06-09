@@ -30,7 +30,8 @@ namespace WarChess.Domain.ChessAlike.Moves
         public virtual bool IsValid(TGameState gameState)
         {
             var field = gameState.Field;
-            return field[From].ContainsPiece &&
+            return From != To &&
+                   field[From].ContainsPiece &&
                    field[From].Piece.PlayerId == gameState.CurrentPlayerId &&
                    (!gameState.Field[To].ContainsPiece || gameState.Field[To].Piece.PlayerId !=
                     gameState.CurrentPlayerId);

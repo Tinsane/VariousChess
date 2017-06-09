@@ -11,6 +11,7 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         }
 
         public override bool IsValid(ChessGameState gameState) => base.IsValid(gameState) &&
-                                                                !WasMovedVisitor.WasMoved(gameState.Field[From].Piece);
+                                                                  !WasMovedVisitor.WasMoved(gameState.Field[From]
+                                                                      .Piece);
     }
 }

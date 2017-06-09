@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WarChess.Domain.AbstractGame;
 
 namespace WarChess.Domain.GridGame2D
@@ -30,6 +31,16 @@ namespace WarChess.Domain.GridGame2D
         public TCell this[int x, int y] => this[new GridPosition2D(x, y)];
 
         public Size2D Size => new Size2D(Grid.GetLength(0), Grid.GetLength(1));
+
+        public IEnumerable<GridPosition2D> Positions
+        {
+            get
+            {
+                for (var x = 0; x < Size.ColumnsCnt; ++x)
+                for (var y = 0; y < Size.RowsCnt; ++y)
+                    yield return new GridPosition2D(x, y);
+            }
+        }
 
         public TCell this[GridPosition2D position]
         {
