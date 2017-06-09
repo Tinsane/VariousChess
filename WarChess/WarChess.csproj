@@ -40,7 +40,7 @@
     <Compile Include="Application\ChessBoardApp.cs" />
     <Compile Include="Application\IChessAlikeApp.cs" />
     <Compile Include="Application\IChessBoardApp.cs" />
-    <Compile Include="Application\ChessApp.cs" />
+    <Compile Include="Application\ChessAlikeApp.cs" />
     <Compile Include="Domain\ChessAlikeApi\Chess\IChessGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeCell.cs" />

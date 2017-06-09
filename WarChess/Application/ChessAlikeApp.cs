@@ -9,13 +9,15 @@ using WarChess.Domain.ChessAlikeApi.Chess;
 
 namespace WarChess.Application
 {
-    public class ChessApp : ChessBoardApp<IChessGame, IChessAlikePiece>, 
-        IChessAlikeApp<IChessGame, IChessAlikePiece>
+    public class ChessAlikeApp<TGame, TCell> : ChessBoardApp<TGame, TCell>, 
+        IChessAlikeApp<TGame, TCell>
+        where TGame : IChessAlikeGame<TCell>
+        where TCell : IChessAlikePiece
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
 
-        public ChessApp(IChessGame game) : base(game)
+        public ChessAlikeApp(TGame game) : base(game)
         {
         }
 
@@ -42,7 +44,6 @@ namespace WarChess.Application
             {
                 if (game.TryMakeMove(SelectedPiecePosition, position))
                 {
-                    // maybe increment move number or something else
                     SelectedPiecePosition = null;
                     StateChanged?.Invoke();
                 }

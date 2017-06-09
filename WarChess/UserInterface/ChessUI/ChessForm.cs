@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WarChess.Application;
+using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.ChessAlikeApi;
 using WarChess.Domain.ChessAlikeApi.Chess;
@@ -11,7 +12,7 @@ namespace WarChess.UserInterface.ChessUI
 {
     public class ChessForm : Form, IGameForm
     {
-        private readonly ChessApp app;
+        private readonly ChessAlikeApp<IChessGame, ChessPiece> app;
         private readonly ICellBitmapSelector<ChessPiece> bitmapSelector;
         private readonly IMessageSelector<IChessGame> messageSelector;
         private readonly AbstractBoardControl board;
@@ -23,7 +24,7 @@ namespace WarChess.UserInterface.ChessUI
          * 2. Историю.
          * 3. Сообщения игрокам.
          */
-        public ChessForm(ChessApp app, AbstractBoardControl board, IFocusBitmapSupplier focusBitmapSupplier,
+        public ChessForm(ChessAlikeApp<IChessGame, ChessPiece> app, AbstractBoardControl board, IFocusBitmapSupplier focusBitmapSupplier,
             ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IChessGame> messageSelector)
         {
             this.app = app;
@@ -49,7 +50,7 @@ namespace WarChess.UserInterface.ChessUI
                 piecesBitmaps[row, column] = BitmapUtils.GetOverlayedBitmap(focusBitmap, pieceBitmap);
             }
             board.UpdateField(piecesBitmaps);
-            // update history, messages or maybe something else
+            // update messages
             Invalidate();
         }
         public string GameName => "Шахматы";

@@ -26,7 +26,7 @@ namespace WarChess
             container.Bind<IPawnTransformer>().To<QueenPawnTransformer>().InSingletonScope();
             container.Bind<IChessGameStateProvider>().To<ChessGameStateProvider>();
             container.Bind<IChessGame>().To<ChessGame>().InTransientScope();
-            container.Bind<ChessApp>().ToSelf();
+            container.Bind<ChessAlikeApp<IChessGame, ChessPiece>>().ToSelf();
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
             container.Bind<IBoardStyle>().To<StandardBoardStyle>().InSingletonScope();
             container.Bind<IFocusBitmapSupplier>().To<GreenFocusBitmapSupplier>().InSingletonScope();
