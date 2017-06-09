@@ -9,7 +9,7 @@ namespace WarChess.UserInterface
 {
     public class StandardBoardStyle : IBoardStyle
     {
-        public Color BlackCellColor => Color.DarkSlateGray;
-        public Color WhiteCellColor => Color.LightYellow;
+        public Color BlackCellColor => Color.FromArgb(255, 255, 206, 158);
+        public Color WhiteCellColor => Color.FromArgb(255, 209, 139, 71);
     }
 }
