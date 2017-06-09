@@ -17,7 +17,7 @@ namespace WarChess.Domain.GridGame2D
             gridPosition.Y);
 
         public static bool operator ==(GridPosition2D a, GridPosition2D b)
-            => !ReferenceEquals(a, null) && a.Equals(b);
+            => ReferenceEquals(a, b) || !ReferenceEquals(a, null) && a.Equals((object)b);
 
         public static bool operator !=(GridPosition2D a, GridPosition2D b) => !(a == b);
 
