@@ -84,6 +84,9 @@
     <Compile Include="Domain\Chess\Utils.cs" />
     <Compile Include="Domain\Chess\ChessBoard.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
+    <Compile Include="UserInterface\ChessAlikeGameControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserInterface\ChessStyleFromDir.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />

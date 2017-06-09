@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace WarChess.UserInterface
 {
-    class ChessStyleFromDir : IChessStyle
+    public abstract class ChessStyleFromDir : IChessStyle
     {
-        public int BitmapWidth => 75;
-
-        public int BitmapHeight => 75;
-
+        
         public Bitmap BlackPawn => bitmaps["black_pawn"];
 
         public Bitmap BlackBishop => bitmaps["black_bishop"];
@@ -25,6 +22,8 @@ namespace WarChess.UserInterface
 
         public Bitmap BlackKing => bitmaps["black_king"];
 
+        public abstract int BitmapWidth { get; }
+        public abstract int BitmapHeight { get; }
         public Bitmap WhitePawn => bitmaps["white_pawn"];
 
         public Bitmap WhiteBishop => bitmaps["white_bishop"];
