@@ -55,7 +55,7 @@ namespace WarChess.UserInterface
             for (int row = 0; row < boardCells.GetLength(0); ++row)
             for (int column = 0; column < boardCells.GetLength(1); ++column)
             {
-                e.Graphics.DrawImage(boardCells[row, column], row * cellSize.Height, column * cellSize.Width);
+                e.Graphics.DrawImage(boardCells[row, column], column * cellSize.Width, row * cellSize.Height);
             }
         }
     }
