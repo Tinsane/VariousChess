@@ -47,7 +47,8 @@ namespace WarChess.Domain.Chess
                 var piece = cell.Piece;
                 if (piece.PlayerId != attackerPlayerId)
                     continue;
-                if (piece.GetPossibleMoves(position, target).Any(move => move.IsValid(this)))
+                if (piece.GetPossibleMoves(position, target)
+                    .Any(move => move.IsValid(attackerPlayerId == CurrentPlayerId ? this : ChangeCurrentPlayer())))
                     return true;
             }
             return false;

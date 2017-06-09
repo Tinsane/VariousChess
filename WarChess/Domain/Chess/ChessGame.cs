@@ -12,6 +12,7 @@ namespace WarChess.Domain.Chess
 {
     public class ChessGame : ChessAlikeGame<ChessGameState, ChessCell, ChessPiece>, IChessGame
     {
+        public ChessGame(ChessGameState initialGameState) : base(initialGameState) { }
         public ChessGame(IChessGameStateProvider gameStateProvider) : base(gameStateProvider.GetInitialGameState()) { }
 
         public IChessBoard<ChessPiece> Board =>
