@@ -2,6 +2,7 @@
 using System.Linq;
 using WarChess.Domain.Chess.Moves.PawnMoves;
 using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.Chess.Pieces.Visitors;
 using WarChess.Domain.ChessAlike;
 using WarChess.Domain.GridGame2D;
 

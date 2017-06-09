@@ -1,14 +1,14 @@
-namespace WarChess.Domain.Chess.Pieces
+﻿namespace WarChess.Domain.Chess.Pieces.Visitors
 {
-    internal class RookCheckVisitor : IChessPieceVisitor
+    public class KingCheckVisitor : IChessPieceVisitor
     {
-        private static readonly RookCheckVisitor Visitor = new RookCheckVisitor();
+        private static readonly KingCheckVisitor Visitor = new KingCheckVisitor();
         private bool checkResult;
 
-        private RookCheckVisitor() { }
+        private KingCheckVisitor() { }
         public void Visit(Bishop bishop) { checkResult = false; }
 
-        public void Visit(King king) { checkResult = false; }
+        public void Visit(King king) { checkResult = true; }
 
         public void Visit(Queen queen) { checkResult = false; }
 
@@ -16,9 +16,9 @@ namespace WarChess.Domain.Chess.Pieces
 
         public void Visit(Pawn pawn) { checkResult = false; }
 
-        public void Visit(Rook rook) { checkResult = true; }
+        public void Visit(Rook rook) { checkResult = false; }
 
-        public static bool IsRook(ChessPiece piece)
+        public static bool IsKing(ChessPiece piece)
         {
             piece.AcceptVisitor(Visitor);
             return Visitor.checkResult;
