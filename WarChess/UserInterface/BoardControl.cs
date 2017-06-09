@@ -28,6 +28,7 @@ namespace WarChess.UserInterface
                 ChessUtils.ToChessPosition(args.Y / cellSize.Height,
                                        args.X / cellSize.Width,
                                        boardCells.GetLength(0)));
+            DoubleBuffered = true;
         }
 
         public override void UpdateField(Bitmap[,] board)
