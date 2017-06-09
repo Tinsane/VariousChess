@@ -10,6 +10,9 @@ namespace WarChess.Domain.Checkers.Moves
     {
         protected TransformingMove(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 
+        public override bool IsValid(CheckersGameState gameState)
+            => base.IsValid(gameState) && !gameState.Field[To].ContainsPiece;
+
         protected abstract IEnumerable<GridPosition2D> ToRemove();
 
         protected override CheckersGameState Apply(CheckersGameState gameState)

@@ -22,7 +22,7 @@ namespace WarChess.Domain.Checkers.Moves
         public override bool IsValid(CheckersGameState gameState)
         {
             var enemyPosition = EnemyPosition(gameState);
-            if (!base.IsValid(gameState) || ReferenceEquals(enemyPosition, null))
+            if (!base.IsValid(gameState) || ReferenceEquals(enemyPosition, null) || gameState.Field[To].ContainsPiece)
                 return false;
             var enemyCell = gameState.Field[enemyPosition];
             if (!base.IsValid(gameState) || !enemyCell.ContainsPiece ||

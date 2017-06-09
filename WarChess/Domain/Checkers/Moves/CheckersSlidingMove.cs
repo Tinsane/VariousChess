@@ -11,14 +11,7 @@ namespace WarChess.Domain.Checkers.Moves
         }
 
         public override bool IsValid(CheckersGameState gameState)
-        {
-            if (!base.IsValid(gameState))
-                return false;
-            for (var position = (Point2D)From + Step; position != (Point2D)To; position = position + Step)
-                if (gameState.Field[(GridPosition2D) position].ContainsPiece)
-                    return false;
-            return true;
-        }
+            => base.IsValid(gameState) && !gameState.Field[To].ContainsPiece;
 
         protected override CheckersGameState Apply(CheckersGameState gameState)
             => gameState.MakeMove(new[] { From }, To, gameState.Field[From].Piece);
