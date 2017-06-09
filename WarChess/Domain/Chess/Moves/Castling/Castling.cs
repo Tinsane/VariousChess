@@ -35,7 +35,8 @@ namespace WarChess.Domain.Chess.Moves.Castling
         {
             gameState = base.Apply(gameState);
             var middlePosition = (GridPosition2D) ((Point2D) From + Step / 2);
-            return gameState.MovePiece(RookPosition, middlePosition, GetMovedVisitor.GetMoved);
+            return gameState.ChangeCurrentPlayer()
+                .MovePiece(RookPosition, middlePosition, GetMovedVisitor.GetMoved);
         }
     }
 }
