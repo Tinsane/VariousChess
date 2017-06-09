@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2163E0EE-25F5-4571-A5A2-022525166C31}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WarChess</RootNamespace>
+    <AssemblyName>WarChess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\ChessBoardApp.cs" />
+    <Compile Include="Application\IChessAlikeApp.cs" />
+    <Compile Include="Application\IChessBoardApp.cs" />
+    <Compile Include="Application\ChessApp.cs" />
+    <Compile Include="Domain\ChessAlikeApi\Chess\IChessGame.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessAlikeGame.cs" />
+    <Compile Include="Domain\ChessAlike\ChessAlikeCell.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessBoardGame.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessBoard.cs" />
+    <Compile Include="Domain\ChessAlikeApi\IChessAlikePiece.cs" />
+<<<<<<< HEAD
+    <Compile Include="Domain\Chess\ChessPosition.cs" />
+    <Compile Include="Domain\Chess\GameStateProvider\ChessGameStateProvider.cs" />
+    <Compile Include="Domain\Chess\GameStateProvider\IChessGameStateProvider.cs" />
+    <Compile Include="Domain\Chess\IPawnTransformer.cs" />
+=======
+    <Compile Include="Domain\Chess\GameStateProvider\ChessGameStateProvider.cs" />
+    <Compile Include="Domain\Chess\ChessPosition.cs" />
+    <Compile Include="Domain\Chess\GameStateProvider\IChessGameStateProvider.cs" />
+>>>>>>> 7296d24c1cb7fad3b3e5abf013cf5ae5823f91a8
+    <Compile Include="Domain\Chess\Moves\IChessMove.cs" />
+    <Compile Include="Domain\Chess\ChessCell.cs" />
+    <Compile Include="Domain\Chess\ChessGame.cs" />
+    <Compile Include="Domain\Chess\ChessGameState.cs" />
+    <Compile Include="Domain\Chess\Moves\Castling\Castling.cs" />
+    <Compile Include="Domain\Chess\Moves\ChessJump.cs" />
+    <Compile Include="Domain\Chess\Moves\ChessSlidingMove.cs" />
+    <Compile Include="Domain\Chess\Moves\Castling\LongCastling.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMoves\PawnTransformingMove.cs" />
+    <Compile Include="Domain\Chess\Moves\RookMove.cs" />
+    <Compile Include="Domain\Chess\Moves\Castling\ShortCastling.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMoves\EnPassat.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMoves\PawnCapturing.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMoves\PawnDoubleJump.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMoves\PawnForwardMove.cs" />
+    <Compile Include="Domain\Chess\Moves\PawnMoves\PawnMove.cs" />
+    <Compile Include="Domain\Chess\Moves\Visitors\GetMovedVisitor.cs" />
+    <Compile Include="Domain\Chess\Moves\KingMove.cs" />
+    <Compile Include="Domain\Chess\Moves\Visitors\WasMovedVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\Bishop.cs" />
+    <Compile Include="Domain\Chess\Pieces\ChessPiece.cs" />
+    <Compile Include="Domain\Chess\Pieces\IChessPieceVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\KingCheckVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\King.cs" />
+    <Compile Include="Domain\Chess\Pieces\Knight.cs" />
+    <Compile Include="Domain\Chess\Pieces\Pawn.cs" />
+    <Compile Include="Domain\Chess\Pieces\Queen.cs" />
+    <Compile Include="Domain\Chess\Pieces\Rook.cs" />
+    <Compile Include="Domain\Chess\Pieces\RookCheckVisitor.cs" />
+    <Compile Include="Domain\Chess\QueenPawnTransformer.cs" />
+    <Compile Include="Domain\Chess\Utils.cs" />
+    <Compile Include="Domain\Chess\ChessBoard.cs" />
+    <Compile Include="Infrastructure\BitmapUtils.cs" />
+    <Compile Include="UserInterface\ChessStyleFromDir.cs" />
+    <Compile Include="UserInterface\ChessUtils.cs" />
+    <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />
+    <Compile Include="UserInterface\ChessUI\ChessMessageSelector.cs" />
+    <Compile Include="UserInterface\FormUtils.cs" />
+    <Compile Include="UserInterface\FocusBitmapSupplier\GreenFocusBitmapSupplier.cs" />
+    <Compile Include="UserInterface\IBoardStyle.cs" />
+    <Compile Include="UserInterface\ICellBitmapSelector.cs" />
+    <Compile Include="UserInterface\AbstractBoardControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\IChessStyle.cs" />
+    <Compile Include="Domain\AbstractGame\Game.cs" />
+    <Compile Include="Domain\AbstractGame\ICell.cs" />
+    <Compile Include="Domain\AbstractGame\IGameState.cs" />
+    <Compile Include="Domain\AbstractGame\IMove.cs" />
+    <Compile Include="Domain\ChessAlike\ChessAlikeGame.cs" />
+    <Compile Include="Domain\ChessAlike\ChessAlikeGameState.cs" />
+    <Compile Include="Domain\ChessAlike\Moves\DirectedMove.cs" />
+    <Compile Include="Domain\ChessAlike\Moves\IChessAlikeMove.cs" />
+    <Compile Include="Domain\ChessAlike\Moves\Jump.cs" />
+    <Compile Include="Domain\ChessAlike\Moves\SlidingMove.cs" />
+    <Compile Include="Domain\ChessAlike\IPiece.cs" />
+    <Compile Include="Domain\GridGame2D\Point2D.cs" />
+    <Compile Include="Domain\ChessAlikeApi\ChessNotationConverter.cs" />
+    <Compile Include="Domain\AbstractGame\IPosition.cs" />
+    <Compile Include="Domain\GridGame2D\GridGame2D.cs" />
+    <Compile Include="Domain\GridGame2D\BoundedGridField2D.cs" />
+    <Compile Include="Domain\GridGame2D\IGridGame2DMove.cs" />
+    <Compile Include="Domain\GridGame2D\GridPosition2D.cs" />
+    <Compile Include="Domain\GridGame2D\IGridGameState2D.cs" />
+    <Compile Include="Domain\GridGame2D\Size2D.cs" />
+    <Compile Include="Domain\Utilities.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Domain\ChessAlikeApi\Color.cs" />
+    <Compile Include="Domain\AbstractGame\IField.cs" />
+    <Compile Include="UserInterface\BoardControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\FocusBitmapSupplier\IFocusBitmapSupplier.cs" />
+    <Compile Include="UserInterface\IGameForm.cs" />
+    <Compile Include="UserInterface\ImageControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\IMessageSelector.cs" />
+    <Compile Include="UserInterface\ListMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\SimpleChessStyle.cs" />
+    <Compile Include="UserInterface\StandardBoardStyle.cs" />
+    <Compile Include="UserInterface\FocusBitmapSupplier\AbstractFocusBitmapSupplier.cs" />
+    <Compile Include="UserInterface\WarChessUI\WarChessMessageSelector.cs" />
+    <Compile Include="UserInterface\WarChessUI\WarChessCellBitmapSelector.cs" />
+    <Compile Include="UserInterface\ChessUI\ChessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
