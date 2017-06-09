@@ -47,6 +47,7 @@
     <Compile Include="Domain\ChessAlikeApi\IChessBoardGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessBoard.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikePiece.cs" />
+    <Compile Include="Domain\Chess\ChessGameStateProvider.cs" />
     <Compile Include="Domain\Chess\ChessPosition.cs" />
     <Compile Include="Domain\Chess\IPawnTransformer.cs" />
     <Compile Include="Domain\Chess\Moves\IChessMove.cs" />
