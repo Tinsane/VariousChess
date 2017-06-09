@@ -28,6 +28,12 @@ namespace ChessGameUnitTests
     [TestFixture]
     public class ChessGameUnitTests
     {
+        [SetUp]
+        protected void SetUp()
+        {
+            GameStateProvider = new ChessGameStateProvider(new QueenPawnTransformer());
+        }
+
         private static object[] correctMoveCases =
         {
             new object[]
@@ -47,8 +53,44 @@ namespace ChessGameUnitTests
                 new ChessGame(new ChessGameStateProvider(new QueenPawnTransformer())),
                 new ChessPosition(0, 1),
                 new ChessPosition(2, 2)
-            },
+            }
         };
+
+        private ChessGameStateProvider GameStateProvider { get; set; }
+
+        [Test]
+        public void TestCheckRook()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K......r",
+                ".......k"
+            }));
+            Assert.IsTrue(game.IsCheck);
+        }
+
+        [Test]
+        public void TestNonCheckRook()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K..b...r",
+                ".......k"
+            }));
+            Assert.IsFalse(game.IsCheck);
+        }
 
         [Test]
         [TestCaseSource(nameof(correctMoveCases))]
