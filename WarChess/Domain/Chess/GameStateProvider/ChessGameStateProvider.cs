@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.ChessAlike;
 using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.Domain.Chess.GameStateProvider

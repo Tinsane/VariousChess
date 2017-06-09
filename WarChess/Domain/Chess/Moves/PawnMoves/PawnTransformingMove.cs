@@ -1,6 +1,7 @@
 using System;
 using WarChess.Domain.Chess.Moves.Visitors;
 using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.ChessAlike;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Moves.PawnMoves

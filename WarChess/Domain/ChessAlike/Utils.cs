@@ -1,4 +1,4 @@
-﻿namespace WarChess.Domain.Chess
+﻿namespace WarChess.Domain.ChessAlike
 {
     public static class Utils
     {

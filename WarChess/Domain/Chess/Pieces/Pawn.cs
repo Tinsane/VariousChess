@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using WarChess.Domain.Chess.Moves;
 using WarChess.Domain.Chess.Moves.PawnMoves;
+using WarChess.Domain.ChessAlike;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Pieces

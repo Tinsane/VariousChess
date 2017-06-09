@@ -1,4 +1,4 @@
-namespace WarChess.Domain.Checkers.Piece
+namespace WarChess.Domain.Checkers.Pieces
 {
     public class Checker : CheckerPiece
     {

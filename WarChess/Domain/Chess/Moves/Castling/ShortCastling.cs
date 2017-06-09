@@ -1,4 +1,5 @@
-﻿using WarChess.Domain.GridGame2D;
+﻿using WarChess.Domain.ChessAlike;
+using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Moves.Castling
 {

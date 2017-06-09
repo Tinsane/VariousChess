@@ -56,7 +56,7 @@ namespace WarChess.Domain.Chess
         private bool IsKingAttacked(int playerId)
             => IsCellAttacked(FindKing(playerId), Utils.AnotherPlayerId(playerId));
 
-        public bool CanCurrentPlayerMove()
+        public override bool CanCurrentPlayerMove()
         {
             foreach (var srcPosition in Field.Positions)
             {
@@ -79,7 +79,7 @@ namespace WarChess.Domain.Chess
         public ChessGameState MovePiece(GridPosition2D from, GridPosition2D to,
             Func<ChessPiece, ChessPiece> updatePiece)
             => new ChessGameState(
-                Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
+                Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[@from].Piece)), to),
                 Utils.AnotherPlayerId(CurrentPlayerId));
 
         public ChessGameState ChangeCurrentPlayer()

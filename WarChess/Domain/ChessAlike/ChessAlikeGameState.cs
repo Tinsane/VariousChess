@@ -18,5 +18,7 @@ namespace WarChess.Domain.ChessAlike
         public BoundedGridField2D<TCell> Field { get; }
 
         public abstract bool IsValid();
+
+        public abstract bool CanCurrentPlayerMove();
     }
 }

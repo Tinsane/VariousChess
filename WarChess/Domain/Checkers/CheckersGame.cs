@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using WarChess.Domain.Checkers.Piece;
+using WarChess.Domain.Checkers.Pieces;
 using WarChess.Domain.ChessAlike;
-using WarChess.Domain.ChessAlike.Moves;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Checkers
@@ -11,7 +10,6 @@ namespace WarChess.Domain.Checkers
     {
         public CheckersGame(CheckersGameState initialState) : base(initialState) { }
 
-        protected override IEnumerable<IChessAlikeMove<CheckersGameState, CheckerCell, CheckerPiece>> GetPossibleMoves(
-            GridPosition2D from, GridPosition2D to) => throw new NotImplementedException();
+        public bool TryMakeMove(IEnumerable<GridPosition2D> cells) => throw new NotImplementedException();
     }
 }
