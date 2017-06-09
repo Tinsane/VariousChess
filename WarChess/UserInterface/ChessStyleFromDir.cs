@@ -9,32 +9,41 @@ namespace WarChess.UserInterface
 {
     class ChessStyleFromDir : IChessStyle
     {
-        public int BitmapWidth => 30;
+        public int BitmapWidth => 75;
 
-        public int BitmapHeight => 30;
+        public int BitmapHeight => 75;
 
-        public Color BlackPieceColor => Color.Black;
+        public Bitmap BlackPawn => bitmaps["black_pawn"];
 
-        public Color WhitePieceColor => Color.White;
+        public Bitmap BlackBishop => bitmaps["black_bishop"];
 
-        public Bitmap Pawn => bitmaps["pawn"];
+        public Bitmap BlackKnight => bitmaps["black_knight"];
 
-        public Bitmap Bishop => bitmaps["bishop"];
+        public Bitmap BlackRook => bitmaps["black_rook"];
 
-        public Bitmap Knight => bitmaps["knight"];
+        public Bitmap BlackQueen => bitmaps["black_queen"];
 
-        public Bitmap Rook => bitmaps["rook"];
+        public Bitmap BlackKing => bitmaps["black_king"];
 
-        public Bitmap Queen => bitmaps["queen"];
+        public Bitmap WhitePawn => bitmaps["white_pawn"];
 
-        public Bitmap King => bitmaps["king"];
+        public Bitmap WhiteBishop => bitmaps["white_bishop"];
+
+        public Bitmap WhiteKnight => bitmaps["white_knight"];
+
+        public Bitmap WhiteRook => bitmaps["white_rook"];
+
+        public Bitmap WhiteQueen => bitmaps["white_queen"];
+
+        public Bitmap WhiteKing => bitmaps["white_king"];
 
         public ChessStyleFromDir(string dirName)
         {
             var actualDirName = @"..\..\UserInterface\" + dirName;
             bitmaps = new Dictionary<string, Bitmap>();
             foreach (var figureName in new[] { "pawn", "bishop", "knight", "rook", "queen", "king" })
-                bitmaps[figureName] = new Bitmap(actualDirName + @"\" + figureName + ".png");
+                foreach (var color in new[] { "white", "black"})
+                    bitmaps[color + "_" + figureName] = new Bitmap(actualDirName + @"\" + color + "_" + figureName + ".png");
         }
 
         private Dictionary<string, Bitmap> bitmaps;

@@ -7,13 +7,17 @@ namespace WarChess.UserInterface
         // All the bitmaps should have size (width, height)
         int BitmapWidth { get; }
         int BitmapHeight { get; }
-        Color BlackPieceColor { get; }
-        Color WhitePieceColor { get; }
-        Bitmap Pawn { get; }
-        Bitmap Bishop { get; }
-        Bitmap Knight { get; }
-        Bitmap Rook { get; }
-        Bitmap Queen { get; }
-        Bitmap King { get; }
+        Bitmap WhitePawn { get; }
+        Bitmap WhiteBishop { get; }
+        Bitmap WhiteKnight { get; }
+        Bitmap WhiteRook { get; }
+        Bitmap WhiteQueen { get; }
+        Bitmap WhiteKing { get; }
+        Bitmap BlackPawn { get; }
+        Bitmap BlackBishop { get; }
+        Bitmap BlackKnight { get; }
+        Bitmap BlackRook { get; }
+        Bitmap BlackQueen { get; }
+        Bitmap BlackKing { get; }
     }
 }

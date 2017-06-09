@@ -25,22 +25,19 @@ namespace WarChess.UserInterface.ChessUI
             if (piece == null)
                 return BitmapUtils.GetMonochromeBitmap(BitmapWidth, BitmapHeight, Color.FromArgb(0));
             piece.AcceptVisitor(this);
-            var color = piece.Color == Domain.ChessAlikeApi.Color.Black
-                ? style.BlackPieceColor
-                : style.WhitePieceColor;
-            return BitmapUtils.GetColoredBitmap(selectedBitmap, color);
+            return selectedBitmap;
         }
 
-        public void Visit(Bishop bishop) => selectedBitmap = style.Bishop;
+        public void Visit(Bishop bishop) => selectedBitmap = bishop.Color == Domain.ChessAlikeApi.Color.Black ? style.BlackBishop : style.WhiteBishop;
 
-        public void Visit(King king) => selectedBitmap = style.King;
+        public void Visit(King king) => selectedBitmap = king.Color == Domain.ChessAlikeApi.Color.Black ? style.BlackKing : style.WhiteKing;
 
-        public void Visit(Queen queen) => selectedBitmap = style.Queen;
+        public void Visit(Queen queen) => selectedBitmap = queen.Color == Domain.ChessAlikeApi.Color.Black ? style.BlackQueen : style.WhiteQueen;
 
-        public void Visit(Knight knight) => selectedBitmap = style.Knight;
+        public void Visit(Knight knight) => selectedBitmap = knight.Color == Domain.ChessAlikeApi.Color.Black ? style.BlackKnight : style.WhiteKnight;
 
-        public void Visit(Pawn pawn) => selectedBitmap = style.Pawn;
+        public void Visit(Pawn pawn) => selectedBitmap = pawn.Color == Domain.ChessAlikeApi.Color.Black ? style.BlackPawn : style.WhitePawn;
 
-        public void Visit(Rook rook) => selectedBitmap = style.Rook;
+        public void Visit(Rook rook) => selectedBitmap = rook.Color == Domain.ChessAlikeApi.Color.Black ? style.BlackRook : style.WhiteRook;
     }
 }
