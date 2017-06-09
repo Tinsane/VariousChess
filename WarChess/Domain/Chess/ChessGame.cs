@@ -18,6 +18,8 @@ namespace WarChess.Domain.Chess
             (IChessBoard<ChessPiece>) CurrentState.Field;
 
         public bool IsFinished => !CurrentState.CanCurrentPlayerMove();
+        public bool IsMate => CurrentState.IsMate();
+        public bool IsStaleMate => CurrentState.IsStaleMate();
         public Color WhoseTurn => (Color) CurrentState.CurrentPlayerId;
         public bool TryMakeMove(ChessPosition from, ChessPosition to) => base.TryMakeMove(from, to);
 
