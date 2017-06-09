@@ -8,13 +8,13 @@ using WarChess.Domain.ChessAlikeApi.Chess;
 
 namespace WarChess.Application
 {
-    public class ChessApp : ChessBoardApp<ChessGame, IChessAlikePiece>, 
-        IChessAlikeApp<ChessGame, IChessAlikePiece>
+    public class ChessApp : ChessBoardApp<IChessGame, IChessAlikePiece>, 
+        IChessAlikeApp<IChessGame, IChessAlikePiece>
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
 
-        public ChessApp(ChessGame game) : base(game)
+        public ChessApp(IChessGame game) : base(game)
         {
         }
 
