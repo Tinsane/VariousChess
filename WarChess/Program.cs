@@ -8,6 +8,7 @@ using WarChess.UserInterface;
 using WarChess.UserInterface.ChessUI;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using WarChess.Domain;
 using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.GameStateProvider;
 using WarChess.Domain.Chess.Pieces;
@@ -17,16 +18,19 @@ namespace WarChess
 {
     public class Program
     {
-        [STAThread]
-        public static void Main(string[] args)
+        private static void BindContainer(StandardKernel container)
         {
-            System.Windows.Forms.Application.EnableVisualStyles();
-            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            var container = new StandardKernel();
             container.Bind<IPawnTransformer>().To<QueenPawnTransformer>().InSingletonScope();
             container.Bind<IChessGameStateProvider>().To<ChessGameStateProvider>();
-            container.Bind<IChessGame>().To<ChessGame>().InTransientScope();
-            container.Bind<ChessAlikeApp<IChessGame, ChessPiece>>().ToSelf();
+            container.Bind(c => c
+                .FromThisAssembly()
+                .SelectAllClasses()
+                .InNamespaceOf<EmptyDom>()
+                .NotInNamespaceOf<IChessGameStateProvider>()
+                .Excluding<QueenPawnTransformer>()
+                .BindAllInterfaces()
+                .Configure(b => b.InTransientScope()));
+            container.Bind(c => c.FromThisAssembly().SelectAllClasses().InNamespaceOf<EmptyApp>().BindToSelf());
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
             container.Bind<IBoardStyle>().To<StandardBoardStyle>().InSingletonScope();
             container.Bind<IFocusBitmapSupplier>().To<GreenFocusBitmapSupplier>().InSingletonScope();
@@ -36,7 +40,15 @@ namespace WarChess
             container.Bind<IMessageSelector<IChessGame>>().To<ChessMessageSelector>();
             container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>();
             container.Bind<IGameForm>().To<ChessForm>();
+        }
 
+        [STAThread]
+        public static void Main(string[] args)
+        {
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+            var container = new StandardKernel();
+            BindContainer(container);
             IGameForm[] FormsSupplier() => container.GetAll<IGameForm>().ToArray();
             System.Windows.Forms.Application.Run(new MainForm(FormsSupplier));
         }
