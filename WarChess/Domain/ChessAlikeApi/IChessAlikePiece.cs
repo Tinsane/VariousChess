@@ -1,6 +1,4 @@
-﻿
-
-namespace WarChess.Domain.ChessAlikeApi
+﻿namespace WarChess.Domain.ChessAlikeApi
 {
     public interface IChessAlikePiece
     {

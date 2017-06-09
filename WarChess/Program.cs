@@ -8,6 +8,8 @@ using WarChess.UserInterface;
 using WarChess.UserInterface.ChessUI;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using WarChess.Domain.Chess;
+using WarChess.Domain.Chess.Pieces;
 using WarChess.UserInterface.FocusBitmapSupplier;
 
 namespace WarChess
@@ -20,7 +22,8 @@ namespace WarChess
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
             var container = new StandardKernel();
-            container.Bind<IChessGame>().To<MockChessGame>().InTransientScope();
+            // TODO: write IChessPiece supplier
+            container.Bind<IChessGame>().To<ChessGame>().InTransientScope();
             container.Bind<ChessApp>().ToSelf();
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
             container.Bind<IBoardStyle>().To<StandardBoardStyle>().InSingletonScope();

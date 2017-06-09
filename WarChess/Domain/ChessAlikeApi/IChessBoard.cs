@@ -1,4 +1,6 @@
-﻿namespace WarChess.Domain.ChessAlikeApi
+﻿using WarChess.Domain.Chess;
+
+namespace WarChess.Domain.ChessAlikeApi
 {
     public interface IChessBoard<out TPiece>
     {

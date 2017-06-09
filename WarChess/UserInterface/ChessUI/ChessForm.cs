@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WarChess.Application;
+using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.ChessAlikeApi;
 using WarChess.Domain.ChessAlikeApi.Chess;
 using WarChess.Infrastructure;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.ChessAlikeApi.Chess;
 using WarChess.Infrastructure;
 

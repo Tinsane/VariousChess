@@ -33,7 +33,7 @@ namespace WarChess.UserInterface
 
         public ChessStyleFromDir(string dirName)
         {
-            this.dirName = dirName;
+            this.dirName = @"..\..\UserInterface\" + dirName;
         }
     }
 }

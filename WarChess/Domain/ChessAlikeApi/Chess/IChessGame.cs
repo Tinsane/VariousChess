@@ -1,4 +1,4 @@
-﻿using System;
+﻿using WarChess.Domain.Chess.Pieces;
 
 namespace WarChess.Domain.ChessAlikeApi.Chess
 {

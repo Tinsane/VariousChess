@@ -2,9 +2,11 @@
 
 namespace WarChess.Domain.ChessAlike.Moves
 {
-    public interface IChessAlikeMove<TGameState, TCell> : IGridGame2DMove<TGameState, TCell>
-        where TGameState : ChessAlikeGameState<TCell>
-        where TCell : ChessAlikeCell
+    public interface IChessAlikeMove<TGameState, TCell, TPiece> : IGridGame2DMove<TGameState, TCell>
+        where TGameState : ChessAlikeGameState<TCell, TPiece>
+        where TCell : ChessAlikeCell<TPiece>
+        where TPiece : IPiece
     {
+        bool IsValid(TGameState gameState);
     }
 }
