@@ -9,6 +9,7 @@ using WarChess.UserInterface.ChessUI;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using WarChess.Domain.Chess;
+using WarChess.Domain.Chess.GameStateProvider;
 using WarChess.Domain.Chess.Pieces;
 using WarChess.UserInterface.FocusBitmapSupplier;
 
@@ -23,6 +24,7 @@ namespace WarChess
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
             var container = new StandardKernel();
             container.Bind<IPawnTransformer>().To<QueenPawnTransformer>().InSingletonScope();
+            container.Bind<IChessGameStateProvider>().To<ChessGameStateProvider>();
             container.Bind<IChessGame>().To<ChessGame>().InTransientScope();
             container.Bind<ChessApp>().ToSelf();
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();

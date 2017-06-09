@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.Domain.Chess.GameStateProvider
 {
@@ -18,8 +19,9 @@ namespace WarChess.Domain.Chess.GameStateProvider
             "rnbqkbnr"
         };
 
-        public ChessGameStateProvider(Func<int, ChessPiece> pawnTransformer)
+        public ChessGameStateProvider(IPawnTransformer pawnTransformer)
         {
+            Func<int, ChessPiece> transformer = playerId => pawnTransformer.GetTransformed((Color)playerId);
             ReprMapping = new Dictionary<char, Func<ChessPiece>>
             {
                 {'K', () => new King(Utils.WhitePlayerId, false)},
@@ -32,8 +34,8 @@ namespace WarChess.Domain.Chess.GameStateProvider
                 {'b', () => new Bishop(Utils.BlackPlayerId)},
                 {'N', () => new Knight(Utils.WhitePlayerId)},
                 {'n', () => new Knight(Utils.BlackPlayerId)},
-                {'P', () => new Pawn(Utils.WhitePlayerId, false, pawnTransformer)},
-                {'p', () => new Pawn(Utils.BlackPlayerId, false, pawnTransformer)},
+                {'P', () => new Pawn(Utils.WhitePlayerId, false, transformer)},
+                {'p', () => new Pawn(Utils.BlackPlayerId, false, transformer)},
                 {'.', () => null}
             };
         }
