@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\ChessBoardApp.cs" />
@@ -58,8 +59,12 @@
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessMessageSelector.cs" />
     <Compile Include="UserInterface\FormUtils.cs" />
+    <Compile Include="UserInterface\FocusBitmapSupplier\GreenFocusBitmapSupplier.cs" />
     <Compile Include="UserInterface\IBoardStyle.cs" />
     <Compile Include="UserInterface\ICellBitmapSelector.cs" />
+    <Compile Include="UserInterface\AbstractBoardControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserInterface\IChessStyle.cs" />
     <Compile Include="Domain\AbstractGame\Game.cs" />
     <Compile Include="Domain\AbstractGame\ICell.cs" />
@@ -89,6 +94,7 @@
     <Compile Include="UserInterface\BoardControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserInterface\FocusBitmapSupplier\IFocusBitmapSupplier.cs" />
     <Compile Include="UserInterface\IGameForm.cs" />
     <Compile Include="UserInterface\ImageControl.cs">
       <SubType>Component</SubType>
@@ -99,6 +105,7 @@
     </Compile>
     <Compile Include="UserInterface\SimpleChessStyle.cs" />
     <Compile Include="UserInterface\StandardBoardStyle.cs" />
+    <Compile Include="UserInterface\FocusBitmapSupplier\AbstractFocusBitmapSupplier.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessMessageSelector.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessForm.cs">
@@ -110,11 +117,20 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>

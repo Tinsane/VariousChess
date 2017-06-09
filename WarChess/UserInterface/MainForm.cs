@@ -14,17 +14,19 @@ namespace WarChess.UserInterface
         public const string StartGameText = "Начать игру!";
 
         private readonly ComboBox comboBox;
-        private readonly IGameForm[] forms;
+        private readonly Func<IGameForm[]> formsSupplier;
+        private IGameForm[] currentForms;
         
-        public MainForm(IGameForm[] forms)
+        public MainForm(Func<IGameForm[]> formsSupplier)
         {
-            this.forms = forms;
+            this.formsSupplier = formsSupplier;
             comboBox = new ComboBox()
             {
                 Anchor = AnchorStyles.Top,
                 Dock = DockStyle.Top
             };
-            foreach (IGameForm form in forms)
+            currentForms = formsSupplier();
+            foreach (IGameForm form in currentForms)
                 comboBox.Items.Add(form.GameName);
             var startGameButton = new Button
             {
@@ -42,7 +44,8 @@ namespace WarChess.UserInterface
         public void RunSelectedGame()
         {
             if (comboBox.SelectedIndex != -1)
-                forms[comboBox.SelectedIndex].Run(this);
+                currentForms[comboBox.SelectedIndex].Run(this);
+            currentForms = formsSupplier();
         }
     }
 }

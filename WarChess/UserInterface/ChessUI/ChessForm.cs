@@ -4,6 +4,7 @@ using WarChess.Application;
 using WarChess.Domain.ChessAlikeApi;
 using WarChess.Domain.ChessAlikeApi.Chess;
 using WarChess.Infrastructure;
+using WarChess.UserInterface.FocusBitmapSupplier;
 
 namespace WarChess.UserInterface.ChessUI
 {
@@ -12,7 +13,8 @@ namespace WarChess.UserInterface.ChessUI
         private readonly ChessApp app;
         private readonly ICellBitmapSelector<ChessPiece> bitmapSelector;
         private readonly IMessageSelector<IChessGame> messageSelector;
-        private readonly BoardControl board; // maybe better to create interface too
+        private readonly AbstractBoardControl board;
+        private readonly IFocusBitmapSupplier focusBitmapSupplier;
 
         /*
          * Этот класс должен расположить все элементы на экране: 
@@ -20,13 +22,14 @@ namespace WarChess.UserInterface.ChessUI
          * 2. Историю.
          * 3. Сообщения игрокам.
          */
-        public ChessForm(ChessApp app, IBoardStyle boardStyle, 
+        public ChessForm(ChessApp app, AbstractBoardControl board, IFocusBitmapSupplier focusBitmapSupplier,
             ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IChessGame> messageSelector)
         {
             this.app = app;
             this.bitmapSelector = bitmapSelector;
             this.messageSelector = messageSelector;
-            board = new BoardControl(boardStyle, bitmapSelector.BitmapWidth, bitmapSelector.BitmapHeight);
+            this.board = board;
+            this.focusBitmapSupplier = focusBitmapSupplier;
             board.CellClick += app.ClickAt;
             app.StateChanged += UpdateForm;
             Controls.Add(board);
@@ -35,11 +38,19 @@ namespace WarChess.UserInterface.ChessUI
 
         public void UpdateForm()
         {
-            board.UpdateField(ChessUtils.SelectAllBoard(app.Game.Board, bitmapSelector));
+            var piecesBitmaps = ChessUtils.SelectAllBoard(app.Game.Board, bitmapSelector);
+            if (app.SelectedPiecePosition != null)
+            {
+                (int row, int column) = ChessUtils.FromChessPosition(
+                    app.SelectedPiecePosition, app.Game.Board.RowCount);
+                var pieceBitmap = piecesBitmaps[row, column];
+                var focusBitmap = focusBitmapSupplier.GetFocusBitmap(pieceBitmap.Width, pieceBitmap.Height);
+                piecesBitmaps[row, column] = BitmapUtils.GetOverlayedBitmap(focusBitmap, pieceBitmap);
+            }
+            board.UpdateField(piecesBitmaps);
             // update history, messages or maybe something else
             Invalidate();
         }
-
         public string GameName => "Шахматы";
         public void Run(Form previous) => previous.SwitchTo(this);
     }
