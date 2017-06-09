@@ -13,7 +13,7 @@ namespace WarChess.UserInterface.FocusBitmapSupplier
             for (int i = 0; i < width; ++i)
             for (int j = 0; j < height; ++j)
             {
-                if (Math.Min(i, width - i - 1) < widthFromBorder &&
+                if (Math.Min(i, width - i - 1) < widthFromBorder ||
                     Math.Min(j, height - j - 1) < heightFromBorder)
                     bitmap.SetPixel(i, j, FocusColor);
                 else

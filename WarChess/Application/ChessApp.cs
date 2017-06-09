@@ -28,11 +28,17 @@ namespace WarChess.Application
         public override void ClickAt(ChessPosition position)
         {
             if (SelectedPiecePosition == position)
+            {
                 Select(null);
+                return;
+            }
             var piece = game.Board[position];
-            if (piece?.Color == game.WhoseTurn)
+            if (SelectedPiecePosition == null && piece?.Color == game.WhoseTurn)
+            {
                 Select(position);
-            if (SelectedPiecePosition != null && piece != null)
+                return;
+            }
+            if (SelectedPiecePosition != null)
             {
                 if (game.TryMakeMove(SelectedPiecePosition, position))
                 {
