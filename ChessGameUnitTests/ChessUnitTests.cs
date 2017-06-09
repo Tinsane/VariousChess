@@ -34,32 +34,183 @@ namespace ChessGameUnitTests
             GameStateProvider = new ChessGameStateProvider(new QueenPawnTransformer());
         }
 
-        private static object[] correctMoveCases =
-        {
-            new object[]
-            {
-                new ChessGame(new ChessGameStateProvider(new QueenPawnTransformer())),
-                new ChessPosition(1, 4),
-                new ChessPosition(2, 4)
-            },
-            new object[]
-            {
-                new ChessGame(new ChessGameStateProvider(new QueenPawnTransformer())),
-                new ChessPosition(1, 4),
-                new ChessPosition(3, 4)
-            },
-            new object[]
-            {
-                new ChessGame(new ChessGameStateProvider(new QueenPawnTransformer())),
-                new ChessPosition(0, 1),
-                new ChessPosition(2, 2)
-            }
-        };
-
         private ChessGameStateProvider GameStateProvider { get; set; }
 
         [Test]
-        public void TestCheckRook()
+        public void TestCorrectBishopMove1()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                ".B......",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(0, 1), new ChessPosition(3, 4)));
+        }
+
+        [Test]
+        public void TestCorrectBishopMove2()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "...B....",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 3), new ChessPosition(4, 0)));
+        }
+
+        [Test]
+        public void TestIncorrectBishopMove()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                ".B......",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsFalse(game.TryMakeMove(new ChessPosition(0, 1), new ChessPosition(0, 4)));
+        }
+
+        [Test]
+        public void TestCorrectRookMove1()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                ".....R..",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 5), new ChessPosition(6, 5)));
+        }
+
+        [Test]
+        public void TestCorrectRookMove2()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                ".....R..",
+                "........",
+                "........",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 5), new ChessPosition(1, 2)));
+        }
+
+        [Test]
+        public void TestCorrectKnightMove1()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "........",
+                "........",
+                "....N...",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(3, 4), new ChessPosition(1, 5)));
+        }
+
+        [Test]
+        public void TestCorrectKnightMove2()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "........",
+                "........",
+                "....N...",
+                "........",
+                "........",
+                "K.......",
+                ".......k"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(3, 4), new ChessPosition(5, 3)));
+        }
+
+        [Test]
+        public void TestNonMoveToCheck()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "...P....",
+                "........",
+                "R...p..k",
+                "........",
+                "........",
+                "K.......",
+                "........"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 3), new ChessPosition(3, 3)));
+            Assert.IsFalse(game.TryMakeMove(new ChessPosition(3, 4), new ChessPosition(2, 3)));
+        }
+
+        [Test]
+        public void TestEnPassat()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "...P....",
+                "........",
+                "....p..k",
+                "........",
+                "........",
+                "K.......",
+                "........"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 3), new ChessPosition(3, 3)));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(3, 4), new ChessPosition(2, 3)));
+        }
+
+        [Test]
+        public void TestCastling()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "R...K...",
+                "...P....",
+                "........",
+                "....p..k",
+                "........",
+                "........",
+                "........",
+                "........"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(0, 4), new ChessPosition(0, 2)));
+        }
+
+
+        [Test]
+        public void TestCheck()
         {
             var game = new ChessGame(GameStateProvider.FromRepr(new[]
             {
@@ -76,7 +227,7 @@ namespace ChessGameUnitTests
         }
 
         [Test]
-        public void TestNonCheckRook()
+        public void TestNonCheck()
         {
             var game = new ChessGame(GameStateProvider.FromRepr(new[]
             {
@@ -90,13 +241,6 @@ namespace ChessGameUnitTests
                 ".......k"
             }));
             Assert.IsFalse(game.IsCheck);
-        }
-
-        [Test]
-        [TestCaseSource(nameof(correctMoveCases))]
-        public void TestCorrectMove(ChessGame game, ChessPosition from, ChessPosition to)
-        {
-            Assert.IsTrue(game.TryMakeMove(from, to));
         }
     }
 }
