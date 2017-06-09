@@ -21,11 +21,11 @@ namespace WarChess.Domain.Chess
 
         private bool CanCurrentPlayerMove() => throw new NotImplementedException();
 
-        public override bool IsValid() => !IsKingAttacked(CurrentPlayerId ^ 1);
+        public override bool IsValid() => !IsKingAttacked((CurrentPlayerId + 1) % Utils.PlayersCount);
 
         public ChessGameState MovePiece(GridPosition2D from, GridPosition2D to,
             Func<ChessPiece, ChessPiece> updatePiece) => new ChessGameState(
             Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
-            CurrentPlayerId ^ 1);
+            (CurrentPlayerId + 1) % Utils.PlayersCount);
     }
 }

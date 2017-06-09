@@ -49,7 +49,7 @@ namespace WarChess.Domain.GridGame2D
                    Utilities.IsInInterval(arrayPosition.Y, 0, Grid.GetLength(1));
         }
 
-        public BoundedGridField2D<TCell> GetWith(TCell cell, GridPosition2D position)
+        public virtual BoundedGridField2D<TCell> GetWith(TCell cell, GridPosition2D position)
         {
             var newGrid = (TCell[,]) Grid.Clone();
             position = (GridPosition2D) ((Point2D) position - Center);

@@ -15,7 +15,7 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
             this.transformer = transformer;
         }
 
-        protected new ChessGameState Apply(ChessGameState gameState)
+        protected override ChessGameState Apply(ChessGameState gameState)
         {
             if (PawnOwnerId == Utils.WhitePlayerId && To.X == gameState.Field.Size.RowsCnt - 1 ||
                 PawnOwnerId == Utils.BlackPlayerId && To.X == 0)

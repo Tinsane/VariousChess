@@ -9,7 +9,7 @@ namespace WarChess.Domain.ChessAlike.Moves
     {
         protected SlidingMove(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 
-        protected new bool IsValid(TGameState gameState)
+        public override bool IsValid(TGameState gameState)
         {
             if (!base.IsValid(gameState) ||
                 !Step.Divides((Point2D) To - (Point2D) From))

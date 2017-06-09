@@ -10,7 +10,7 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         {
         }
 
-        protected new bool IsValid(ChessGameState gameState) => throw new NotImplementedException();
+        public override bool IsValid(ChessGameState gameState) => throw new NotImplementedException();
 
         protected override ChessGameState Apply(ChessGameState gameState)
         {

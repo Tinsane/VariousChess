@@ -27,7 +27,7 @@ namespace WarChess.Domain.ChessAlike.Moves
             return resultGameState.IsValid() ? resultGameState : null;
         }
 
-        protected bool IsValid(TGameState gameState)
+        public virtual bool IsValid(TGameState gameState)
         {
             var field = gameState.Field;
             return field[From].ContainsPiece &&

@@ -7,7 +7,7 @@ namespace WarChess.Domain.Chess.Moves
     {
         public KingMove(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 
-        public new ChessGameState Apply(ChessGameState gameState) => gameState.MovePiece(From, To,
+        protected override ChessGameState Apply(ChessGameState gameState) => gameState.MovePiece(From, To,
             GetMovedVisitor.GetMoved);
     }
 }

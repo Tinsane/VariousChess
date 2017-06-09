@@ -13,8 +13,8 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
             PawnOwnerId = pawnOwnerId;
         }
 
-        protected new bool IsValid(ChessGameState gameState) => base.IsValid(gameState) &&
-                                                                gameState.Field[From].Piece.PlayerId == PawnOwnerId;
+        public override bool IsValid(ChessGameState gameState) => base.IsValid(gameState) &&
+                                                                  gameState.Field[From].Piece.PlayerId == PawnOwnerId;
 
         protected override ChessGameState Apply(ChessGameState gameState) => gameState.MovePiece(From, To,
             GetMovedVisitor.GetMoved);

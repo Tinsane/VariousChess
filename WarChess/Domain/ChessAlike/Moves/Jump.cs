@@ -9,7 +9,7 @@ namespace WarChess.Domain.ChessAlike.Moves
     {
         protected Jump(Point2D step, GridPosition2D from, GridPosition2D to) : base(step, from, to) { }
 
-        protected new bool IsValid(TGameState gameState) => base.IsValid(gameState) &&
-                                                            (Point2D) To - (Point2D) From == Step;
+        public override bool IsValid(TGameState gameState) => base.IsValid(gameState) &&
+                                                              (Point2D) To - (Point2D) From == Step;
     }
 }
