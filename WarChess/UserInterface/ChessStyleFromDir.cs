@@ -34,7 +34,7 @@ namespace WarChess.UserInterface
             var actualDirName = @"..\..\UserInterface\" + dirName;
             bitmaps = new Dictionary<string, Bitmap>();
             foreach (var figureName in new[] { "pawn", "bishop", "knight", "rook", "queen", "king" })
-                bitmaps[figureName] = new Bitmap(dirName + @"\" + figureName + ".png");
+                bitmaps[figureName] = new Bitmap(actualDirName + @"\" + figureName + ".png");
         }
 
         private Dictionary<string, Bitmap> bitmaps;
