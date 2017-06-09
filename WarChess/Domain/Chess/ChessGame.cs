@@ -13,7 +13,7 @@ namespace WarChess.Domain.Chess
 {
     public class ChessGame : ChessAlikeGame<ChessGameState, ChessCell, ChessPiece>, IChessGame
     {
-        public ChessGame(Func<ChessPiece> pawnTransformer) : base(GetInitialState(pawnTransformer)) { }
+        public ChessGame(Func<int, ChessPiece> pawnTransformer) : base(GetInitialState(pawnTransformer)) { }
 
         public IChessBoard<ChessAlikeApi.Chess.ChessPiece> Board =>
             (IChessBoard<ChessAlikeApi.Chess.ChessPiece>) CurrentState.Field;
@@ -23,7 +23,7 @@ namespace WarChess.Domain.Chess
 
         public bool IsCheck => CurrentState.IsCheck();
 
-        private static ChessGameState GetInitialState(Func<ChessPiece> pawnTransformer)
+        private static ChessGameState GetInitialState(Func<int, ChessPiece> pawnTransformer)
         {
             var field = new ChessCell[Utils.BoardSize, Utils.BoardSize];
             for (var i = 0; i < Utils.BoardSize; ++i)
