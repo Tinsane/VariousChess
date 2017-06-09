@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WarChess.Domain.ChessAlikeApi.Chess
+﻿namespace WarChess.Domain.ChessAlikeApi.Chess
 {
     public interface IChessGame : IChessAlikeGame<ChessPiece>
     {

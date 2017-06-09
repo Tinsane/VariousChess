@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WarChess.Domain.Chess;
-using WarChess.Domain.GridGame2D;
+﻿using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.ChessAlikeApi
 {
@@ -15,7 +9,7 @@ namespace WarChess.Domain.ChessAlikeApi
         Color WhoseTurn { get; }
 
         /// <summary>
-        /// Returns true if move was successful, otherwise returns false.
+        ///     Returns true if move was successful, otherwise returns false.
         /// </summary>
         bool TryMakeMove(GridPosition2D from, GridPosition2D to);
     }
