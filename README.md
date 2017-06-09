@@ -1,10 +1,11 @@
 # WarChess
 Приложение для игры в шахматы и их различные вариации.
+
 _Название проекта WarChess выбрано потому, что изначально была идея написать [военные шахматы](https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B5%D0%B2%D1%8B%D0%B5_%D1%88%D0%B0%D1%85%D0%BC%D0%B0%D1%82%D1%8B), которая постепенно перерасла в идею написания расширяемого приложения, позволяющего играть в разные игры_
 
 Авторы: Смирнов Иван, Лесков Владимир, Липин Антон. (Группа ФТ-201)
 
-#Черновой план презентации защиты:
+# Черновой план презентации защиты:
 
 ## Описание сути проекта
 Мы сделали приложение для игры в шахматы и некоторые их вариации.
@@ -30,22 +31,20 @@ _Название проекта WarChess выбрано потому, что и
 
 Рассмотрим как можно реализовать военные шахматы:
 На уровне логики:
-- Создать наследника абстрактного класса [ChessAlikeGame](https://github.com/Tinsane/WarChess/blob/master/WarChess/Domain/ChessAlike/ChessAlikeGame.cs)
+- Реализовать интерфейс [IChessAlikeGame](https://github.com/Tinsane/WarChess/blob/master/WarChess/Domain/ChessAlikeApi/IChessAlikeGame.cs)
   В нём активно переиспользовать уже написанные шахматы.
   Единственное отличие - надо не показывать фигуры соперника.
 
 На уровне Application:
 - Реализовать класс
- (https://github.com/Tinsane/WarChess/blob/master/WarChess/Application/IChessAlikeApp.cs)
+ [IChessAlikeApp](https://github.com/Tinsane/WarChess/blob/master/WarChess/Application/IChessAlikeApp.cs)
   В нём, опять же, можно переиспользовать логику из класса для обычных шахмат.
   Добавить необходимо логику с передачей компьютера противнику.
 
 На уровне визуализации:
-- Реализовать интерфейс IGameForm
-  (https://github.com/Tinsane/WarChess/blob/master/WarChess/UserInterface/IGameForm.cs)
-  Для его реализации можно использовать ChessAlikeGameControl
-  (https://github.com/Tinsane/WarChess/blob/master/WarChess/UserInterface/ChessAlikeGameControl.cs)
-  Этот контрол, содержит всю логику для отображения IChessAlikeGame.
+- Реализовать интерфейс [IGameForm](https://github.com/Tinsane/WarChess/blob/master/WarChess/UserInterface/IGameForm.cs)
+  Для его реализации можно использовать [ChessAlikeGameControl](https://github.com/Tinsane/WarChess/blob/master/WarChess/UserInterface/ChessAlikeGameControl.cs)
+  Этот контрол, содержит всю логику для отображения [IChessAlikeGame](https://github.com/Tinsane/WarChess/blob/master/WarChess/Domain/ChessAlikeApi/IChessAlikeGame.cs).
   Внутри формы также можно будет поместить какую-то дополнительную логику, спецефичную именно для данной игры.
   Для военных шахмат это, опять же, логика передачи хода.
   
@@ -81,8 +80,16 @@ _Название проекта WarChess выбрано потому, что и
 	Также интересен [ChessAlikeGameControl](https://github.com/Tinsane/WarChess/blob/master/WarChess/UserInterface/ChessAlikeGameControl.cs), который принимает большое количество интерфейсов и реализует логику игры для произвольного IChessAlikeGame.
   
 4. DI-КОНТЕЙНЕР.
-На данный момент всё собирается явным конфигурированием.
-Надеюсь, мы успеем переписать на сборку конвенциями.
-  
-5. Тестами покрыта логика игры в шахматы.
+На данный момент точка расширения с добавлением новой [IChessAlikeGame](https://github.com/Tinsane/WarChess/blob/master/WarChess/Domain/ChessAlikeApi/IChessAlikeGame.cs) собирается при помощи конвенций.
+Остальное - явным конфигурированием.
+Синглтонами сделаны различные классы стилей.
+Также синглтоном является класс QueenPawnTransformer, поскольку он ни от чего не зависит и его логика всегда одинакова.
+Собственно, этот класс просто всегда говорит, что пешка превращается в ферзя, потому что логику выбора фигуры мы не написали (но её всегда можно будет добавить, реализовав интерфейс).
+
+Также классы, соответствующие IChessAlikeGame явно сконфигурированы на повторное создание в случае их повторного запрашивания.
+Это сделано для того, чтобы DI-Container не взял повторно уже сыгранную игру.
+
+5. 
+Тестами покрыта логика игры в шахматы.
+*ВОВА, ТЫ ТАМ ВРОДЕ ЮЗАЕШЬ TestCaseSource. МОЖЕШЬ ТУТ ПРО ЭТО СКАЗАТЬ*
 Логика уровня приложения оказалась очень простой, поэтому тестами мы её решили не покрывать.
