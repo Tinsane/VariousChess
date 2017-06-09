@@ -12,7 +12,8 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         public override bool IsValid(ChessGameState gameState)
             => base.IsValid(gameState) &&
                !ReferenceEquals(gameState.PreviousPawnDoubleJump, null) &&
-               gameState.PreviousPawnDoubleJump.From.Y == To.Y;
+               gameState.PreviousPawnDoubleJump.From.Y == To.Y &&
+               To != gameState.PreviousPawnDoubleJump.From;
 
         protected override ChessGameState Apply(ChessGameState gameState)
         {

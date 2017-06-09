@@ -9,7 +9,7 @@ namespace WarChess.UserInterface.ChessUI
         {
             if (game.IsCheck)
                 yield return "Шах";
-            if (game.IsFinished)
+            if (game.IsMate)
                 yield return "Мат";
         }
     }
