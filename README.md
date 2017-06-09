@@ -18,14 +18,14 @@
 На уровне логики:
 - Создать наследника абстрактного класса ChessAlikeGame
   (https://github.com/Tinsane/WarChess/blob/master/WarChess/Domain/ChessAlike/ChessAlikeGame.cs)
-- ПУСТЬ ЛУЧШЕ ВОВА НАПИШЕТ, ЧТО ЕЩЕ
-Ну уровне визуализации:
+- ПУСТЬ ЛУЧШЕ ВОВА НАПИШЕТ, ЧТО ЕЩЕ.
+На уровне визуализации:
 - Реализовать интерфейс IGameForm
   (https://github.com/Tinsane/WarChess/blob/master/WarChess/UserInterface/IGameForm.cs)
 - Реализовать интерфейс IChessAlikeApp
   (https://github.com/Tinsane/WarChess/blob/master/WarChess/Application/IChessAlikeApp.cs)
   
-  3. Структура решения.
+3. Структура решения.
   - В Infrastructure реализованы методы для удобной работы с классом Bitmap, который мы использовали для визуализации игры.
   (https://github.com/Tinsane/WarChess/blob/master/WarChess/Infrastructure/BitmapUtils.cs)
   - Логика игры собрана в Domain. Здесь есть классы и интерфейсы различного уровня абстракции,
@@ -34,6 +34,6 @@
   - В Application находится, собственно, API.
   - Наконец, в UserInterface собраны все формы, контролы и прочая, необходимые для визуализации.
   
-  4. DI-КОНТЕЙНЕР.
+4. DI-КОНТЕЙНЕР.
   
-  5. У нас нет тестов, потому что мы самые умные тут *уходят в свой двор*.
+5. У нас нет тестов, потому что мы самые умные тут *уходят в свой двор*.
