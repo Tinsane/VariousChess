@@ -79,6 +79,7 @@
     <Compile Include="Domain\Chess\Pieces\Pawn.cs" />
     <Compile Include="Domain\Chess\Pieces\Queen.cs" />
     <Compile Include="Domain\Chess\Pieces\Rook.cs" />
+    <Compile Include="Domain\Chess\Pieces\RookCheckVisitor.cs" />
     <Compile Include="Domain\Chess\Utils.cs" />
     <Compile Include="Domain\Chess\ChessBoard.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />

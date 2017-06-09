@@ -28,6 +28,8 @@ namespace WarChess.Domain.Chess.Pieces
                 yield return (from, to) => new PawnCapturing(id, new Point2D(1, 1), from, to, Transformer);
                 yield return (from, to) => new PawnCapturing(id, new Point2D(1, -1), from, to, Transformer);
                 yield return (from, to) => new PawnDoubleJump(id, from, to);
+                yield return (from, to) => new EnPassat(id, new Point2D(1, 1), from, to);
+                yield return (from, to) => new EnPassat(id, new Point2D(1, -1), from, to);
             }
         }
     }

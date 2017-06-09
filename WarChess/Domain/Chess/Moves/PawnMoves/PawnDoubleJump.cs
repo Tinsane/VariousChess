@@ -10,8 +10,19 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         {
         }
 
-        public override bool IsValid(ChessGameState gameState) => base.IsValid(gameState) &&
-                                                                  !WasMovedVisitor.WasMoved(gameState.Field[From]
-                                                                      .Piece);
+        public override bool IsValid(ChessGameState gameState)
+        {
+            var middleCell = (GridPosition2D) ((Point2D) From + Step / 2);
+            return base.IsValid(gameState) &&
+                   !gameState.Field[To].ContainsPiece &&
+                   !gameState.Field[middleCell].ContainsPiece &&
+                   !WasMovedVisitor.WasMoved(gameState.Field[From].Piece);
+        }
+
+        protected override ChessGameState Apply(ChessGameState gameState)
+        {
+            gameState = base.Apply(gameState);
+            return new ChessGameState(gameState.Field, gameState.CurrentPlayerId, this);
+        }
     }
 }

@@ -27,6 +27,8 @@
 
         public static Point2D operator *(Point2D p, int k) => new Point2D(p.X * k, p.Y * k);
 
+        public static Point2D operator /(Point2D p, int k) => new Point2D(p.X / k, p.Y / k);
+
         public static explicit operator GridPosition2D(Point2D p) => new GridPosition2D(p.X, p.Y);
 
         public static bool operator ==(Point2D a, Point2D b) => !ReferenceEquals(a, null) && a.Equals(b);

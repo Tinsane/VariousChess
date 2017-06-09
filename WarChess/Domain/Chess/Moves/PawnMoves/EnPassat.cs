@@ -1,5 +1,4 @@
-﻿using System;
-using WarChess.Domain.GridGame2D;
+﻿using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Moves.PawnMoves
 {
@@ -10,13 +9,15 @@ namespace WarChess.Domain.Chess.Moves.PawnMoves
         {
         }
 
-        public override bool IsValid(ChessGameState gameState) => throw new NotImplementedException();
+        public override bool IsValid(ChessGameState gameState)
+            => !ReferenceEquals(gameState.PreviousPawnDoubleJump, null) &&
+               gameState.PreviousPawnDoubleJump.From.Y == To.Y;
 
         protected override ChessGameState Apply(ChessGameState gameState)
         {
             gameState = base.Apply(gameState);
             return new ChessGameState(gameState.Field.GetWith(new ChessCell(), new GridPosition2D(From.X, To.Y)),
-                gameState.CurrentPlayerId);
+                gameState.CurrentPlayerId, null);
         }
     }
 }

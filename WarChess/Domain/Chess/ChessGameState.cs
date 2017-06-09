@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using WarChess.Domain.Chess.Moves.PawnMoves;
 using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.ChessAlike;
 using WarChess.Domain.GridGame2D;
@@ -8,9 +9,13 @@ namespace WarChess.Domain.Chess
 {
     public class ChessGameState : ChessAlikeGameState<ChessCell, ChessPiece>
     {
-        public ChessGameState(BoundedGridField2D<ChessCell> field, int currentPlayerId) : base(field, currentPlayerId)
+        public ChessGameState(BoundedGridField2D<ChessCell> field, int currentPlayerId,
+            PawnDoubleJump previousPawnDoubleJump) : base(field, currentPlayerId)
         {
+            PreviousPawnDoubleJump = previousPawnDoubleJump;
         }
+
+        public PawnDoubleJump PreviousPawnDoubleJump { get; }
 
         public bool IsCheck() => IsKingAttacked(CurrentPlayerId) && CanCurrentPlayerMove();
 
@@ -32,7 +37,7 @@ namespace WarChess.Domain.Chess
             throw new InvalidOperationException();
         }
 
-        private bool IsKingAttacked(int playerId)
+        public bool IsCellAttacked(GridPosition2D target, int attackerPlayerId)
         {
             foreach (var position in Field.Positions)
             {
@@ -40,13 +45,16 @@ namespace WarChess.Domain.Chess
                 if (!cell.ContainsPiece)
                     continue;
                 var piece = cell.Piece;
-                if (piece.PlayerId == playerId)
+                if (piece.PlayerId != attackerPlayerId)
                     continue;
-                if (piece.GetPossibleMoves(position, FindKing(playerId)).Any(move => move.IsValid(this)))
+                if (piece.GetPossibleMoves(position, target).Any(move => move.IsValid(this)))
                     return true;
             }
             return false;
         }
+
+        private bool IsKingAttacked(int playerId)
+            => IsCellAttacked(FindKing(playerId), Utils.AnotherPlayerId(playerId));
 
         public bool CanCurrentPlayerMove()
         {
@@ -66,12 +74,12 @@ namespace WarChess.Domain.Chess
             return false;
         }
 
-        public override bool IsValid() => !IsKingAttacked((CurrentPlayerId + 1) % Utils.PlayersCount);
+        public override bool IsValid() => !IsKingAttacked(Utils.AnotherPlayerId(CurrentPlayerId));
 
         public ChessGameState MovePiece(GridPosition2D from, GridPosition2D to,
             Func<ChessPiece, ChessPiece> updatePiece)
             => new ChessGameState(
                 Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
-                (CurrentPlayerId + 1) % Utils.PlayersCount);
+                Utils.AnotherPlayerId(CurrentPlayerId), null);
     }
 }

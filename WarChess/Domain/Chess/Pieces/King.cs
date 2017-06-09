@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using WarChess.Domain.Chess.Moves;
+using WarChess.Domain.Chess.Moves.Castling;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.Chess.Pieces
@@ -21,8 +22,12 @@ namespace WarChess.Domain.Chess.Pieces
             for (var dy = -1; dy <= 1; ++dy)
                 if (dx != 0 || dy != 0)
                     steps.Add(new Point2D(dx, dy));
-            return steps.Select<Point2D, Func<GridPosition2D, GridPosition2D, IChessMove>>(
-                step => ((from, to) => new KingMove(step, from, to)));
+            yield return (from, to) => new ShortCastling(from, to);
+            yield return (from, to) => new LongCastling(from, to);
+            foreach (var e in steps
+                .Select<Point2D, Func<GridPosition2D, GridPosition2D, IChessMove>>(
+                    step => ((from, to) => new KingMove(step, from, to))))
+                yield return e;
         }
     }
 }

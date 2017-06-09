@@ -56,7 +56,7 @@ namespace WarChess.Domain.Chess
             // Queens
             field[0, 3] = new ChessCell(new Queen(Utils.WhitePlayerId));
             field[Utils.BoardSize - 1, 3] = new ChessCell(new Queen(Utils.BlackPlayerId));
-            return new ChessGameState(new ChessBoard(field), Utils.WhitePlayerId);
+            return new ChessGameState(new ChessBoard(field), Utils.WhitePlayerId, null);
         }
 
         protected override IEnumerable<IChessAlikeMove<ChessGameState, ChessCell, ChessPiece>> GetPossibleMoves(
