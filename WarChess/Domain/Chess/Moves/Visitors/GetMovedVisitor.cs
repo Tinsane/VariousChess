@@ -5,6 +5,7 @@ namespace WarChess.Domain.Chess.Moves.Visitors
 {
     public class GetMovedVisitor : IChessPieceVisitor
     {
+        private static readonly GetMovedVisitor Visitor = new GetMovedVisitor();
         private ChessPiece piece;
         private GetMovedVisitor() { }
         public void Visit(Bishop bishop) { throw new ArgumentException(); }
@@ -21,9 +22,8 @@ namespace WarChess.Domain.Chess.Moves.Visitors
 
         public static ChessPiece GetMoved(ChessPiece piece)
         {
-            var visitor = new GetMovedVisitor();
-            piece.AcceptVisitor(visitor);
-            return visitor.piece;
+            piece.AcceptVisitor(Visitor);
+            return Visitor.piece;
         }
     }
 }

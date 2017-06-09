@@ -5,6 +5,7 @@ namespace WarChess.Domain.Chess.Moves.Visitors
 {
     public class WasMovedVisitor : IChessPieceVisitor
     {
+        private static readonly WasMovedVisitor Visitor = new WasMovedVisitor();
         private bool wasMoved;
 
         private WasMovedVisitor() { }
@@ -23,9 +24,8 @@ namespace WarChess.Domain.Chess.Moves.Visitors
 
         public static bool WasMoved(ChessPiece piece)
         {
-            var visitor = new WasMovedVisitor();
-            piece.AcceptVisitor(visitor);
-            return visitor.wasMoved;
+            piece.AcceptVisitor(Visitor);
+            return Visitor.wasMoved;
         }
     }
 }

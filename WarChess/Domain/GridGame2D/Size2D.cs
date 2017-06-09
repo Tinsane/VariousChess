@@ -2,13 +2,13 @@
 {
     public class Size2D
     {
-        public Size2D(int width, int height)
+        public Size2D(int rowsCnt, int columnsCnt)
         {
-            Width = width;
-            Height = height;
+            RowsCnt = rowsCnt;
+            ColumnsCnt = columnsCnt;
         }
 
-        public int Width { get; }
-        public int Height { get; }
+        public int RowsCnt { get; }
+        public int ColumnsCnt { get; }
     }
 }

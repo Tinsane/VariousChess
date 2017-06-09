@@ -1,7 +1,7 @@
 ﻿using WarChess.Domain.Chess.Moves.Visitors;
 using WarChess.Domain.GridGame2D;
 
-namespace WarChess.Domain.Chess.Moves
+namespace WarChess.Domain.Chess.Moves.PawnMoves
 {
     public class PawnDoubleJump : PawnMove
     {
