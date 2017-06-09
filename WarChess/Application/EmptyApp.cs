@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarChess.Application
 {
-    // This class is created to help DI-Container understand the namespace
+    //This class is for DI-Container to find the namespace
     class EmptyApp
     {
     }

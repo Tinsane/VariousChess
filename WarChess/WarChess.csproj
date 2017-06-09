@@ -39,9 +39,11 @@
   <ItemGroup>
     <Compile Include="Application\ChessBoardApp.cs" />
     <Compile Include="Application\EmptyApp.cs" />
+    <Compile Include="Application\IApp.cs" />
     <Compile Include="Application\IChessAlikeApp.cs" />
     <Compile Include="Application\IChessBoardApp.cs" />
     <Compile Include="Application\ChessAlikeApp.cs" />
+    <Compile Include="Domain\AbstractGame\IGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\Chess\IChessGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikeGame.cs" />
     <Compile Include="Domain\ChessAlike\ChessAlikeCell.cs" />
@@ -84,7 +86,6 @@
     <Compile Include="Domain\Chess\QueenPawnTransformer.cs" />
     <Compile Include="Domain\Chess\Utils.cs" />
     <Compile Include="Domain\Chess\ChessBoard.cs" />
-    <Compile Include="Domain\EmptyDom.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
     <Compile Include="UserInterface\ChessAlikeGameControl.cs">
       <SubType>Component</SubType>

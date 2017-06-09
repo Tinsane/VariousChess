@@ -29,6 +29,8 @@ namespace WarChess.Application
 
         public override void ClickAt(ChessPosition position)
         {
+            if (game.IsFinished)
+                return;
             if (SelectedPiecePosition == position)
             {
                 Select(null);

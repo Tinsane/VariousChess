@@ -2,7 +2,7 @@
 
 namespace WarChess.Domain.AbstractGame
 {
-    public abstract class Game<TGameState, TField, TPosition, TCell>
+    public abstract class Game<TGameState, TField, TPosition, TCell> : IGame
         where TGameState : IGameState<TField, TPosition, TCell>
         where TField : IField<TPosition, TCell>
         where TPosition : IPosition

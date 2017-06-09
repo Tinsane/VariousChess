@@ -9,6 +9,7 @@ using WarChess.UserInterface.ChessUI;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using WarChess.Domain;
+using WarChess.Domain.AbstractGame;
 using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.GameStateProvider;
 using WarChess.Domain.Chess.Pieces;
@@ -25,12 +26,14 @@ namespace WarChess
             container.Bind(c => c
                 .FromThisAssembly()
                 .SelectAllClasses()
-                .InNamespaceOf<EmptyDom>()
-                .NotInNamespaceOf<IChessGameStateProvider>()
-                .Excluding<QueenPawnTransformer>()
+                .InheritedFrom<IGame>()
                 .BindAllInterfaces()
                 .Configure(b => b.InTransientScope()));
-            container.Bind(c => c.FromThisAssembly().SelectAllClasses().InNamespaceOf<EmptyApp>().BindToSelf());
+            container.Bind(c => c
+                .FromThisAssembly()
+                .SelectAllClasses()
+                .InheritedFrom<IApp>()
+                .BindToSelf());
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
             container.Bind<IBoardStyle>().To<StandardBoardStyle>().InSingletonScope();
             container.Bind<IFocusBitmapSupplier>().To<GreenFocusBitmapSupplier>().InSingletonScope();
