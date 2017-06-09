@@ -52,12 +52,13 @@
     <Compile Include="Domain\Chess\ChessCell.cs" />
     <Compile Include="Domain\Chess\ChessGame.cs" />
     <Compile Include="Domain\Chess\ChessGameState.cs" />
+    <Compile Include="Domain\Chess\Moves\Castling\Castling.cs" />
     <Compile Include="Domain\Chess\Moves\ChessJump.cs" />
     <Compile Include="Domain\Chess\Moves\ChessSlidingMove.cs" />
-    <Compile Include="Domain\Chess\Moves\LongCastling.cs" />
+    <Compile Include="Domain\Chess\Moves\Castling\LongCastling.cs" />
     <Compile Include="Domain\Chess\Moves\PawnMoves\PawnTransformingMove.cs" />
     <Compile Include="Domain\Chess\Moves\RookMove.cs" />
-    <Compile Include="Domain\Chess\Moves\ShortCastling.cs" />
+    <Compile Include="Domain\Chess\Moves\Castling\ShortCastling.cs" />
     <Compile Include="Domain\Chess\Moves\PawnMoves\EnPassat.cs" />
     <Compile Include="Domain\Chess\Moves\PawnMoves\PawnCapturing.cs" />
     <Compile Include="Domain\Chess\Moves\PawnMoves\PawnDoubleJump.cs" />
