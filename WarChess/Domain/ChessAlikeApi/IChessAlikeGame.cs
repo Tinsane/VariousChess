@@ -7,10 +7,6 @@ namespace WarChess.Domain.ChessAlikeApi
         where TCell : IChessAlikePiece
     {
         bool IsFinished { get; }
-
-        bool IsMate { get; }
-        
-        bool IsStaleMate { get; }
         Color WhoseTurn { get; }
 
         /// <summary>

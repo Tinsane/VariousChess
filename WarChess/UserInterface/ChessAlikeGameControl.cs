@@ -23,6 +23,7 @@ namespace WarChess.UserInterface
         private readonly IMessageSelector<TGame> messageSelector;
         private readonly AbstractBoardControl board;
         private readonly IFocusBitmapSupplier focusBitmapSupplier;
+        private readonly ListMenu messages;
 
         /*
          * Этот класс должен расположить все элементы на экране: 
@@ -39,11 +40,15 @@ namespace WarChess.UserInterface
             this.messageSelector = messageSelector;
             this.board = board;
             this.focusBitmapSupplier = focusBitmapSupplier;
+            messages = new ListMenu();
+            messages.Size = new Size(300, 40);
+            board.Location = new Point(0, messages.Height);
             board.CellClick += app.ClickAt;
             app.StateChanged += UpdateForm;
             Controls.Add(board);
+            Controls.Add(messages);
             UpdateForm();
-            MinimumSize = board.MinimumSize;
+            MinimumSize = new Size(board.MinimumSize.Width, board.MinimumSize.Height + messages.Height);
         }
 
         public void UpdateForm()
@@ -58,7 +63,7 @@ namespace WarChess.UserInterface
                 piecesBitmaps[row, column] = BitmapUtils.GetOverlayedBitmap(focusBitmap, pieceBitmap);
             }
             board.UpdateField(piecesBitmaps);
-            // update messages
+            messages.Update(messageSelector.GetMessages(app.Game).ToArray());
             Invalidate();
         }
     }
