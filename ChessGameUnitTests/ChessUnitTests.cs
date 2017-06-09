@@ -156,21 +156,20 @@ namespace ChessGameUnitTests
         }
 
         [Test]
-        public void TestNonMoveToCheck()
+        public void TestDoubleMove()
         {
             var game = new ChessGame(GameStateProvider.FromRepr(new[]
             {
                 "........",
                 "...P....",
                 "........",
-                "R...p..k",
+                "....p..k",
                 "........",
                 "........",
                 "K.......",
                 "........"
             }));
             Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 3), new ChessPosition(3, 3)));
-            Assert.IsFalse(game.TryMakeMove(new ChessPosition(3, 4), new ChessPosition(2, 3)));
         }
 
         [Test]
@@ -241,6 +240,24 @@ namespace ChessGameUnitTests
                 ".......k"
             }));
             Assert.IsFalse(game.IsCheck);
+        }
+
+        [Test]
+        public void TestNonMoveToCheck()
+        {
+            var game = new ChessGame(GameStateProvider.FromRepr(new[]
+            {
+                "........",
+                "...P....",
+                "........",
+                "R...p..k",
+                "........",
+                "........",
+                "K.......",
+                "........"
+            }));
+            Assert.IsTrue(game.TryMakeMove(new ChessPosition(1, 3), new ChessPosition(3, 3)));
+            Assert.IsFalse(game.TryMakeMove(new ChessPosition(3, 4), new ChessPosition(2, 3)));
         }
     }
 }
