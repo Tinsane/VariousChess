@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using WarChess.Domain.Chess.Pieces;
 
-namespace WarChess.Domain.Chess
+namespace WarChess.Domain.Chess.GameStateProvider
 {
-    public class ChessGameStateProvider
+    public class ChessGameStateProvider : IChessGameStateProvider
     {
         private static readonly string[] InitialBoardRepr =
         {

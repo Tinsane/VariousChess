@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using WarChess.Domain.Chess.GameStateProvider;
 using WarChess.Domain.Chess.Moves;
 using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.ChessAlike;
@@ -12,9 +12,7 @@ namespace WarChess.Domain.Chess
 {
     public class ChessGame : ChessAlikeGame<ChessGameState, ChessCell, ChessPiece>, IChessGame
     {
-        public ChessGame(ChessGameStateProvider gameStateProvider) : base(gameStateProvider.GetInitialGameState())
-        {
-        }
+        public ChessGame(IChessGameStateProvider gameStateProvider) : base(gameStateProvider.GetInitialGameState()) { }
 
         public IChessBoard<ChessPiece> Board =>
             (IChessBoard<ChessPiece>) CurrentState.Field;
