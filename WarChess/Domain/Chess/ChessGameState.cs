@@ -81,5 +81,8 @@ namespace WarChess.Domain.Chess
             => new ChessGameState(
                 Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
                 Utils.AnotherPlayerId(CurrentPlayerId));
+
+        public ChessGameState ChangeCurrentPlayer()
+            => new ChessGameState(Field, Utils.AnotherPlayerId(CurrentPlayerId));
     }
 }

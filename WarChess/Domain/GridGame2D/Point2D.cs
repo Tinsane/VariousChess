@@ -16,7 +16,7 @@
             if (X == 0 && Y == 0)
                 return false;
             var coef = X == 0 ? p.Y / Y : p.X / X;
-            return this * coef == p;
+            return this * coef == p && coef >= 0;
         }
 
         public static Point2D operator -(Point2D a, Point2D b) => new Point2D(a.X - b.X, a.Y - b.Y);

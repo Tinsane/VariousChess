@@ -14,6 +14,6 @@ namespace WarChess.Domain.ChessAlikeApi
             return new ChessPosition(chessNotation[1] - '1', chessNotation[0] - 'a');
         }
 
-        public static string GetChessNotation(this ChessPosition position) => $"{'a' + position.Y}{position.X + 1}";
+        public static string GetChessNotation(this ChessPosition position) => $"{(char)('a' + position.Y)}{position.X + 1}";
     }
 }
