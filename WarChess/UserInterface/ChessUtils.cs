@@ -15,11 +15,13 @@ namespace WarChess.UserInterface
         /// <param name="column">Indexing from 0</param>
         /// <param name="rowCount">Total count of rows</param>
         /// <returns></returns>
-        public static ChessPosition ToChessPosition(int row, int column, int rowCount) => new ChessPosition(rowCount - row, column);
+        public static ChessPosition ToChessPosition(int row, int column, int rowCount) =>
+            (((char)('a' + column)).ToString() + (char)('0' + (rowCount - row))).GetChessPosition();
 
         public static (int row, int column) FromChessPosition(ChessPosition position, int rowCount)
         {
-            throw new NotImplementedException();
+            var chessNotation = position.GetChessNotation();
+            return (rowCount - (chessNotation[1] - '0'), chessNotation[0] - 'a');
         }
 
         public static Bitmap[,] SelectAllBoard<TCell>(IChessBoard<TCell> board, ICellBitmapSelector<TCell> selector)

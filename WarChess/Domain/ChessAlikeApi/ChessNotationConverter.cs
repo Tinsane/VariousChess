@@ -1,23 +1,19 @@
 ﻿using System;
-using WarChess.Domain.AbstractGame;
 using WarChess.Domain.Chess;
 
 namespace WarChess.Domain.ChessAlikeApi
 {
-    public class ChessNotationConverter : INotationConverter<ChessPosition>
+    public static class ChessNotationConverter
     {
-        public static readonly ChessNotationConverter Converter = new ChessNotationConverter();
-        private ChessNotationConverter() { }
-
-        public ChessPosition FromNotation(string notation)
+        public static ChessPosition GetChessPosition(this string chessNotation)
         {
-            if (!char.IsLower(notation[0]))
+            if (!char.IsLower(chessNotation[0]))
                 throw new ArgumentException("Invalid letter");
-            if (!char.IsDigit(notation[1]) || notation[1] == '0')
+            if (!char.IsDigit(chessNotation[1]) || chessNotation[1] == '0')
                 throw new ArgumentException("Invalid digit");
-            return new ChessPosition(notation[1] - '1', notation[0] - 'a');
+            return new ChessPosition(chessNotation[1] - '1', chessNotation[0] - 'a');
         }
 
-        public string ToNotation(ChessPosition position) => $"{'a' + position.Y}{position.X + 1}";
+        public static string GetChessNotation(this ChessPosition position) => $"{'a' + position.Y}{position.X + 1}";
     }
 }

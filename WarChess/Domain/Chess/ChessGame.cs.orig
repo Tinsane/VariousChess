@@ -13,7 +13,7 @@ namespace WarChess.Domain.Chess
 {
     public class ChessGame : ChessAlikeGame<ChessGameState, ChessCell, ChessPiece>, IChessGame
     {
-        public ChessGame(IPawnTransformer pawnTransformer) : base(GetInitialState(pawnTransformer)) { }
+        public ChessGame(Func<int, ChessPiece> pawnTransformer) : base(GetInitialState(pawnTransformer)) { }
 
         public IChessBoard<ChessPiece> Board =>
             (IChessBoard<ChessPiece>) CurrentState.Field;
@@ -27,11 +27,12 @@ namespace WarChess.Domain.Chess
 
         public bool IsCheck => CurrentState.IsCheck();
 
-        
-
+<<<<<<< HEAD
         private static ChessGameState GetInitialState(IPawnTransformer pawnTransformer)
+=======
+        private static ChessGameState GetInitialState(Func<int, ChessPiece> pawnTransformer)
+>>>>>>> 30e12f8a89e13a761cfe7950d67b4f019d7c005e
         {
-            Func<int, ChessPiece> transformer = playerId => pawnTransformer.GetTransformed((Color) playerId);
             var field = new ChessCell[Utils.BoardSize, Utils.BoardSize];
             for (var i = 0; i < Utils.BoardSize; ++i)
             for (var j = 0; j < Utils.BoardSize; ++j)
@@ -39,8 +40,8 @@ namespace WarChess.Domain.Chess
             // Pawns
             for (var i = 0; i < Utils.BoardSize; ++i)
             {
-                field[1, i] = new ChessCell(new Pawn(Utils.WhitePlayerId, false, transformer));
-                field[Utils.BoardSize - 2, i] = new ChessCell(new Pawn(Utils.BlackPlayerId, false, transformer));
+                field[1, i] = new ChessCell(new Pawn(Utils.WhitePlayerId, false, pawnTransformer.GetTransformed));
+                field[Utils.BoardSize - 2, i] = new ChessCell(new Pawn(Utils.BlackPlayerId, false, pawnTransformer.GetTransformed));
             }
             // Rooks
             field[0, 0] = new ChessCell(new Rook(Utils.WhitePlayerId, false));

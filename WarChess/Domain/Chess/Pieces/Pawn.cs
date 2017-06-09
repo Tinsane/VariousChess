@@ -8,14 +8,14 @@ namespace WarChess.Domain.Chess.Pieces
 {
     public class Pawn : ChessPiece
     {
-        public Pawn(int playerId, bool wasMoved, Func<ChessPiece> transformer) : base(playerId)
+        public Pawn(int playerId, bool wasMoved, Func<int, ChessPiece> transformer) : base(playerId)
         {
             WasMoved = wasMoved;
             Transformer = transformer;
         }
 
         public bool WasMoved { get; }
-        internal Func<ChessPiece> Transformer { get; }
+        internal Func<int, ChessPiece> Transformer { get; }
 
         public override void AcceptVisitor(IChessPieceVisitor visitor) { visitor.Visit(this); }
 

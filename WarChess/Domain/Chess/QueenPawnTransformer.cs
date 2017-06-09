@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.ChessAlikeApi;
 
 namespace WarChess.Domain.Chess
 {
     public class QueenPawnTransformer : IPawnTransformer
     {
-        public ChessPiece GetTransformed()
+        public ChessPiece GetTransformed(Color pawnColor)
         {
-            throw new NotImplementedException();
+            return new Queen((int) pawnColor);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace WarChess
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
             var container = new StandardKernel();
-            // TODO: write IChessPiece supplier
+            container.Bind<IPawnTransformer>().To<QueenPawnTransformer>().InSingletonScope();
             container.Bind<IChessGame>().To<ChessGame>().InTransientScope();
             container.Bind<ChessApp>().ToSelf();
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
