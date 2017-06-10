@@ -17,6 +17,7 @@ namespace WarChess.Application
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
         public event Action TurnMade;
+        protected void StateChangedInvoker() => StateChanged?.Invoke();
 
         public ChessAlikeApp(TGame game) : base(game)
         {
@@ -37,23 +38,20 @@ namespace WarChess.Application
                 Select(null);
                 return;
             }
-            var piece = game.Board[position];
-            if (SelectedPiecePosition == null && piece?.Color == game.WhoseTurn)
+            if (SelectedPiecePosition == null)
             {
                 Select(position);
                 return;
             }
-            if (SelectedPiecePosition != null)
+            if (SelectedPiecePosition == null) return;
+            if (game.TryMakeMove(SelectedPiecePosition, position))
             {
-                if (game.TryMakeMove(SelectedPiecePosition, position))
-                {
-                    SelectedPiecePosition = null;
-                    TurnMade?.Invoke();
-                    StateChanged?.Invoke();
-                }
-                else
-                    Select(null);
+                SelectedPiecePosition = null;
+                TurnMade?.Invoke();
+                StateChanged?.Invoke();
             }
+            else
+                Select(null);
         }
     }
 }

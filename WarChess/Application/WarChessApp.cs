@@ -14,7 +14,7 @@ namespace WarChess.Application
         private bool gameIsVisible;
         private bool currentTurnFinished = false;
 
-        public override event Action StateChanged;
+        //public override event Action StateChanged;
 
         public bool GameIsVisible
         {
@@ -26,7 +26,7 @@ namespace WarChess.Application
                     if (!value)
                         currentTurnFinished = false;
                     gameIsVisible = value;
-                    StateChanged?.Invoke();
+                    StateChangedInvoker();
                 }
             }
         }
