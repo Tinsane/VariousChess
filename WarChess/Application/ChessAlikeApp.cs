@@ -16,6 +16,7 @@ namespace WarChess.Application
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
+        public event Action TurnMade;
 
         public ChessAlikeApp(TGame game) : base(game)
         {
@@ -47,6 +48,7 @@ namespace WarChess.Application
                 if (game.TryMakeMove(SelectedPiecePosition, position))
                 {
                     SelectedPiecePosition = null;
+                    TurnMade?.Invoke();
                     StateChanged?.Invoke();
                 }
                 else

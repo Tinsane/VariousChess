@@ -7,7 +7,7 @@ namespace WarChess.Domain.Chess.GameStateProvider
 {
     public class ChessGameStateProvider : IChessGameStateProvider
     {
-        private static readonly string[] InitialBoardRepr =
+        protected static readonly string[] InitialBoardRepr =
         {
             "RNBQKBNR",
             "PPPPPPPP",
@@ -42,17 +42,22 @@ namespace WarChess.Domain.Chess.GameStateProvider
 
         private Dictionary<char, Func<ChessPiece>> ReprMapping { get; }
 
+        protected ChessCell[,] GetBoard(string[] repr, Color moveColor)
+        {
+            var rowsCnt = repr.Length;
+            var columnsCnt = repr[0].Length;
+            var board = new ChessCell[rowsCnt, columnsCnt];
+            for (var i = 0; i < rowsCnt; ++i)
+            for (var j = 0; j < columnsCnt; ++j)
+                board[i, j] = new ChessCell(ReprMapping[repr[i][j]]());
+            return board;
+        }
+
         public ChessGameState GetInitialGameState() => FromRepr(InitialBoardRepr);
 
         public ChessGameState FromRepr(string[] repr, Color moverColor = Color.White)
         {
-            var rowsCnt = repr.Length;
-            var columnsCnt = repr[0].Length;
-            var field = new ChessCell[rowsCnt, columnsCnt];
-            for (var i = 0; i < rowsCnt; ++i)
-            for (var j = 0; j < columnsCnt; ++j)
-                field[i, j] = new ChessCell(ReprMapping[repr[i][j]]());
-            return new ChessGameState(new ChessBoard(field), (int)moverColor);
+            return new ChessGameState(new ChessBoard(GetBoard(repr, moverColor)), (int)moverColor);
         }
     }
 }

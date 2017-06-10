@@ -15,7 +15,7 @@ namespace WarChess.Domain.Chess
         public ChessGame(ChessGameState initialGameState) : base(initialGameState) { }
         public ChessGame(IChessGameStateProvider gameStateProvider) : base(gameStateProvider.GetInitialGameState()) { }
 
-        public IChessBoard<ChessPiece> Board =>
+        public virtual IChessBoard<ChessPiece> Board =>
             (IChessBoard<ChessPiece>) CurrentState.Field;
 
         public bool IsFinished => !CurrentState.CanCurrentPlayerMove();

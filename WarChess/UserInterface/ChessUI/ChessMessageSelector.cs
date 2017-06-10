@@ -11,6 +11,8 @@ namespace WarChess.UserInterface.ChessUI
                 yield return "Шах";
             if (game.IsMate)
                 yield return "Мат";
+            if (game.IsStaleMate)
+                yield return "Пат";
         }
     }
 }

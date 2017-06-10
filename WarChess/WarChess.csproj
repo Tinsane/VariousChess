@@ -38,11 +38,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\ChessBoardApp.cs" />
-    <Compile Include="Application\EmptyApp.cs" />
     <Compile Include="Application\IApp.cs" />
     <Compile Include="Application\IChessAlikeApp.cs" />
     <Compile Include="Application\IChessBoardApp.cs" />
     <Compile Include="Application\ChessAlikeApp.cs" />
+    <Compile Include="Application\WarChessApp.cs" />
     <Compile Include="Domain\AbstractGame\IGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\Chess\IChessGame.cs" />
     <Compile Include="Domain\ChessAlikeApi\IChessAlikeGame.cs" />
@@ -53,6 +53,8 @@
     <Compile Include="Domain\Chess\ChessPosition.cs" />
     <Compile Include="Domain\Chess\GameStateProvider\ChessGameStateProvider.cs" />
     <Compile Include="Domain\Chess\GameStateProvider\IChessGameStateProvider.cs" />
+    <Compile Include="Domain\Chess\GameStateProvider\IWarChessGameStateProvider.cs" />
+    <Compile Include="Domain\Chess\GameStateProvider\WarChessGameStateProvider.cs" />
     <Compile Include="Domain\Chess\IPawnTransformer.cs" />
     <Compile Include="Domain\Chess\Moves\IChessMove.cs" />
     <Compile Include="Domain\Chess\ChessCell.cs" />
@@ -76,16 +78,21 @@
     <Compile Include="Domain\Chess\Pieces\Bishop.cs" />
     <Compile Include="Domain\Chess\Pieces\ChessPiece.cs" />
     <Compile Include="Domain\Chess\Pieces\IChessPieceVisitor.cs" />
-    <Compile Include="Domain\Chess\Pieces\KingCheckVisitor.cs" />
     <Compile Include="Domain\Chess\Pieces\King.cs" />
     <Compile Include="Domain\Chess\Pieces\Knight.cs" />
     <Compile Include="Domain\Chess\Pieces\Pawn.cs" />
     <Compile Include="Domain\Chess\Pieces\Queen.cs" />
     <Compile Include="Domain\Chess\Pieces\Rook.cs" />
-    <Compile Include="Domain\Chess\Pieces\RookCheckVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\Visitors\KingCheckVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\Visitors\PawnCheckVisitor.cs" />
+    <Compile Include="Domain\Chess\Pieces\Visitors\RookCheckVisitor.cs" />
     <Compile Include="Domain\Chess\QueenPawnTransformer.cs" />
     <Compile Include="Domain\Chess\Utils.cs" />
     <Compile Include="Domain\Chess\ChessBoard.cs" />
+    <Compile Include="Domain\WarChess\IWarChessGame.cs" />
+    <Compile Include="Domain\WarChess\WarChessGame.cs" />
+    <Compile Include="Domain\WarChess\WarChessGameState.cs" />
+    <Compile Include="Domain\WarChess\WarChessUtils.cs" />
     <Compile Include="Infrastructure\BitmapUtils.cs" />
     <Compile Include="UserInterface\ChessAlikeGameControl.cs">
       <SubType>Component</SubType>
@@ -141,6 +148,9 @@
     <Compile Include="UserInterface\SimpleChessStyle.cs" />
     <Compile Include="UserInterface\StandardBoardStyle.cs" />
     <Compile Include="UserInterface\FocusBitmapSupplier\AbstractFocusBitmapSupplier.cs" />
+    <Compile Include="UserInterface\WarChessUI\WarChessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserInterface\WarChessUI\WarChessMessageSelector.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessForm.cs">

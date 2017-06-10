@@ -78,13 +78,13 @@ namespace WarChess.Domain.Chess
 
         public override bool IsValid() => !IsKingAttacked(Utils.AnotherPlayerId(CurrentPlayerId));
 
-        public ChessGameState MovePiece(GridPosition2D from, GridPosition2D to,
+        public virtual ChessGameState MovePiece(GridPosition2D from, GridPosition2D to,
             Func<ChessPiece, ChessPiece> updatePiece)
             => new ChessGameState(
                 Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
                 Utils.AnotherPlayerId(CurrentPlayerId));
 
-        public ChessGameState ChangeCurrentPlayer()
+        public virtual ChessGameState ChangeCurrentPlayer()
             => new ChessGameState(Field, Utils.AnotherPlayerId(CurrentPlayerId));
     }
 }

@@ -1,12 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.Moves.PawnMoves;
+using WarChess.Domain.Chess.Pieces;
 using WarChess.Domain.Chess.Pieces.Visitors;
 using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.WarChess
 {
-    internal class WarChessGameState : ChessGameState
+    public class WarChessGameState : ChessGameState
     {
         public WarChessGameState(BoundedGridField2D<ChessCell> field, int currentPlayerId,
             PawnDoubleJump previousPawnDoubleJump = null) : base(field, currentPlayerId, previousPawnDoubleJump)
@@ -35,5 +37,14 @@ namespace WarChess.Domain.WarChess
             }
             return false;
         }
+
+        public override ChessGameState MovePiece(GridPosition2D from, GridPosition2D to,
+            Func<ChessPiece, ChessPiece> updatePiece)
+            => new WarChessGameState(
+                Field.GetWith(new ChessCell(), from).GetWith(new ChessCell(updatePiece(Field[from].Piece)), to),
+                Utils.AnotherPlayerId(CurrentPlayerId));
+
+        public override ChessGameState ChangeCurrentPlayer()
+            => new WarChessGameState(Field, Utils.AnotherPlayerId(CurrentPlayerId));
     }
 }

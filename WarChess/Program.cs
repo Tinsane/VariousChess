@@ -13,7 +13,9 @@ using WarChess.Domain.AbstractGame;
 using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.GameStateProvider;
 using WarChess.Domain.Chess.Pieces;
+using WarChess.Domain.WarChess;
 using WarChess.UserInterface.FocusBitmapSupplier;
+using WarChess.UserInterface.WarChessUI;
 
 namespace WarChess
 {
@@ -27,7 +29,7 @@ namespace WarChess
                 .FromThisAssembly()
                 .SelectAllClasses()
                 .InheritedFrom<IGame>()
-                .BindAllInterfaces()
+                .BindDefaultInterface()
                 .Configure(b => b.InTransientScope()));
             container.Bind(c => c
                 .FromThisAssembly()
@@ -41,8 +43,14 @@ namespace WarChess
             container.Bind<Size>().ToConstant(new Size(chessStyle.BitmapWidth, chessStyle.BitmapHeight));
             container.Bind<AbstractBoardControl>().To<BoardControl>();
             container.Bind<IMessageSelector<IChessGame>>().To<ChessMessageSelector>();
-            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>();
-            container.Bind<IGameForm>().To<ChessForm>();
+            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>().WhenInjectedExactlyInto<ChessForm>();
+            container.Bind<IMessageSelector<IWarChessGame>>().To<WarChessMessageSelector>();
+            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>().WhenInjectedExactlyInto<WarChessForm>();
+            container.Bind(c => c
+                .FromThisAssembly()
+                .SelectAllClasses()
+                .InheritedFrom<IGameForm>()
+                .BindAllInterfaces());
         }
 
         [STAThread]
