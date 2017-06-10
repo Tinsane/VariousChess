@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WarChess.Domain.AbstractGame;
-using WarChess.Domain.Chess;
+﻿using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.GameStateProvider;
-using WarChess.Domain.Chess.Moves;
 using WarChess.Domain.Chess.Pieces;
-using WarChess.Domain.ChessAlike;
-using WarChess.Domain.ChessAlike.Moves;
 using WarChess.Domain.ChessAlikeApi;
-using WarChess.Domain.ChessAlikeApi.Chess;
-using WarChess.Domain.GridGame2D;
 
 namespace WarChess.Domain.WarChess
 {
@@ -42,39 +31,34 @@ namespace WarChess.Domain.WarChess
     //}
 
 
-
     //Second try
     public class WarChessGame : ChessGame, IWarChessGame
     {
-        private readonly WarBoard warBoard;
-        private IChessBoard<ChessPiece> ActualBoard => (IChessBoard<ChessPiece>)CurrentState.Field;
-        public override IChessBoard<ChessPiece> Board => warBoard;
+        public WarChessGame(ChessGameState initialGameState) : base(initialGameState) { }
+
+        public WarChessGame(IChessGameStateProvider gameStateProvider) : base(gameStateProvider) { }
+
+        private IChessBoard<ChessPiece> ActualBoard => (IChessBoard<ChessPiece>) CurrentState.Field;
+        public override IChessBoard<ChessPiece> Board => new WarBoard(ActualBoard, CurrentState.CurrentPlayerId);
+
         public bool PawnCanAttack => CurrentState.PawnCanAttack();
-
-        public WarChessGame(ChessGameState initialGameState) : base(initialGameState)
-        {
-            warBoard = new WarBoard(this);
-        }
-
-        public WarChessGame(IChessGameStateProvider gameStateProvider) : base(gameStateProvider)
-        {
-            warBoard = new WarBoard(this);
-        }
 
         private class WarBoard : IChessBoard<ChessPiece>
         {
-            private readonly WarChessGame game;
-
-            public WarBoard(WarChessGame game)
+            public WarBoard(IChessBoard<ChessPiece> actualBoard, int currentPlayerId)
             {
-                this.game = game;
+                ActualBoard = actualBoard;
+                CurrentPlayerId = currentPlayerId;
             }
 
-            public int RowCount => game.ActualBoard.RowCount;
-            public int ColumnCount => game.ActualBoard.ColumnCount;
+            private IChessBoard<ChessPiece> ActualBoard { get; }
+            private int CurrentPlayerId { get; }
+
+            public int RowCount => ActualBoard.RowCount;
+            public int ColumnCount => ActualBoard.ColumnCount;
 
             public ChessPiece this[ChessPosition position]
-                => game.ActualBoard[position]?.Color == game.WhoseTurn ? game.ActualBoard[position] : null;
+                => ActualBoard[position]?.PlayerId == CurrentPlayerId ? ActualBoard[position] : null;
         }
     }
 }

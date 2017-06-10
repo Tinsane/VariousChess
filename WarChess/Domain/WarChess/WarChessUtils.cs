@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using WarChess.Domain.Chess;
 using WarChess.Domain.Chess.Pieces.Visitors;
 using WarChess.Domain.GridGame2D;
@@ -21,11 +17,11 @@ namespace WarChess.Domain.WarChess
                 var piece = cell.Piece;
                 if (!PawnCheckVisitor.IsPawn(piece))
                     continue;
-                if (new[] { new Point2D(1, 1), new Point2D(1, -1) }.Select(
-                        direction => (GridPosition2D)((Point2D)position +
-                                                      (state.CurrentPlayerId == Utils.WhitePlayerId
-                                                          ? direction
-                                                          : -direction)))
+                if (new[] {new Point2D(1, 1), new Point2D(1, -1)}.Select(
+                        direction => (GridPosition2D) ((Point2D) position +
+                                                       (state.CurrentPlayerId == Utils.WhitePlayerId
+                                                           ? direction
+                                                           : -direction)))
                     .Where(target => state.Field.Contains(target))
                     .SelectMany(target => piece.GetPossibleMoves(position, target))
                     .Any(move => !ReferenceEquals(move.Make(state), null)))
