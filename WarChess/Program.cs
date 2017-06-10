@@ -43,9 +43,8 @@ namespace WarChess
             container.Bind<Size>().ToConstant(new Size(chessStyle.BitmapWidth, chessStyle.BitmapHeight));
             container.Bind<AbstractBoardControl>().To<BoardControl>();
             container.Bind<IMessageSelector<IChessGame>>().To<ChessMessageSelector>();
-            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>().WhenInjectedExactlyInto<ChessForm>();
-            container.Bind<IMessageSelector<IWarChessGame>>().To<WarChessMessageSelector>();
-            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>().WhenInjectedExactlyInto<WarChessForm>();
+            container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>();
+            container.Bind<IMessageSelector<IWarChessGame>>().To<WarChessMessageSelector>();;
             container.Bind(c => c
                 .FromThisAssembly()
                 .SelectAllClasses()
