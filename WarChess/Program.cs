@@ -34,6 +34,8 @@ namespace WarChess
             var chessStyle = container.Get<IChessStyle>();
             container.Bind<Size>().ToConstant(new Size(chessStyle.BitmapWidth, chessStyle.BitmapHeight));
             container.Bind<AbstractBoardControl>().To<BoardControl>();
+            container.Bind<IChessLanguagePack>().To<RusChessLanguagePack>();
+            container.Bind<IWarChessLanguagePack>().To<RusWarChessLanguagePack>();
             container.Bind<IMessageSelector<IChessGame>>().To<ChessMessageSelector>();
             container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>();
             container.Bind<IMessageSelector<IWarChessGame>>().To<WarChessMessageSelector>();

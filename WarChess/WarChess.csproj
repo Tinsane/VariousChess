@@ -98,6 +98,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserInterface\ChessStyleFromDir.cs" />
+    <Compile Include="UserInterface\ChessUI\IChessLanguagePack.cs" />
+    <Compile Include="UserInterface\ChessUI\RusChessLanguagePack.cs" />
     <Compile Include="UserInterface\ChessUtils.cs" />
     <Compile Include="UserInterface\ChessUI\ChessCellBitmapSelector.cs" />
     <Compile Include="UserInterface\ChessUI\ChessMessageSelector.cs" />
@@ -138,6 +140,7 @@
     </Compile>
     <Compile Include="UserInterface\FocusBitmapSupplier\IFocusBitmapSupplier.cs" />
     <Compile Include="UserInterface\IGameForm.cs" />
+    <Compile Include="UserInterface\ILanguagePack.cs" />
     <Compile Include="UserInterface\ImageControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -148,6 +151,8 @@
     <Compile Include="UserInterface\SimpleChessStyle.cs" />
     <Compile Include="UserInterface\StandardBoardStyle.cs" />
     <Compile Include="UserInterface\FocusBitmapSupplier\AbstractFocusBitmapSupplier.cs" />
+    <Compile Include="UserInterface\WarChessUI\IWarChessLanguagePack.cs" />
+    <Compile Include="UserInterface\WarChessUI\RusWarChessLanguagePack.cs" />
     <Compile Include="UserInterface\WarChessUI\WarChessForm.cs">
       <SubType>Form</SubType>
     </Compile>

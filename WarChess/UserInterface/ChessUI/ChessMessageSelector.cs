@@ -1,18 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WarChess.Domain.ChessAlikeApi.Chess;
 
 namespace WarChess.UserInterface.ChessUI
 {
     public class ChessMessageSelector : IMessageSelector<IChessGame>
     {
+        public ChessMessageSelector(IChessLanguagePack languagePack)
+        {
+            this.languagePack = languagePack;
+        }
         public IEnumerable<string> GetMessages(IChessGame game)
         {
             if (game.IsCheck)
-                yield return "Шах";
+                yield return languagePack.MessageCheck;
             if (game.IsMate)
-                yield return "Мат";
+                yield return languagePack.MessageMate;
             if (game.IsStaleMate)
-                yield return "Пат";
+                yield return languagePack.MessageStaleMate;
         }
+
+        private IChessLanguagePack languagePack;
     }
 }
