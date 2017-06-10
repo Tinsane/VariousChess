@@ -8,10 +8,6 @@ namespace WarChess.Domain.ChessAlikeApi
     {
         bool IsFinished { get; }
         Color WhoseTurn { get; }
-
-        /// <summary>
-        ///     Returns true if move was successful, otherwise returns false.
-        /// </summary>
         bool TryMakeMove(ChessPosition from, ChessPosition to);
     }
 }

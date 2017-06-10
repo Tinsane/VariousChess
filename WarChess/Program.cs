@@ -25,17 +25,9 @@ namespace WarChess
         {
             container.Bind<IPawnTransformer>().To<QueenPawnTransformer>().InSingletonScope();
             container.Bind<IChessGameStateProvider>().To<ChessGameStateProvider>();
-            container.Bind(c => c
-                .FromThisAssembly()
-                .SelectAllClasses()
-                .InheritedFrom<IGame>()
-                .BindDefaultInterface()
-                .Configure(b => b.InTransientScope()));
-            container.Bind(c => c
-                .FromThisAssembly()
-                .SelectAllClasses()
-                .InheritedFrom<IApp>()
-                .BindToSelf());
+            container.Bind(c => c.FromThisAssembly().SelectAllClasses().InheritedFrom<IGame>()
+                .BindDefaultInterface().Configure(b => b.InTransientScope()));
+            container.Bind(c => c.FromThisAssembly().SelectAllClasses().InheritedFrom<IApp>().BindToSelf());
             container.Bind<IChessStyle>().To<SimpleChessStyle>().InSingletonScope();
             container.Bind<IBoardStyle>().To<StandardBoardStyle>().InSingletonScope();
             container.Bind<IFocusBitmapSupplier>().To<GreenFocusBitmapSupplier>().InSingletonScope();
@@ -44,12 +36,8 @@ namespace WarChess
             container.Bind<AbstractBoardControl>().To<BoardControl>();
             container.Bind<IMessageSelector<IChessGame>>().To<ChessMessageSelector>();
             container.Bind<ICellBitmapSelector<ChessPiece>>().To<ChessCellBitmapSelector>();
-            container.Bind<IMessageSelector<IWarChessGame>>().To<WarChessMessageSelector>();;
-            container.Bind(c => c
-                .FromThisAssembly()
-                .SelectAllClasses()
-                .InheritedFrom<IGameForm>()
-                .BindAllInterfaces());
+            container.Bind<IMessageSelector<IWarChessGame>>().To<WarChessMessageSelector>();
+            container.Bind(c => c.FromThisAssembly().SelectAllClasses().InheritedFrom<IGameForm>().BindAllInterfaces());
         }
 
         [STAThread]
