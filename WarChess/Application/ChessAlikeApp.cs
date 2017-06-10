@@ -16,14 +16,30 @@ namespace WarChess.Application
     {
         public ChessPosition SelectedPiecePosition { get; set; }
         public override event Action StateChanged;
-        public event Action TurnMade;
         protected void StateChangedInvoker() => StateChanged?.Invoke();
 
         public ChessAlikeApp(TGame game) : base(game)
         {
         }
 
-        private void Select(ChessPosition position)
+        protected bool SelectOrUnselect(ChessPosition position)
+        {
+            if (game.IsFinished)
+                return true;
+            if (SelectedPiecePosition == position)
+            {
+                Select(null);
+                return true;
+            }
+            if (SelectedPiecePosition == null)
+            {
+                Select(position);
+                return true;
+            }
+            return false;
+        }
+
+        protected void Select(ChessPosition position)
         {
             SelectedPiecePosition = position;
             StateChanged?.Invoke();
@@ -31,23 +47,12 @@ namespace WarChess.Application
 
         public override void ClickAt(ChessPosition position)
         {
-            if (game.IsFinished)
+            if (SelectOrUnselect(position))
                 return;
-            if (SelectedPiecePosition == position)
-            {
-                Select(null);
-                return;
-            }
-            if (SelectedPiecePosition == null)
-            {
-                Select(position);
-                return;
-            }
             if (SelectedPiecePosition == null) return;
             if (game.TryMakeMove(SelectedPiecePosition, position))
             {
                 SelectedPiecePosition = null;
-                TurnMade?.Invoke();
                 StateChanged?.Invoke();
             }
             else

@@ -14,7 +14,6 @@ namespace WarChess.UserInterface.WarChessUI
 {
     public class WarChessForm : Form, IGameForm
     {
-        public const string EndTurn = "Завершить ход";
         public const string StartTurn = "Начать ход";
 
         private readonly WarChessApp app;
@@ -28,10 +27,13 @@ namespace WarChess.UserInterface.WarChessUI
             gameControl = new ChessAlikeGameControl<IWarChessGame, ChessPiece>(
                 app, board, focusBitmapSupplier, bitmapSelector, messageSelector);
             Controls.Add(gameControl);
-            switchTurnButton = new Button();
-            switchTurnButton.Click += (sender, args) => app.GameIsVisible = !app.GameIsVisible;
-            switchTurnButton.Anchor = AnchorStyles.Bottom;
-            switchTurnButton.Dock = DockStyle.Bottom;
+            switchTurnButton = new Button
+            {
+                Text = StartTurn,
+                Anchor = AnchorStyles.Bottom,
+                Dock = DockStyle.Bottom
+            };
+            switchTurnButton.Click += (sender, args) => app.GameIsVisible = true;
             Controls.Add(switchTurnButton);
             AutoSize = true;
             UpdateForm();
@@ -42,12 +44,12 @@ namespace WarChess.UserInterface.WarChessUI
             if (app.GameIsVisible)
             {
                 gameControl.Show();
-                switchTurnButton.Text = EndTurn;
+                switchTurnButton.Hide();
             }
             else
             {
                 gameControl.Hide();
-                switchTurnButton.Text = StartTurn;
+                switchTurnButton.Show();
             }
             gameControl.UpdateForm();
             Invalidate();
