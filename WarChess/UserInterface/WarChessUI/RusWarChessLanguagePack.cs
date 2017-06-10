@@ -19,5 +19,7 @@ namespace WarChess.UserInterface.WarChessUI
         public string MessageMate => "Мат";
 
         public string MessageStaleMate => "Пат";
+
+        public string StartTurn => "Начать ход";
     }
 }

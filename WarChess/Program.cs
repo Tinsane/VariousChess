@@ -23,6 +23,7 @@ namespace WarChess
     {
         private static void BindContainer(StandardKernel container)
         {
+
             container.Bind<IPawnTransformer>().To<QueenPawnTransformer>().InSingletonScope();
             container.Bind<IChessGameStateProvider>().To<ChessGameStateProvider>();
             container.Bind(c => c.FromThisAssembly().SelectAllClasses().InheritedFrom<IGame>()

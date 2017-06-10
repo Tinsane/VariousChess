@@ -15,10 +15,13 @@ namespace WarChess.UserInterface.ChessUI
     {
         private readonly ChessAlikeApp<IChessGame, ChessPiece> app;
         private readonly ChessAlikeGameControl<IChessGame, ChessPiece> gameControl;
+        private readonly IChessLanguagePack languagePack;
         
         public ChessForm(ChessAlikeApp<IChessGame, ChessPiece> app, AbstractBoardControl board, IFocusBitmapSupplier focusBitmapSupplier,
-            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IChessGame> messageSelector)
+            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IChessGame> messageSelector,
+            IChessLanguagePack languagePack)
         {
+            this.languagePack = languagePack;
             this.app = app;
             gameControl = new ChessAlikeGameControl<IChessGame, ChessPiece>(
                 app, board, focusBitmapSupplier, bitmapSelector, messageSelector);
@@ -33,7 +36,7 @@ namespace WarChess.UserInterface.ChessUI
             Invalidate();
         } 
 
-        public string GameName => "Шахматы";
+        public string GameName => languagePack.GameName;
         public void Run(Form previous) => previous.SwitchTo(this);
     }
 }
