@@ -27,7 +27,7 @@ namespace WarChess.Domain.GridGame2D
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
+            if (!(obj is GridPosition2D)) return false;
             return Equals((GridPosition2D)obj);
         }
 
