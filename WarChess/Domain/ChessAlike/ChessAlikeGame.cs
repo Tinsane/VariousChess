@@ -14,8 +14,8 @@ namespace WarChess.Domain.ChessAlike
     {
         protected ChessAlikeGame(TGameState initialState) : base(initialState) { }
 
-        protected abstract IEnumerable<IChessAlikeMove<TGameState, TCell, TPiece>> GetPossibleMoves(GridPosition2D from,
-            GridPosition2D to);
+        protected abstract IEnumerable<IChessAlikeMove<TGameState, TCell, TPiece>> GetPossibleMoves(
+            GridPosition2D from, GridPosition2D to);
 
         public bool TryMakeMove(GridPosition2D from, GridPosition2D to)
         {

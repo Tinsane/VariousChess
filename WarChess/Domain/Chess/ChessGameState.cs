@@ -18,7 +18,7 @@ namespace WarChess.Domain.Chess
 
         public PawnDoubleJump PreviousPawnDoubleJump { get; }
 
-        public bool IsCheck() => IsKingAttacked(CurrentPlayerId) && CanCurrentPlayerMove();
+        public bool IsCheck() => IsKingAttacked(CurrentPlayerId);
 
         public bool IsMate() => IsKingAttacked(CurrentPlayerId) && !CanCurrentPlayerMove();
 

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WarChess.Infrastructure
 {
@@ -12,17 +8,19 @@ namespace WarChess.Infrastructure
         public static Bitmap GetMonochromeBitmap(int width, int height, Color color)
         {
             var bitmap = new Bitmap(width, height);
-            using (Graphics graphics = Graphics.FromImage(bitmap))
-            using (SolidBrush brush = new SolidBrush(color))
+            using (var graphics = Graphics.FromImage(bitmap))
+            using (var brush = new SolidBrush(color))
+            {
                 graphics.FillRectangle(brush, 0, 0, width, height);
+            }
             return bitmap;
         }
 
         public static Bitmap GetColoredBitmap(Bitmap bitmap, Color color)
         {
             var newBitmap = new Bitmap(bitmap.Width, bitmap.Height);
-            for (int x = 0; x < bitmap.Width; ++x)
-            for (int y = 0; y < bitmap.Height; ++y)
+            for (var x = 0; x < bitmap.Width; ++x)
+            for (var y = 0; y < bitmap.Height; ++y)
             {
                 var curColor = bitmap.GetPixel(x, y);
                 var newColor = Color.FromArgb(curColor.A, color.R, color.G, color.B);
@@ -33,8 +31,8 @@ namespace WarChess.Infrastructure
 
         public static Bitmap GetOverlayedBitmap(Bitmap under, Bitmap above)
         {
-            int width = Math.Max(under.Width, above.Width);
-            int height = Math.Max(under.Height, above.Height);
+            var width = Math.Max(under.Width, above.Width);
+            var height = Math.Max(under.Height, above.Height);
             var finalBitmap = new Bitmap(width, height);
             using (var graphics = Graphics.FromImage(finalBitmap))
             {
@@ -47,8 +45,8 @@ namespace WarChess.Infrastructure
         public static Bitmap[,] GetArrayOf(int width, int height, Func<int, int, Bitmap> getBitmap)
         {
             var arr = new Bitmap[width, height];
-            for (int row = 0; row < width; ++row)
-            for (int column = 0; column < width; ++column)
+            for (var row = 0; row < width; ++row)
+            for (var column = 0; column < width; ++column)
                 arr[row, column] = getBitmap(row, column);
             return arr;
         }
