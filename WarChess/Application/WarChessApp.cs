@@ -12,18 +12,17 @@ namespace WarChess.Application
     public class WarChessApp : ChessAlikeApp<IWarChessGame, ChessPiece>
     {
         private bool gameIsVisible;
-        private bool currentTurnFinished = false;
+        private bool currentTurnStarted = true;
 
         public bool GameIsVisible
         {
             get => gameIsVisible;
             set
             {
-                if ((currentTurnFinished && !value) || value)
+                if (!currentTurnStarted && !gameIsVisible && value)
                 {
-                    if (!value)
-                        currentTurnFinished = false;
-                    gameIsVisible = value;
+                    currentTurnStarted = true;
+                    gameIsVisible = true;
                     StateChangedInvoker();
                 }
             }
@@ -32,7 +31,22 @@ namespace WarChess.Application
         public WarChessApp(IWarChessGame game) : base(game)
         {
             gameIsVisible = true;
-            TurnMade += () => currentTurnFinished = true;
+        }
+
+        public override void ClickAt(ChessPosition position)
+        {
+            if (SelectOrUnselect(position))
+                return;
+            if (SelectedPiecePosition == null) return;
+            if (game.TryMakeMove(SelectedPiecePosition, position))
+            {
+                SelectedPiecePosition = null;
+                gameIsVisible = false;
+                currentTurnStarted = false;
+                StateChangedInvoker();
+            }
+            else
+                Select(null);
         }
     }
 }

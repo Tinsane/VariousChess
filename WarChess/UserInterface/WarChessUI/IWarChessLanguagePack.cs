@@ -6,5 +6,7 @@ namespace WarChess.UserInterface.WarChessUI
     public interface IWarChessLanguagePack : ILanguagePack<WarChessGame>, IChessLanguagePack
     {
         string MessagePawnCanAttack { get; }
+
+        string StartTurn { get; }
     }
 }

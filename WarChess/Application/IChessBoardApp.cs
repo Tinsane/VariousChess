@@ -10,6 +10,6 @@ namespace WarChess.Application
         TGame Game { get; }
         void ClickAt(ChessPosition position);
 
-        event Action StateChanged; // На это событие мы подпишемся из UserInterface и будем делать перерисовку
+        event Action StateChanged;
     }
 }

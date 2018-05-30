@@ -14,24 +14,29 @@ namespace WarChess.UserInterface.WarChessUI
 {
     public class WarChessForm : Form, IGameForm
     {
-        public const string EndTurn = "Завершить ход";
-        public const string StartTurn = "Начать ход";
 
         private readonly WarChessApp app;
         private readonly ChessAlikeGameControl<IWarChessGame, ChessPiece> gameControl;
         private Button switchTurnButton;
+        private ILanguagePack<WarChessGame> languagePack;
 
         public WarChessForm(WarChessApp app, AbstractBoardControl board, IFocusBitmapSupplier focusBitmapSupplier,
-            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IWarChessGame> messageSelector)
+            ICellBitmapSelector<ChessPiece> bitmapSelector, IMessageSelector<IWarChessGame> messageSelector,
+            IWarChessLanguagePack languagePack)
         {
             this.app = app;
+            this.languagePack = languagePack;
             gameControl = new ChessAlikeGameControl<IWarChessGame, ChessPiece>(
                 app, board, focusBitmapSupplier, bitmapSelector, messageSelector);
             Controls.Add(gameControl);
-            switchTurnButton = new Button();
-            switchTurnButton.Click += (sender, args) => app.GameIsVisible = !app.GameIsVisible;
-            switchTurnButton.Anchor = AnchorStyles.Bottom;
-            switchTurnButton.Dock = DockStyle.Bottom;
+            switchTurnButton = new Button
+            {
+                Text = languagePack.StartTurn,
+                Anchor = AnchorStyles.Bottom,
+                Dock = DockStyle.Bottom
+            };
+            app.StateChanged += UpdateForm;
+            switchTurnButton.Click += (sender, args) => app.GameIsVisible = true;
             Controls.Add(switchTurnButton);
             AutoSize = true;
             UpdateForm();
@@ -42,17 +47,18 @@ namespace WarChess.UserInterface.WarChessUI
             if (app.GameIsVisible)
             {
                 gameControl.Show();
-                switchTurnButton.Text = EndTurn;
+                switchTurnButton.Hide();
             }
             else
             {
                 gameControl.Hide();
-                switchTurnButton.Text = StartTurn;
+                switchTurnButton.Show();
             }
             gameControl.UpdateForm();
             Invalidate();
         }
-        public string GameName => "Военные шахматы";
+
+        public string GameName => languagePack.GameName;
         public void Run(Form previous) => previous.SwitchTo(this);
     }
 }
